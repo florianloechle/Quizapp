@@ -1,0 +1,258 @@
+
+#quiz-panel {
+    background: transparent;
+    padding: 10px;
+    margin: 15px 15px 15px 15px;
+    position: relative;
+}
+
+/* .page-content {
+    height: 100vh;
+} */
+
+#login-view, #registration-view {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.v-form {
+    padding: 7px;
+    margin: 6px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; 
+    align-items: center;
+}
+
+.answer-cell {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.info-text {
+    background-color: rgba(255, 255, 255, 0.692)
+}
+
+.sign-container {
+    text-align: center;
+}
+
+.v-form-header {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 17px;
+    width: 100%;
+}
+
+.full {
+    width:100%;
+}
+
+#overlay {
+    position: absolute; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.2); 
+    z-index: 10; 
+}
+
+#progress {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.creation-select {
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+    color: black;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    height: 45px;
+}
+
+.q-list-item {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.animation {
+    transition: all 0.5s;
+}
+
+.red {
+    background-color: #C31616;
+}
+
+.gray {
+    background-color: #787878;
+}
+
+/*<---------------------------->*/
+/********   Main-Panel  *********/
+/*<---------------------------->*/
+
+.creation-header {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.quiz-info-picture {
+    position: relative;
+    width: auto;
+    height: 75px;
+}
+
+.box-shadow {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+/*<---------------------------->*/
+/****** S-Quiz-Container ********/
+/*<---------------------------->*/
+
+.shadow-container {
+    width: 100%;
+    transition: all 0.35s linear;
+    min-height: 290px;
+    max-height: 290px;
+}
+
+.shadow-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+    max-height: 700px;
+}
+
+    .shadow-container a {
+        color: black !important;
+        padding: 5px;
+        border-radius: 3px;
+        margin-left: 5px;
+    }
+
+.quiz-info-cell {
+    height: 260px;
+    text-overflow: ellipsis;
+}
+
+#question-list-item-view {
+    min-height: 25vh;
+}
+
+
+
+.qs_list-item {
+    padding-left: 5px !important;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+
+
+.mdl-snackbar {
+    z-index: 25;
+}
+
+.correct-answer {
+    transition: all 0.2s;
+    background-color: rgba(156, 255, 122, 1);
+}
+
+/*<---------------------------->*/
+/******** Login-Panel   *********/
+/*<---------------------------->*/
+
+@media screen and (max-width: 460px) {
+    .v-form {
+        width: 100%;
+    }
+
+    #quiz-panel {
+        padding: 0;
+        margin: 0;
+    }
+
+    .mdl-list__item {
+        padding-right: 0;
+    }
+
+    .mdl-list__item > .full {
+        width: 290px;
+    }
+
+    @media screen and (max-width: 350px) {
+
+        .mdl-list__item > .full {
+            width: 250px;
+        }
+    
+    }
+}
+
+/*<---------------------------->*/
+/********     Play      *********/
+/*<---------------------------->*/
+
+#play-view 
+{ 
+  padding:20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+} 
+
+.mdl-progress>.bufferbar {
+    background-image: linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(to right,rgb(255, 0, 0),rgb(255, 0, 0)) !important;
+    z-index: 0;
+    left: 0;
+}
+
+.mdl-progress>.progressbar {
+    background-color: rgb(255, 0, 0) !important;
+    z-index: 1;
+    left: 0;
+}
+
+.stage_box {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  position: absolute;
+  z-index: 1;
+  margin-left: -7.5px;
+  top: -5px;
+}
+
+.stage_box1 {
+  left: 0%;
+}
+
+.stage_box2 {
+  left: 25%;
+}
+
+.stage_box3 {
+  left: 44%;
+}
+
+.stage_box4 {
+  left: 66%;
+}
+
+.stage_box5 {
+  left: 100%;
+}

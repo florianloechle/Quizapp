@@ -1,0 +1,26 @@
+<div id="registration-view" style="display:none">
+            <form class="v-form box-shadow" id="registration-form" method="post" autocomplete="on">
+                        <h4 class="v-form-header">Sign up</h4>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input input="username" class="mdl-textfield__input" type="text" name="username" id="register-username" autocomplete="on">
+                            <label class="mdl-textfield__label" for="register-username">Username</label>
+                            <span data-error="username-error" class="mdl-textfield__error" id="register-username-error"></span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input input="password" class="mdl-textfield__input" type="password" name="password" id="register-password" autocomplete="new-password">
+                            <label class="mdl-textfield__label" for="register-password">Password</label>
+                            <span data-error="password-error" class="mdl-textfield__error" id="register-password-error"></span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input input="repeatPassword" class="mdl-textfield__input" type="password" name="repeatPassword" id="register-repeatPassword" autocomplete="new-password">
+                            <label class="mdl-textfield__label" for="register-repeatPassword">Repeat Password</label>
+                            <span data-error="repeatPassword-error" class="mdl-textfield__error" id="register-repeatPassword-error"></span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input input="email" class="mdl-textfield__input" type="text" name="email" id="register-email" autocomplete="email">
+                            <label class="mdl-textfield__label" for="register-email">E-Mail</label>
+                            <span  data-error="email-error" class="mdl-textfield__error" id="register-email-error"></span>
+                        </div><br>
+                        <button data-action="register" type="button" value="Sign Up" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="register-btn">Register</button>
+            </form>
+</div>

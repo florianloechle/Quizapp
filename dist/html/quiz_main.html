@@ -1,0 +1,61 @@
+<div style="display: none" id="play-panel">
+        <div id="searchView">
+            <form class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input input="filter" data-name="Titel" name="name" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label" for="filter-title">Suche nach Titel..</label>
+                </div>
+        </div>   
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input input="filter" data-name="Ersteller" name="user" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label" for="filter-creator">Suche nach Ersteller..</label>
+                </div>
+        </div>  
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input input="filter" data-name="Nummer" name="id" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label" for="filter-number">Suche nach Nummer..</label>
+                </div>
+        </div>
+        <div class="mdl-cell mdl-cell--10-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                <button data-action="searchQuiz" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" id="filter-search">Search Quiz</button>
+        </div>  
+        <div id="filter-list-container" class="mdl-cell mdl-cell--12-col">
+                <span class="mdl-chip">
+                        <span class="mdl-chip__text"><strong>Deine aktuellen Filter:</strong></span>
+                </span>
+               
+        </div>
+</form>  
+        </div>
+        <div style="position: relative" class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                <div class="mdl-tabs__tab-bar">
+                    <a href="#easy" class="mdl-tabs__tab is-active">Easy Quizzes</a>
+                    <a href="#medium" class="mdl-tabs__tab">Medium Quizzes</a>
+                    <a href="#hard" class="mdl-tabs__tab">Hard Quizzes</a>
+                </div>
+            <div style="height: 75vh" id="quiz-over-view">
+                <div class="mdl-tabs__panel is-active" id="easy">
+                    <div id="quiz-overview-easy" class="mdl-grid mdl-cell--top">
+                        
+                    </div>
+                </div>
+                <div class="mdl-tabs__panel" id="medium">
+                    <div id="quiz-overview-medium" class="mdl-grid mdl-cell--top">
+
+                     </div>
+                </div>
+                <div class="mdl-tabs__panel" id="hard">
+                        <div id="quiz-overview-hard" class="mdl-grid mdl-cell--top">
+
+                     </div>
+                    
+                </div>
+        </div>
+        <div data-info="overlay" id="overlay">
+                <div id="progress" style="top: 11%" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+        </div>
+    </div>
+</div>  

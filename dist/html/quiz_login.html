@@ -1,0 +1,17 @@
+<div id="login-view" style="display:none">
+        <form class="v-form box-shadow" id="login-form" method="post" autocomplete="on">
+            <h4 class="v-form-header">Sign in</h4>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input data-input="username" class="mdl-textfield__input" type="text" name="username" id="login-username" autocomplete="username">
+                <label class="mdl-textfield__label" for="login-username">Username</label>
+                <span data-error="username-error" class="mdl-textfield__error" id="login-username-error"></span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input data-input="password" class="mdl-textfield__input" type="password" name="password" id="login-password" autocomplete="current-password">
+                <label class="mdl-textfield__label" for="login-password">Password</label>
+                <span data-error="password-error" class="mdl-textfield__error" id="login-password-error"></span>                
+            </div><br>
+            <button data-action="login" type="button" value="Sign In" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="login-btn">Login</button><br>
+            <a style="padding-top: 5px">Dont have an account? Register <span data-action="register" href="#" id="i4">HERE</span></a>
+        </form>
+</div>
