@@ -3,19 +3,19 @@
             <form class="mdl-grid">
         <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input input="filter" data-name="Titel" name="name" class="mdl-textfield__input" type="text">
+                    <input data-input="filter" data-name="Titel" name="name" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label" for="filter-title">Suche nach Titel..</label>
                 </div>
         </div>   
         <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input input="filter" data-name="Ersteller" name="user" class="mdl-textfield__input" type="text">
+                    <input data-input="filter" data-name="Ersteller" name="user" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label" for="filter-creator">Suche nach Ersteller..</label>
                 </div>
         </div>  
         <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input input="filter" data-name="Nummer" name="id" class="mdl-textfield__input" type="text">
+                    <input data-input="filter" data-name="Nummer" name="id" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label" for="filter-number">Suche nach Nummer..</label>
                 </div>
         </div>
@@ -32,9 +32,9 @@
         </div>
         <div style="position: relative" class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                 <div class="mdl-tabs__tab-bar">
-                    <a href="#easy" class="mdl-tabs__tab is-active">Easy Quizzes</a>
-                    <a href="#medium" class="mdl-tabs__tab">Medium Quizzes</a>
-                    <a href="#hard" class="mdl-tabs__tab">Hard Quizzes</a>
+                    <a data-action="tabChange" href="#easy" class="mdl-tabs__tab is-active">Easy Quizzes</a>
+                    <a data-action="tabChange" href="#medium" class="mdl-tabs__tab">Medium Quizzes</a>
+                    <a data-action="tabChange" href="#hard" class="mdl-tabs__tab">Hard Quizzes</a>
                 </div>
             <div style="height: 75vh" id="quiz-over-view">
                 <div class="mdl-tabs__panel is-active" id="easy">

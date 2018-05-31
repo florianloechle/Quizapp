@@ -25,10 +25,9 @@ class UserManager extends Database {
         'username' => array(FILTER_FLAG_NO_ENCODE_QUOTES)
     );
 
-    public static function generateError($affected,$type,$message) {
+    public static function generateError($affected,$message) {
         $error = array(
-            'for'=>$affected,
-            'type'=>$type,
+            'for'=>$affected.='-error',
             'message'=>$message
         );
 

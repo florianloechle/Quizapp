@@ -23,7 +23,6 @@ foreach($_POST as $key => $value) {
 
     if(is_null($value)) {
         $errors['error'][] = UserManager::generateError($key,
-        UserManager::method[$registration],
         UserManagerError::fatalError);
 
         UserManager::throwErrors($errors);
@@ -31,7 +30,6 @@ foreach($_POST as $key => $value) {
 
     if(!$value) {
         $errors['error'][] = UserManager::generateError($key,
-        UserManager::method[$registration],
         UserManagerError::missingArgument);
     };
 
@@ -45,7 +43,7 @@ if(!empty($errors['error'])) {
 
 $username = UserManager::validateUsername($_POST['username']);
 if(!$username) {
-    UserManager::generateError('username',UserManager::method[$registration],UserManagerError::invalidUsername);
+    UserManager::generateError('username',UserManagerError::invalidUsername);
 };
 
 /* <MARK:>PASSWORD</MARK:> */
@@ -54,7 +52,6 @@ $repeatPassword = $_POST['repeatPassword'];
 
 if($password != $repeatPassword) {
     $errors['error'][] = UserManager::generateError('repeatPassword',
-    UserManager::method[$registration],
     UserManagerError::passwordsDoNotMatch);
 };
 
@@ -63,7 +60,6 @@ $email = $_POST['email'];
 
 if(!preg_match('/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/',$email)) {
     $errors['error'][] = UserManager::generateError('email',
-    UserManager::method[$registration],
     UserManagerError::invalidEmail);
 };
 
@@ -82,7 +78,6 @@ try {
 
 } catch (UserManagerException $e) {
     $errors['error'][] = UserManager::generateError($e->getType(),
-    UserManager::method[$registration],
     UserManagerError::alreadyExists);
 
     UserManager::throwErrors($errors);

@@ -19,7 +19,6 @@ foreach($_POST as $key => $value) {
 
     if(is_null($value)) {
         $errors['error'][] = UserManager::generateError($key,
-        UserManager::method[$login],
         UserManagerError::fatalError);
 
         UserManager::throwErrors($errors);
@@ -27,7 +26,6 @@ foreach($_POST as $key => $value) {
 
     if(!$value) {
         $errors['error'][] = UserManager::generateError($key,
-        UserManager::method[$login],
         UserManagerError::missingArgument);
     };
 };
@@ -47,11 +45,9 @@ try {
     
 } catch (UserManagerException $e) {
     $errors['error'][] = UserManager::generateError('username',
-    UserManager::method[$login],
     UserManagerError::wrongCredentials);
 
     $errors['error'][] = UserManager::generateError('password',
-    UserManager::method[$login],
     UserManagerError::wrongCredentials);
 
     UserManager::throwErrors($errors);

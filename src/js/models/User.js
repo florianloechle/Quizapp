@@ -14,7 +14,15 @@ export default class User {
 
     static async logout() {
         return request(path.logout,'POST');
-    }
+    };
+    
+    static async login(values) {
+        return request(path.login,values,'POST');
+    };
+
+    static async register(values) {
+        return request(path.registration,values,'POST');
+    };
 
 
 
