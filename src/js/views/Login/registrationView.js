@@ -1,8 +1,12 @@
-import DynamicView from '../DynamicView';
+import View from '../View';
 import Validation from '../Validation';
 
-export default class RegisterView extends DynamicView {
-
+export default class RegisterView {
+    
+    constructor(parent,handler) {
+        View.register(this,parent,handler);
+    };
+    
     getData() {
         return $(this.jObject).children().serialize();
     };

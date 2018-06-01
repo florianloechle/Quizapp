@@ -1,5 +1,5 @@
 //Global Controller
-import DynamicView from './views/DynamicView';
+import View from './views/View';
 import { mainViewInit } from './controller/MainViewController';
 import { creationViewInit } from './controller/CreationViewController';
 import { yourQuizViewInit } from './controller/YourQuizViewController';
@@ -10,18 +10,20 @@ window.onload = () => {
     init();
 };
 
-//Global state of the app..User...Quiz etc..
-export const state = {}
-
-
 //GLOBAL EXPORTS
 export const container = {
-    mainPanel: 'quiz-panel',
-    searchView: '#searchView',
+    mainPanel: '#quiz-panel',
+    navigation: '#navigation-container',
+    login: '#login-view',
+    register: '#registration-view',
+    creation: '#creation-view',
+    quizBuiler: '#quiz-builder-view',
+    questionBuilder: '#question-builder-view',
+    questionListView: '#question-list-view'
 };
 
 /**
- * Constructor constructs a new quiz model object.
+ * .
  * @param {String} path - The request path eg. server/quiz.php..
  * @param {Object} values - The data that gets send to the server. 
  * @param {String} type - Request methods. Either 'POST' or 'GET'.
@@ -75,15 +77,15 @@ let activePanel = 'nav-main';
 const controlNavigation = (action,view) => {
     let controller;
 
-    if (controller = navMap.get(action.name)) {
-        activePanel = action.name;
+    if (controller = navMap.get(action)) {
+        activePanel = action;
         controller[0]();
 
         $('#panel-titel').html(controller[1]);
         return;
     };
 
-    if (action.name === 'logout') {
+    if (action === 'logout') {
         User.logout().then(response => {
 
             showSnackbarMessage('Ausgeloggt', 1000);
@@ -107,11 +109,11 @@ const init = () => {
 
     User.checkLoginStatus().then(status => {
 
-        $.get(`../dist/html/${status ? 'nav_login' : 'nav_logout'}.html`, Data => {
+        $.get(`../dist/html/${status ? 'nav_login' : 'nav_logout'}.html`, html => {
+            View.render(html,container.navigation,true)
 
-            let navigation = new DynamicView('navigation-container',controlNavigation);
-            navigation.renderView(Data);
-           
+                let navigation = View.register(null,container.navigation,controlNavigation);
+            
         },'html');
 
         mainViewInit();

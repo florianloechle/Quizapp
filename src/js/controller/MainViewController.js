@@ -1,27 +1,34 @@
-import DynamicView from '../views/DynamicView';
+import View from '../views/View';
 import SearchView from '../views/Main/searchView';
 import Query from '../models/Query';
 import { container } from '../index';
 
-let view = null;
+let mainView = null;
 let searchView = null;
+let quizIDs = null;
 
 export const mainViewInit = () => {
 
-    $.get('../dist/html/quiz_main.html', (html) => {
+    $.get('../dist/html/quiz_main.html', html => {
+        View.render(html,container.mainPanel,true) 
 
-        view = new DynamicView(container.mainPanel);
-        view.renderView(html,false);
-
+        mainView = View.register(mainView,container.mainPanel);
+    
         searchView = new SearchView('searchView',handleSearchEvents);
-        DynamicView.registerView(searchView,$(container.searchView));
 
         componentHandler.upgradeElements($(container.mainPanel).children());
 
     },'html');
 };
 
-const handleSearchEvents = async (action,searchView) => {
+const handleSearchEvents = async (action,view) => {
+
+    if(action === 'clickedFilter') {
+      
+        searchView.removeChip(view);
+
+        return;
+    };
 
     const input = searchView.getInput();
 
@@ -35,13 +42,15 @@ const handleSearchEvents = async (action,searchView) => {
     
     try {
 
-        $(view.overlay).fadeIn('fast');
+        $(mainView.overlay).fadeIn('fast');
 
         await query.getResults();
 
         setTimeout( () => {
-            $(view.overlay).fadeOut('fast');
-            searchView.renderResults(query.result);
+            $(mainView.overlay).fadeOut('fast');
+
+            quizIDs = searchView.renderQueryResults(query.results);
+
         },1000);
         
     } catch (error) {

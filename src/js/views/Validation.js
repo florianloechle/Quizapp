@@ -23,11 +23,11 @@ export default class Validation {
         for (let i = 0; i < textFields.length; i++) {
             let value;
 
-            if (!(value = textFields[i].obj.value) || textFields[i].obj.type === 'password') {
+            if (!(value = textFields[i].input.value) || textFields[i].input.type === 'password') {
                 continue;
             };
 
-            if(textFields[i].obj.type === 'email') {
+            if(textFields[i].input.type === 'email') {
                 continue;
             };
 
@@ -50,7 +50,7 @@ export default class Validation {
 const validateTextField = (textField) => {
     let isValid = true;
 
-    if (!textField.obj.value) {
+    if (!textField.input.value) {
         isValid = false;
         textField.error.innerHTML = 'Field can not be empty';
         textField.error.parentElement.classList.add('is-invalid');

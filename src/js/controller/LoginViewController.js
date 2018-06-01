@@ -1,3 +1,4 @@
+import View from '../views/View';
 import LoginView from '../views/Login/loginView';
 import RegisterView from '../views/Login/registrationView';
 import User from '../models/User';
@@ -10,18 +11,18 @@ let registerView = null;
 export const loginViewInit = () => {
 
     $.get('../dist/html/quiz_login.html', (html) => {
-
-        loginView = new LoginView(container.mainPanel,handleLoginEvents);
-        loginView.renderView(html,false);
+        View.render(html,container.mainPanel,true);
+        
+        loginView = new LoginView(container.login,handleLoginEvents);
 
         componentHandler.upgradeElements($(container.mainPanel).children());
-
+            
     },'html');
 };
 
 const handleLoginEvents = (action) => {
 
-    if (action.name === 'register') {
+    if (action === 'register') {
         $(loginView.jObject).fadeOut('fast', () => {
             registerViewInit();
         });
@@ -58,9 +59,9 @@ const handleLoginEvents = (action) => {
 const registerViewInit = () => {
 
     $.get('../dist/html/quiz_registration.html', (html) => {
+        View.render(html,container.mainPanel,true) 
 
-        registerView = new RegisterView(container.mainPanel,handleRegistrationEvents);
-        registerView.renderView(html,false);
+        registerView = new RegisterView(container.register,handleRegistrationEvents);
 
         componentHandler.upgradeElements($(container.mainPanel).children());
 
