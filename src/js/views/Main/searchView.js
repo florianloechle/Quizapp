@@ -3,48 +3,34 @@ import ViewAnimator from '../ViewAnimator';
 import Validation from '../Validation';
 
 const container = {
-    Hard: "#quiz-overview-Hard",
-    Medium: "#quiz-overview-Medium",
-    Easy: "#quiz-overview-Easy",
     chip: "#filter-list-container"
 };
+
+const tArray = [
+    ['Easy', '#quiz-overview-Easy'],
+    ['Medium', '#quiz-overview-Medium'],
+    ['Hard', '#quiz-overview-Hard']
+]
+
+const tabMap = new Map(tArray);
 
 export default class SearchView {
 
     constructor(parent,handler) {
-        this.jObject = $(`#${parent}`);
         this.handler = handler;
-
-        View.getDataSet(this);
-        View.observe(this.jObject,handler);
+        View.register(this,parent,handler);
 
         this.chips = [];
+        this.showCase = [];
     };
 
     getInput() {
-
-        let validFilter = false;
-
-            for (let i = 0; i < this.filter.length; i++)  {
-                if (this.filter[i].input.value) {
-                    validFilter = true;
-                    this.isSet = false;
-                    break;
-                };
-            };
-            if (validFilter) {
-                return $(this.jObject[0]).children().serialize();
-            };
-            if (!this.isSet) {
-                this.isSet = true;
-                return $(this.jObject[0]).children().serialize();
-            };
-
+        return $(this.jObject[0]).children().serialize();
     };
 
     removeChip(chip) {
         for (let i = 0; i < this.chips.length; i++) {
-            if (chip == this.chips[i].jObject) {
+            if (chip == this.chips[i]) {
                 this.chips.splice(i,1);
 
                 ViewAnimator.fadeOut(chip);
@@ -86,41 +72,22 @@ export default class SearchView {
     };
 
     renderQueryResults(results) {
+        this.emptyResults();
+
         results.forEach(quiz => {
-            this.renderQuiz(quiz);
+
+            let quizInfo = new QuizInfoView(tabMap.get(quiz.difficulty),this.handler,quiz);
+            this.showCase.push(quizInfo);
+
         });
     }
 
-    renderQuiz(quiz) {
-        const markup = 
-        `<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
-        <div  class="shadow-container mdl-card mdl-shadow--2dp">
-            <div style="background-image: url(img/category/${quiz.category}.jpg) data-info="picture">
-            <div class="mdl-card__title info-text">
-                <h2 data-info="name" class="mdl-card__title-text" style="font-size: 20px; font-weight: bold">${quiz.name}</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Ersteller: </strong> 
-                    </a><a data-info="user" class="info-text">${quiz.user}</a></div>
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Kategorie: </strong>
-                    </a><a data-info="category" class="info-text">${quiz.category}</a></div>
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Anzahl Fragen: </strong> </a>
-                    <a data-info="questionCount" class="info-text">${quiz.questionCount}</a></div>
-            </div>
-           </div>
-            <div class="mdl-card__supporting-text">
-                <a data-info="description">${quiz.description}</a>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a data-action="play" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Jetzt spielen
-                </a>
-            </div>
-        </div>
-    </div>`;
-
-        
-    }
+    emptyResults() {
+        for (var value of tabMap.values()) {
+            $(value).empty();
+        };
+        this.showCase = [];
+    };
 
 }
 
@@ -139,10 +106,63 @@ class Chip  {
     
 };
 
-const chipMarkup = `<span class="mdl-chip mdl-chip--deletable">
+class QuizInfoView {
+
+    constructor(parent,handler,quiz) {
+        this.quiz = quiz;
+        this.jObject = View.render(quizInfoMarkup,parent,false);
+
+        View.register(this,parent,handler);
+        this.init();
+    };
+
+    init() {
+
+        for (let v in this.quiz) {
+            if (this[v]) {
+                this[v].innerHTML = this.quiz[v];
+            };
+        };
+
+        this.picture.style.backgroundImage = `url(img/category/${this.quiz.category}.jpg)`;
+    };
+
+}
+
+
+
+const chipMarkup = 
+`<span class="mdl-chip mdl-chip--deletable">
 <span data-info="filter" class="mdl-chip__text"></span>
 <button type="button" class="mdl-chip__action"><i data-action="clickedFilter" class="material-icons">cancel</i></button>
 </span>`;
+
+const quizInfoMarkup = 
+`<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
+<div  class="shadow-container mdl-card mdl-shadow--2dp">
+    <div data-info="picture">
+    <div class="mdl-card__title info-text">
+        <h2 data-info="name" class="mdl-card__title-text" style="font-size: 20px; font-weight: bold"></h2>
+    </div>
+    <div class="mdl-card__supporting-text mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Ersteller: </strong> 
+            </a><a data-info="user" class="info-text"></a></div>
+            <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Kategorie: </strong>
+            </a><a data-info="category" class="info-text"></a></div>
+            <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Anzahl Fragen: </strong> </a>
+            <a data-info="questionCount" class="info-text"></a></div>
+    </div>
+   </div>
+    <div class="mdl-card__supporting-text">
+        <a data-info="description"></a>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a data-action="play" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        Jetzt spielen
+        </a>
+    </div>
+</div>
+</div>`;
 
 
 

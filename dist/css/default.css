@@ -1,16 +1,9 @@
 
 #quiz-panel {
-    background: transparent;
-    padding: 10px;
-    margin: 15px 15px 15px 15px;
     position: relative;
 }
 
-/* .page-content {
-    height: 100vh;
-} */
-
-#login-view, #registration-view {
+.user-management-view {
     display:flex;
     justify-content:center;
     align-items:center;
@@ -26,6 +19,7 @@
     flex-wrap: nowrap; 
     align-items: center;
 }
+
 
 .answer-cell {
     margin: 5px;
@@ -71,26 +65,14 @@
 }
 
 .creation-select {
-    border: 1px solid;
+    border: 1px solid rgba(0,0, 0, 0.4);
     border-radius: 4px;
     width: 100%;
     color: black;
-    font-size: 16px;
+    font-size: 15px;
     outline: none;
     cursor: pointer;
     height: 45px;
-}
-
-.q-list-item {
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-.animation {
-    transition: all 0.50s;
-    opacity: 0;
-    transform: translateX(-100%);
 }
 
 .red {
@@ -127,7 +109,7 @@
 
 .shadow-container {
     width: 100%;
-    transition: all 0.35s linear;
+    transition: all 0.2s linear;
     min-height: 290px;
     max-height: 290px;
 }
@@ -150,27 +132,8 @@
     text-overflow: ellipsis;
 }
 
-#question-list-item-view {
-    min-height: 25vh;
-}
-
-
-
-.qs_list-item {
-    padding-left: 5px !important;
-    padding: 0;
-    margin-bottom: 5px;
-}
-
-
-
 .mdl-snackbar {
     z-index: 25;
-}
-
-.correct-answer {
-    transition: all 0.2s;
-    background-color: rgba(156, 255, 122, 1);
 }
 
 /*<---------------------------->*/
@@ -203,6 +166,48 @@
     
     }
 }
+
+
+/*<---------------------------->*/
+/********   Question  ***********/
+/*<---------------------------->*/
+
+.answer-container {
+   display: flex;
+   flex-direction: row;
+   align-items: baseline;
+}
+
+.answer {
+    border: 1px groove rgba(0,0, 0, 0.4);
+    border-radius: 3px;
+    padding: 7px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.answer:hover {
+    border-color: rgb(0, 116, 6)
+}
+
+.question {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 10px;
+    border: solid 1px rgba(0,0, 0, 0.5);
+    background-color: #787878;
+}
+
+    .question > .mdl-textfield {
+        background-color: white;
+        padding: 20px 10px;
+    }
+
+
+
+
+
+
 
 /*<---------------------------->*/
 /********     Play      *********/

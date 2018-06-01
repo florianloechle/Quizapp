@@ -13,7 +13,7 @@ export default class View {
 
         if(!view.jObject) { view.jObject = $(selector) };
       
-        if(handler) { View.observe(view.jObject,handler) };
+        if(handler) { View.observe(view,handler) };
         
         this.getDataSet(view);
 
@@ -30,6 +30,8 @@ export default class View {
         };
 
         $(html).fadeIn('slow');
+
+        componentHandler.upgradeElements($(parent).children())
 
         return $(html);
     };
@@ -79,11 +81,11 @@ export default class View {
         };
     };
     
-    static observe(jObject,handler) {
+    static observe(view,handler) {
        
-        jObject.on('click', (e) => {
+        view.jObject.on('click', (e) => {
             if (e.target.dataset['action'] || e.target.parentElement.dataset['action']) {
-                handler(e.target.dataset['action'] || e.target.parentElement.dataset['action'], jObject);
+                handler(e.target.dataset['action'] || e.target.parentElement.dataset['action'], view);
                 e.preventDefault();
             };
             return false;

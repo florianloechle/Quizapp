@@ -2,12 +2,13 @@
 require_once('quiz_manager.php');
 session_start();
 
-$filterKeys = ["name","id","user"];
+$filterKeys = ["name","id","user","category"];
 $filter = array(
     "name" => "",
     "id" => "",
     "user" => "",
     "userid" => "",
+    "category" => "",
 );
 
 foreach($_GET as $key => $value) {

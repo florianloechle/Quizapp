@@ -22,6 +22,7 @@ export const loginViewInit = () => {
 
 const handleLoginEvents = (action) => {
 
+    //User tapped register. We fade the view out and initialize the registerView.
     if (action === 'register') {
         $(loginView.jObject).fadeOut('fast', () => {
             registerViewInit();
@@ -29,12 +30,14 @@ const handleLoginEvents = (action) => {
         return;
     };
 
+    //Validate the user input for empty values and invalid characters
     if(!loginView.validateUserInput()){
         return;
     }
 
     let values = loginView.getData();
 
+    //We log the user in and handle the servers response accordingly
     User.login(values, true).then(response => {
 
         if (response.error) {
@@ -71,12 +74,14 @@ const registerViewInit = () => {
 
 const handleRegistrationEvents = (action) => {
 
+    //Validate the user input for empty values and invalid characters
     if (!registerView.validateUserInput()) {
         return;
     };
 
     let values = registerView.getData();
 
+    //We register the user and handle the servers response accordingly. Fades to loginView on success.
     User.register(values).then(response => {
 
         if (response.error) {

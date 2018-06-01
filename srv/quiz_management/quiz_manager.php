@@ -107,6 +107,7 @@ class QuizManager extends Database {
             [$filter["name"],'AND quiz.name LIKE ? '],
             [$filter["id"],'AND quiz.id = ? '],
             [$filter["user"],'AND user.username LIKE ? '],
+            [$filter["category"],'AND category.name LIKE ? '],
             [$filter["userid"],'AND user.id = ?']
         ]);
 
