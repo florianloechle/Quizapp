@@ -17,19 +17,30 @@ export const creationViewInit = () => {
         View.render(html,container.mainPanel,true) 
 
         creationView = View.register(creationView,container.mainPanel);
-        questionBuilder = View.register(questionBuilder,container.questionBuilder,handleQuestionBuildEvents);
-        quizBuilder = View.register(quizBuilder,container.quizBuiler,handleQuizEvents);
-        questionListView = View.register(questionListView,container.questionListView,handleListEvents);
 
-        setTimeout( () => {
-            componentHandler.upgradeElements($(container.creation).children());
-        },50);
+        quizBuilder = new QuizBuilderView(container.quizBuiler,handleQuizEvents);
+        questionBuilder = new QuestionBuilderView(container.questionBuilder,handleQuestionBuildEvents);
+        questionListView = new QuestionListView(container.questionListView,handleListEvents);
+        
+
+        Quiz.getQuizCategorys().then(categorys => {
+            quizBuilder.renderCategorys(categorys);
+        });
+
+        componentHandler.upgradeElements($(container.creation).children());
     
     },'html');
 };
 
 const handleQuestionBuildEvents = (action,view) => {
 
+    if(action !== 'addQuestion' ) {
+        return;
+    };
+
+    if(!questionBuilder.validateInput()) {
+        return;
+    };
 
 
 };

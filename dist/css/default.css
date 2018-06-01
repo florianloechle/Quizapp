@@ -1,6 +1,7 @@
 
 #quiz-panel {
     position: relative;
+    padding: 5px;
 }
 
 .user-management-view {
@@ -18,6 +19,7 @@
     flex-direction: column;
     flex-wrap: nowrap; 
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.445)
 }
 
 
@@ -39,6 +41,7 @@
     text-align: center;
     font-size: 17px;
     width: 100%;
+    font-weight: bold;
 }
 
 .full {
@@ -91,6 +94,7 @@
     font-size: 15px;
     font-weight: bold;
     margin: 0;
+    color: white;
 }
 
 .quiz-info-picture {
@@ -179,10 +183,6 @@
 }
 
 .answer {
-    border: 1px groove rgba(0,0, 0, 0.4);
-    border-radius: 3px;
-    padding: 7px;
-    margin: 10px;
     cursor: pointer;
 }
 
@@ -203,8 +203,26 @@
         padding: 20px 10px;
     }
 
+#question-builder-view, #quiz-builder-view {
+    background-color: rgba(195, 22, 22, 0.534);
+    border-radius: 5px;
+}
 
+#bg-image {
+    background-image: url("../img/qmark.png");
+    background-repeat: no-repeat;
+}
 
+.white-cell {
+    border: 2px double;
+    background-color: white;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+#creation-view {
+    justify-content: center;
+}
 
 
 

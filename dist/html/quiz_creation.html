@@ -1,31 +1,32 @@
-<div style="display: none" id="creation-view" class="mdl-grid mdl-grid--no-spacing">
-    <div id="quiz-builder-view" class="mdl-cell mdl-cell--4-col mdl-grid mdl-cell--12-col-phone mdl-cell--9-col-tablet mdl-cell--2-offset mdl-cell--top box-shadow">
+<div style="display: none" id="creation-view" style="justify-content: center" class="mdl-grid">
+
+    <div id="quiz-builder-view" class="mdl-cell mdl-cell--4-col mdl-grid mdl-cell--12-col-phone mdl-cell--9-col-tablet mdl-cell--0-offset-phone box-shadow">
             <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                 <h4 class="creation-header">Dein Quiz</h4>        
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone white-cell">
                         <h4 class="creation-header">Quiz Name</h4>
                         <div class="mdl-textfield mdl-js-textfield full">
-                                <input data-type="quizname" data-name="name" class="mdl-textfield__input" type="text">
+                                <input data-input="text" data-name="name" class="mdl-textfield__input" type="text">
                                 <label class="mdl-textfield__label" for="name">Quiz Name..</label>
                                 <span data-error="name-error" class="mdl-textfield__error"></span>
                         </div>
                 </div>   
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone white-cell">
                         <h4 class="creation-header">Beschreibung</h4>
                         <div class="mdl-textfield mdl-js-textfield full">
-                                <textarea data-type="description" data-name="description" class="mdl-textfield__input" rows= "2" type="text"></textarea>
+                                <textarea data-input="text" data-name="description" class="mdl-textfield__input" rows= "2" type="text"></textarea>
                                 <label class="mdl-textfield__label" for="description">Quiz Beschreibung..</label>
                                 <span data-error="description-error" class="mdl-textfield__error"></span>
                         </div>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                         <h4 class="creation-header">Kategorie</h4>
-                        <select data-type="category" id="category-select" class="creation-select">        
+                        <select data-input="category" id="category-select" class="creation-select">        
                         </select>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                         <h4 class="creation-header">Schwierigkeit</h4>
-                        <select data-type="difficulty" data-name="difficulty" class="creation-select">
+                        <select data-input="difficulty" data-name="difficulty" class="creation-select">
                                 <option>Easy</option>   
                                 <option>Medium</option>
                                 <option>Hard</option>
@@ -33,7 +34,7 @@
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-phone">
                         <h4 class="creation-header">Anzahl Fragen</h4>
-                        <a><span data-info="questionCount" >Quiz-AnzahlFragen</span></a>
+                        <a><span data-info="questionCount" style="color: white" >Quiz-AnzahlFragen</span></a>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col">
                     <button data-action="delete"  type="button" style="background-color: red; text-align: left" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Zurücksetzen</button>
@@ -42,61 +43,70 @@
                 <div class="mdl-tooltip" data-info="tooltip" data-mdl-for="delete-btn"></div>
             </div>
 </div>  
-<div id="question-builder-view" class="mdl-grid mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--9-col-tablet mdl-cell--top box-shadow">
-        <div class="mdl-cell mdl-cell--12-col">
-                <h4 class="creation-header">Quizfrage hinzufügen</h4>  
-                <div class="mdl-textfield mdl-js-textfield full">
-                        <textarea data-type="question" class="mdl-textfield__input" type="text" rows= "3" id="question" ></textarea>
-                        <label class="mdl-textfield__label" for="question-0-0">Quizfrage</label>
-                        <span data-error="question-error" class="mdl-textfield__error" id="question-0-0-error"></span>
-                </div>
-        </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--top mdl-grid">
-                        <div clss="mdl-cell mdl-cell--12-col">
+<div id="question-builder-view" class="mdl-grid mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--9-col-tablet box-shadow">
+                        <h4 class="creation-header">Quizfrage hinzufügen</h4>  
+                        <div class="mdl-cell mdl-cell--12-col white-cell">
+                                <div class="mdl-textfield mdl-js-textfield full">
+                                        <textarea data-input="question" data-name="question" class="mdl-textfield__input" type="text" rows= "3" id="question" ></textarea>
+                                        <label class="mdl-textfield__label" for="question-0-0">Quizfrage</label>
+                                        <span data-error="question-error" class="mdl-textfield__error" id="question-0-0-error"></span>
+                                </div>
+                        </div>
+        
+                        <div class="mdl-cell mdl-cell--12-col">
                                         <h4 class="creation-header">Antwortmöglichkeiten</h4>       
                         </div> 
-                        <div clss="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col white-cell answer">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full">
-                                                        <input data-type="text" class="mdl-textfield__input" type="text" id="answer1">
+                                                        <input data-input="answer" data-name="answer" class="mdl-textfield__input" type="text" id="answer1">
                                                         <label class="mdl-textfield__label" for="answer1">Antwortmöglichkeit eins.</label>
-                                                        <span  data-error="answer" class="mdl-textfield__error" id="answer1"></span>
+                                                        <span  data-error="answer-error" class="mdl-textfield__error" id="answer1"></span>
                                         </div>
                         </div>
-                        <div clss="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col white-cell answer">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full">
-                                                        <input data-type="text" class="mdl-textfield__input" type="text" id="answer1">
+                                                        <input data-input="answer" data-name="answer" class="mdl-textfield__input" type="text" id="answer1">
                                                         <label class="mdl-textfield__label" for="answer1">Antwortmöglichkeit eins.</label>
-                                                        <span  data-error="answer" class="mdl-textfield__error" id="answer1"></span>
+                                                        <span  data-error="answer-error" class="mdl-textfield__error" id="answer1"></span>
                                         </div>
                         </div>
-                        <div clss="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col white-cell answer">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full">
-                                                        <input data-type="text" class="mdl-textfield__input" type="text" id="answer1">
+                                                        <input data-input="answer" data-name="answer" class="mdl-textfield__input" type="text" id="answer1">
                                                         <label class="mdl-textfield__label" for="answer1">Antwortmöglichkeit eins.</label>
-                                                        <span  data-error="answer" class="mdl-textfield__error" id="answer1"></span>
+                                                        <span  data-error="answer-error" class="mdl-textfield__error" id="answer1"></span>
                                         </div>
                         </div>
-                        <div clss="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col white-cell answer">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full">
-                                                        <input data-type="text" class="mdl-textfield__input" type="text" id="answer1">
+                                                        <input data-input="answer" data-name="answer" class="mdl-textfield__input" type="text" id="answer1">
                                                         <label class="mdl-textfield__label" for="answer1">Antwortmöglichkeit eins.</label>
-                                                        <span  data-error="answer" class="mdl-textfield__error" id="answer1"></span>
+                                                        <span  data-error="answer-error" class="mdl-textfield__error" id="answer1"></span>
                                         </div>
                         </div>
-                        <div clss="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col">
                                         <button data-action="addQuestion" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="quizView-action">Frage hinzufügen</button>
 
                         </div>
                      
+</div>
+<div id="question-list-view" style="justify-content: center" class="mdl-cell mdl-grid mdl-cell--6-col mdl-cell--top">
+<div class="mdl-cell mdl-cell--12-col white-cell">
+        <h4 class="v-form-header">Quizfrage hinzufügen</h4>
+        <div class="mdl-cell mdl-cell--6-col">
+                <a>Antwort 1</a>
         </div>
+        <div class="mdl-cell mdl-cell--6-col">
+                <a>Antwort 1</a>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+                <a>Antwort 1</a>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+                <a>Antwort 1</a>
+        </div>   
 </div>
-<div id="question-list-view" class="mdl-cell mdl-grid mdl-cell--12-col mdl-cell--top">
-
-
 
 </div>
 </div>
-<div data-info="overlay" id="overlay">
-                <div id="progress" style="top: 250px" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
-            </div>
 </div>
