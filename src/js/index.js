@@ -93,6 +93,7 @@ const controlNavigation = (action,view) => {
             init();
 
         }, failure => {
+
             showSnackbarMessage('Ausgeloggt', 1000);
 
             init();
@@ -114,7 +115,7 @@ const init = () => {
         $.get(`../dist/html/${status ? 'nav_login' : 'nav_logout'}.html`, html => {
             View.render(html,container.navigation,true)
 
-                let navigation = View.register(null,container.navigation,controlNavigation);
+            let navigation = View.register(null,container.navigation,controlNavigation);
             
         },'html');
 

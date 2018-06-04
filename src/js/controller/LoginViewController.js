@@ -10,14 +10,15 @@ let registerView = null;
 //LOGINCONTROLLER
 export const loginViewInit = () => {
 
-    $.get('../dist/html/quiz_login.html', (html) => {
-        View.render(html,container.mainPanel,true);
+    $(container.mainPanel).load('../dist/html/quiz_login.html', () => {
         
         loginView = new LoginView(container.login,handleLoginEvents);
 
+        loginView.jObject.fadeIn('slow');
+
         componentHandler.upgradeElements($(container.mainPanel).children());
             
-    },'html');
+    });
 };
 
 const handleLoginEvents = (action) => {
@@ -61,14 +62,15 @@ const handleLoginEvents = (action) => {
 //REGISTERCONTROLLER
 const registerViewInit = () => {
 
-    $.get('../dist/html/quiz_registration.html', (html) => {
-        View.render(html,container.mainPanel,true) 
-
+    $(container.mainPanel).load('../dist/html/quiz_registration.html', () => {
+       
         registerView = new RegisterView(container.register,handleRegistrationEvents);
+
+        registerView.jObject.fadeIn('slow');
 
         componentHandler.upgradeElements($(container.mainPanel).children());
 
-    },'html');
+    });
 };
 
 

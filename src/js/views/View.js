@@ -85,13 +85,74 @@ export default class View {
        
         view.jObject.on('click', (e) => {
             if (e.target.dataset['action'] || e.target.parentElement.dataset['action']) {
-                handler(e.target.dataset['action'] || e.target.parentElement.dataset['action'], view);
+                handler(e.target.dataset['action'] || e.target.parentElement.dataset['action'], e.target);
                 e.preventDefault();
             };
             return false;
         });
     };
 
+}
+
+export class ViewDecorator {
+
+    static DataSetDecorator(obj,sets) {
+        let tArray = ['text', 'textarea', 'password', 'username', 'email'];
+
+        sets.forEach(set => {
+            let data = obj[0].querySelectorAll(set);
+
+            for(let element of data) {
+                let object = {};
+            
+                if(set === '[data-info]') {
+                    object = element;
+                    appendData(obj,element.dataset['info'],object);
+                };
+
+                if(set === '[data-input]') {
+                    object = {
+                        input: element,
+                        name: element.dataset['name']
+                    };
+                    if(tArray.includes(element.type)) {
+                        object.error = element.parentElement.querySelector('[data-error]');
+                    };
+                    appendData(obj,element.dataset['input'],object);
+                };
+            };
+        });
+
+        function appendData(view,name,object) {
+
+            if(!view[name]) {
+
+                view[name] = object;
+
+            } else {
+
+                if (!Array.isArray(view[name])) {
+                    view[name] = $.makeArray(view[name]);
+                }; 
+
+                view[name].push(object);
+            };
+        };
+    };
+
+    static EventListenerDecorator(obj,type,handler) {
+
+        $(obj).on(type, (e) => {
+            let t = e.target;
+
+            if(t.dataset['action'] || t.parentElement.dataset['action'] ) {
+                handler(t);
+            };
+            e.preventDefault();
+            return false;
+        });
+
+    };
 }
 
 

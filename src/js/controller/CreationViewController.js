@@ -1,4 +1,4 @@
-import View from '../views/View';
+import {ViewDecorator} from '../views/View';
 import QuestionBuilderView from '../views/Creation/questionBuilderView';
 import QuizBuilderView from '../views/Creation/quizBuilderView';
 import QuestionListView from '../views/Creation/questionListView';
@@ -14,10 +14,11 @@ let quiz = null;
 
 export const creationViewInit = () => {
 
-    $.get('../dist/html/quiz_creation.html', html => {
-        View.render(html,container.mainPanel,true) 
+    $(container.mainPanel).load('../dist/html/quiz_creation.html',() => {
+        creationView = $('#creation-view').fadeIn('slow');
 
-        creationView = View.register(creationView,container.mainPanel);
+        //We decorate our creatioView to get easy access to its overlay
+        ViewDecorator.DataSetDecorator(creationView,['[data-info]']);
 
         quizBuilder = new QuizBuilderView(container.quizBuiler,handleQuizEvents);
         questionBuilder = new QuestionBuilderView(container.questionBuilder,handleQuestionBuildEvents);
@@ -30,8 +31,8 @@ export const creationViewInit = () => {
         });
 
         componentHandler.upgradeElements($(container.creation).children());
-    
-    },'html');
+
+    });
 };
 
 const handleQuestionBuildEvents = (action,view) => {
@@ -78,10 +79,6 @@ const handleQuizEvents = (action,view) => {
     if(!quizBuilder.validateInput()) {
         return;
     };
-
-    
-
-
 
 };
 

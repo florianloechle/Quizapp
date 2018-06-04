@@ -1,115 +1,96 @@
+/**
+ * A stage which defines an area for dynamiclly created content.
+ * Each item gets an unique id for indentification.
+ */
 export class Stage {
 
+    /**
+     * A stage which defines an area for dynamiclly created content.
+     * @param {String} - The selector which represent the stage. This will be the stage context.
+     */
     constructor(id) {
         this.index = 0;
         this.context = $(id);
+        this.items = [];
     };
 
+    /**
+     * Adds an item to the stage and fades it in.
+     * @param {Object} - A jQuery Object.
+     */
     add(item) {
         ++this.index;
         item.attr('data-id', this.index);
         this.context.append(item);
+        this.items.push(item);
         componentHandler.upgradeElements(item.children());
         item.fadeIn('slow');
     };
 
+    /**
+     * Opposite of add. Removes an object from the stage. Requires the correct index.
+     * @param {Int} - The index of the item which we want to delete.
+     */
     remove(index) {
         this.context.remove(`[data-id=${index}]`);
     };
 
+    /**
+     * Clears the complete stage and resets the index count.
+     */
     clear() {
         this.context.empty();
         this.index = 0;
     };
 
-}
+};
 
-class QuizInfoFactory {
+/**
+ * An abstract factory which contructs whatever builder we throw into it.
+ */
+class ViewFactory {
 
     constructor() {
         this.types = {};
     };
     
-    create(quiz,destructible,type) {
-        return new this.types[type]().create(quiz,destructible);
+    create(type) {
+        return new this.types[type]().get();
     };
 
     register(type,cls) {
-        if(cls.prototype.create){
+        if(cls.prototype.get){
                 this.types[type] = cls;
         };
     };
-}
+};
 
-export class QuizInfoView {
-
-    create(quiz,destructible) {
-        this.item = $(`<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
-        <div  class="shadow-container mdl-card mdl-shadow--2dp">
-            <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg)">
-            <div class="mdl-card__title info-text">
-                <h2 data-info="name" class="mdl-card__title-text" style="font-size: 20px; font-weight: bold">${quiz.name}</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Ersteller: </strong> 
-                    </a><a data-info="user" class="info-text">${quiz.user}</a></div>
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Kategorie: </strong>
-                    </a><a data-info="category" class="info-text">${quiz.category}</a></div>
-                    <div class="mdl-cell mdl-cell--12-col"><a class="info-text"><strong>Anzahl Fragen: </strong> </a>
-                    <a data-info="questionCount" class="info-text">${quiz.questionCount}</a></div>
-            </div>
-           </div>
-            <div class="mdl-card__supporting-text">
-                <a data-info="description">${quiz.description}</a>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a data-action="${destructible ? 'delete' : 'play'}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                ${destructible ? 'Quiz löschen' : 'Spielen'}
-                </a>
-            </div>
-        </div>
-        </div>`);
-        this.id = quiz.id;
-        return this;
-    };
-
-    get() {
-        return this.item;
-    };
-}
-
-
-class QuizGeneratorSingleton {
+class ViewGeneratorSingleton {
 
     constructor() {
-        this._aQuizInfoView = []
         this._stage = null;
-        this._qf = new QuizInfoFactory();
+        this._vf = new ViewFactory();
     };
 
     register(name,cls) {
-        this._qf.register(name, cls);
+        this._vf.register(name, cls);
     };
 
     setStage(stage) {
         this._stage = stage;
     };
 
-    create(quiz,destructible,type) {
-        var quizInfoView = this._qf.create(quiz,destructible,type);
-        return quizInfoView;
+    create(type) {
+        var view = this._vf.create(type);
+        return view;
     };
 
-    add(QuizInfoView) {
-        this._stage.add(QuizInfoView.get());
-        this._aQuizInfoView.push(QuizInfoView);
+    add(view) {
+        this._stage.add(view.get());
     };
 
-    index() {
-        return this._aQuizInfoView.length;
-    };
-}
+};
 
 //Exporting our singleton..
-export let QuizViewGenerator = new QuizGeneratorSingleton();
+export let QuizViewGenerator = new ViewGeneratorSingleton();
 

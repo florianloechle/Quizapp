@@ -1,4 +1,4 @@
-import View from '../views/View';
+import {ViewDecorator} from '../views/View';
 import SearchView from '../views/Main/searchView';
 import Query from '../models/Query';
 import { container } from '../index';
@@ -9,33 +9,33 @@ let quizIDs = null;
 
 export const mainViewInit = () => {
 
-    $.get('../dist/html/quiz_main.html', html => {
-        View.render(html,container.mainPanel,true) 
+    $(container.mainPanel).load('../dist/html/quiz_main.html', () => {
+        mainView = $('#main-panel').fadeIn('slow)');
 
-        //we register out "main" view to access its overlay
-        mainView = View.register(mainView,container.mainPanel);
+        //We decorate our mainView to get easy access to its overlay
+        ViewDecorator.DataSetDecorator(mainView,['[data-info]']);
         
-        //we initialize a new SearchView to handle search and quiz events
+        //We initialize a new SearchView to handle search and quiz events
         searchView = new SearchView('#searchView',handleSearchEvents);
 
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
 
-        //we initalize an empty query to get quiz results
+        //We initalize an empty query to get quiz results
         let query = new Query(searchView.getInput());
 
-        //we fill our searchview with the infos we get
+        //We fill our searchview with the infos we get
         updateUIWithQuery(query);
 
-    },'html');
+    });
 };
 
-const handleSearchEvents = async (action,view) => {
+const handleSearchEvents = async (action,target) => {
 
     //User tapped filter chip and wants to remove it
     if(action === 'clickedFilter') {
       
-        searchView.removeChip(view);
+        searchView.removeChip(target);
 
         return;
     };
@@ -50,7 +50,7 @@ const handleSearchEvents = async (action,view) => {
     //User tapped the seach button
     const input = searchView.getInput();
 
-    //we initialize a query with the input
+    //we initialize a query with the input we got from the user
     let query = new Query(input);
     
     //render the chip and clear the searchview for further input
