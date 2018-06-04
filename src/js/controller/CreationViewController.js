@@ -1,4 +1,4 @@
-import {ViewDecorator} from '../views/View';
+import ViewDecorator from '../views/ViewDecorator';
 import QuestionBuilderView from '../views/Creation/questionBuilderView';
 import QuizBuilderView from '../views/Creation/quizBuilderView';
 import QuestionListView from '../views/Creation/questionListView';
@@ -17,18 +17,17 @@ export const creationViewInit = () => {
     $(container.mainPanel).load('../dist/html/quiz_creation.html',() => {
         creationView = $('#creation-view').fadeIn('slow');
 
-        //We decorate our creatioView to get easy access to its overlay
-        ViewDecorator.DataSetDecorator(creationView,['[data-info]']);
+        quiz = new Quiz();
 
         quizBuilder = new QuizBuilderView(container.quizBuiler,handleQuizEvents);
         questionBuilder = new QuestionBuilderView(container.questionBuilder,handleQuestionBuildEvents);
         questionListView = new QuestionListView(container.questionListView,handleListEvents);
         
-        quiz = new Quiz();
-
         Quiz.getQuizCategorys().then(categorys => {
             quizBuilder.renderCategorys(categorys);
         });
+
+        quizBuilder.setVisual(quiz.questionCount);
 
         componentHandler.upgradeElements($(container.creation).children());
 
@@ -52,6 +51,7 @@ const handleQuestionBuildEvents = (action,view) => {
 
                 let question = new Question(questionBuilder.getQuestionText(), answers);
                 quiz.addQuestion(question);
+                questionListView.showQuestion(question);
 
                 quizBuilder.setVisual(quiz.questionCount);
                 questionBuilder.clear();
@@ -80,6 +80,31 @@ const handleQuizEvents = (action,view) => {
         return;
     };
 
+    if( quiz.questionCount < 3 ) {
+        return;
+    };
+
+    let quizData = quizBuilder.getQuizData();
+
+    for(let data in quizData) {
+        quiz[data] = quizData[data];
+    };
+
+    quiz.publish().then(response => {
+
+        if (response.success) {
+        
+            quiz = new Quiz();
+
+            quizBuilder.reset(quiz);
+
+            showSnackbarMessage('Quiz added successfully!', 2500);
+
+        } else {
+
+            showSnackbarMessage('Failed, please try again later or reload the page', 2500)
+        };
+    })
 };
 
 const handleListEvents = (action,view) => {

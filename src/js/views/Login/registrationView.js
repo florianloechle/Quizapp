@@ -1,14 +1,21 @@
-import View from '../View';
+import ViewDecorator from '../ViewDecorator'
 import Validation from '../Validation';
 
 export default class RegisterView {
     
     constructor(parent,handler) {
-        View.register(this,parent,handler);
+        this.item = $(parent);
+       
+        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
+    };
+
+    get() {
+        return this.item;
     };
     
     getData() {
-        return $(this.jObject).children().serialize();
+        return this.item.children().serialize();
     };
 
     validateUserInput() {

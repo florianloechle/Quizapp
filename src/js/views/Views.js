@@ -1,8 +1,8 @@
-import {ViewDecorator} from '../views/View';
+import ViewDecorator from './ViewDecorator'
 
 class QuizInfoView {
 
-    init(quiz,destructible) {
+    init(quiz,destructible,handler) {
         this.item = $(`<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
         <div  class="shadow-container mdl-card mdl-shadow--2dp">
             <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg)">
@@ -29,6 +29,8 @@ class QuizInfoView {
         </div>
         </div>`);
         this.id = quiz.id;
+
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
     };
 
     get() {
@@ -39,44 +41,40 @@ class QuizInfoView {
 class QuestionView {
 
     init(question) {
+        this.question = question;
         this.item = $(`
-        <div class="mdl-cell mdl-cell--12-col white-cell">
+        <div style="position: relative; text-align:center; display:none" class="mdl-cell mdl-cell--12-col white-cell">
             <h4 class="v-form-header">${question.questionText}</h4>
-            <div class="mdl-cell mdl-cell--6-col">
-                    <a>${question.answer[0]}</a>
+            <div class="mdl-cell mdl-cell--12-col">
+                    <a ${question.answers[0].correct ? 'style="color: green"' : 'style="color: black"'}>${question.answers[0].text}</a>
             </div>
-            <div class="mdl-cell mdl-cell--6-col">
-                    <a>${question.answer[1]}</a>
+            <div class="mdl-cell mdl-cell--12-col">
+                    <a ${question.answers[1].correct ? 'style="color: green"' : 'style="color: black"'}>${question.answers[1].text}</a>
             </div>
-            <div class="mdl-cell mdl-cell--6-col">
-                    <a>${question.answer[2]}</a>
+            <div class="mdl-cell mdl-cell--12-col">
+                    <a ${question.answers[2].correct ? 'style="color: green"' : 'style="color: black"'}>${question.answers[2].text}</a>
             </div>
-            <div class="mdl-cell mdl-cell--6-col">
-                    <a>${question.answer[3]}</a>
+            <div class="mdl-cell mdl-cell--12-col">
+                    <a ${question.answers[3].correct ? 'style="color: green"' : 'style="color: black"'}>${question.answers[3].text}</a>
             </div>   
+            <i data-action="deleteQuestion" style="position:absolute; top: 5%; right: 0;" class="material-icons">delete</i>
         </div>`)
-    }
+    };
 
     get() {
         return this.item;
-    }
+    };
 
 };
 
 class Chip {
 
     init(filter) {
-        this.setFilter = filter;
         this.item = $(`
-        <span class="mdl-chip mdl-chip--deletable">
-        <span data-info="filter" class="mdl-chip__text"><strong>${filter.name}:</strong> ${filter.input.value}</span>
-        <button type="button" class="mdl-chip__action"><i data-action="clickedFilter" class="material-icons">cancel</i></button>
+        <span class="mdl-chip">
+             <span class="mdl-chip__text"><strong>${filter.name}:</strong> ${filter.input.value}</span>
         </span>
         `);
-    };
-
-    update(filter) {
-        $(this.filter).html(`<strong>${filter.name}:</strong> ${filter.input.value}`);
     };
 
     get() {

@@ -1,14 +1,21 @@
-import View from '../View';
+import ViewDecorator from '../ViewDecorator'
 import Validation from '../Validation';
 
 export default class LoginView {
 
     constructor(parent,handler) {
-        View.register(this,parent,handler);
+        this.item = $(parent);
+       
+        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
+    };
+
+    get() {
+        return this.item;
     };
 
     getData() {
-        return $(this.jObject).children().serialize();
+        return this.item.children().serialize();
     };
 
     validateUserInput() {
@@ -18,13 +25,13 @@ export default class LoginView {
     showErrors(errors) {
         errors.forEach(error => {
 
-            for(let i = 0; i<this.text.length;i++) {
-                if(error.for !== this.text[i].error.dataset['error']) {
+            for(let text of this.text) {
+                if(error.for !== text.error.dataset['error']) {
                     continue;
                 };
     
-                this.text[i].error.innerHTML = error.message;
-                this.text[i].error.parentElement.classList.add('is-invalid');
+                text.error.innerHTML = error.message;
+                text.error.parentElement.classList.add('is-invalid');
             };
         });
     };

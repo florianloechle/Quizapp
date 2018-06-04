@@ -13,11 +13,6 @@ if(is_null($quizData)) {
 
 $quiz = json_decode($quizData);
 
-if(!$quiz->name) {
-    echo $noDataError;
-    exit();
-}
-
 foreach ($quiz as $key => $value) {
     if(!$value) {
         echo $noDataError;
@@ -42,6 +37,7 @@ foreach ($quiz as $key => $value) {
         }
     }
 }
+//At this stage we can be sure that every value does at least exist. 
 
 $creator = $_SESSION['id'];
 

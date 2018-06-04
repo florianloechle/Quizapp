@@ -1,10 +1,10 @@
 //Global Controller
-import View from './views/View';
 import { mainViewInit } from './controller/MainViewController';
 import { creationViewInit } from './controller/CreationViewController';
 import { yourQuizViewInit } from './controller/YourQuizViewController';
 import { loginViewInit } from './controller/LoginViewController';
 import User from './models/User';
+import ViewDecorator from './views/ViewDecorator';
 
 window.onload = () => {
     init();
@@ -74,7 +74,7 @@ const navMap = new Map(nav);
 
 let activePanel = 'nav-main';
 
-const controlNavigation = (action,view) => {
+const controlNavigation = (action,target) => {
     let controller;
 
     if (controller = navMap.get(action)) {
@@ -113,9 +113,13 @@ const init = () => {
     User.checkLoginStatus().then(status => {
 
         $.get(`../dist/html/${status ? 'nav_login' : 'nav_logout'}.html`, html => {
-            View.render(html,container.navigation,true)
+            let item = $(container.navigation).html(html);
 
-            let navigation = View.register(null,container.navigation,controlNavigation);
+            let navigation = {
+                item: item
+            };
+
+            ViewDecorator.EventListenerDecorator(navigation,'click',controlNavigation);
             
         },'html');
 

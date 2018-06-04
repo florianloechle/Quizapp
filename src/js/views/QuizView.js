@@ -1,5 +1,5 @@
 /**
- * A stage which defines an area for dynamiclly created content.
+ * A stage adapter which defines an area for dynamically created content. 
  * Each item gets an unique id for indentification.
  */
 export class Stage {
@@ -11,7 +11,7 @@ export class Stage {
     constructor(id) {
         this.index = 0;
         this.context = $(id);
-        this.items = [];
+        this.SIG = id;
     };
 
     /**
@@ -22,7 +22,6 @@ export class Stage {
         ++this.index;
         item.attr('data-id', this.index);
         this.context.append(item);
-        this.items.push(item);
         componentHandler.upgradeElements(item.children());
         item.fadeIn('slow');
     };
@@ -31,8 +30,8 @@ export class Stage {
      * Opposite of add. Removes an object from the stage. Requires the correct index.
      * @param {Int} - The index of the item which we want to delete.
      */
-    remove(index) {
-        this.context.remove(`[data-id=${index}]`);
+    remove(item) {
+        this.context.remove(item);
     };
 
     /**
@@ -60,7 +59,7 @@ class ViewFactory {
 
     register(type,cls) {
         if(cls.prototype.get){
-                this.types[type] = cls;
+            this.types[type] = cls;
         };
     };
 };
@@ -92,5 +91,5 @@ class ViewGeneratorSingleton {
 };
 
 //Exporting our singleton..
-export let QuizViewGenerator = new ViewGeneratorSingleton();
+export let ViewGenerator = new ViewGeneratorSingleton();
 

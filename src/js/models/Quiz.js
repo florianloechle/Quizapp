@@ -28,10 +28,31 @@ export default class Quiz {
                 this.questionCount--;
                 break;
             };
+        };s
+    };
+
+    async publish() {
+
+        let simpleQuiz = {
+            name: this.name,
+            category: this.category,
+            difficulty: this.difficulty,
+            questions: this.questions,
+            description: this.description
         };
+
+        const jsonQuiz = {
+            quiz: JSON.stringify(simpleQuiz)
+        };
+
+        return request(path.createQuiz,jsonQuiz,'POST');
     };
 
     static async getQuizCategorys() {
        return request(path.quizCategorys,'GET');
-    }
+    };
+
+    static async delete(id) {
+        return request(path.deleteQuiz,({id: id}),'POST');
+    };
 }

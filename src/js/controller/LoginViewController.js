@@ -1,4 +1,3 @@
-import View from '../views/View';
 import LoginView from '../views/Login/loginView';
 import RegisterView from '../views/Login/registrationView';
 import User from '../models/User';
@@ -14,7 +13,7 @@ export const loginViewInit = () => {
         
         loginView = new LoginView(container.login,handleLoginEvents);
 
-        loginView.jObject.fadeIn('slow');
+        loginView.get().fadeIn('slow');
 
         componentHandler.upgradeElements($(container.mainPanel).children());
             
@@ -25,7 +24,7 @@ const handleLoginEvents = (action) => {
 
     //User tapped register. We fade the view out and initialize the registerView.
     if (action === 'register') {
-        $(loginView.jObject).fadeOut('fast', () => {
+        $(loginView.get()).fadeOut('fast', () => {
             registerViewInit();
         });
         return;
@@ -66,7 +65,7 @@ const registerViewInit = () => {
        
         registerView = new RegisterView(container.register,handleRegistrationEvents);
 
-        registerView.jObject.fadeIn('slow');
+        registerView.get().fadeIn('slow');
 
         componentHandler.upgradeElements($(container.mainPanel).children());
 

@@ -1,17 +1,16 @@
-import View from '../views/View';
 import Query from '../models/Query';
+import YourQuizView from '../views/YourQuiz/yourQuizView';
 import { container } from '../index';
+import Quiz from '../models/Quiz';
 
 let yourView = null;
 
 export const yourQuizViewInit = () => {
 
-    $.get('../dist/html/quiz_yourquiz.html', html => {
-        View.render(html,container.mainPanel,true) 
+    $(container.mainPanel).load('../dist/html/quiz_yourquiz.html',() => {
 
-        //we register out "main" view to access its overlay
-        yourView = View.register(yourView,container.mainPanel);
-        
+        yourView = new YourQuizView('#yourView',handleYourQuizEvents);
+
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
 
@@ -21,8 +20,37 @@ export const yourQuizViewInit = () => {
         //we fill our searchview with the infos we get
         updateUIWithQuery(query);
 
-    },'html');
+    });
 };
+
+const handleYourQuizEvents = (action,view) => {
+
+    if(action !== 'delete') {
+        return false;
+    };
+
+    Quiz.delete(view.id).then(response => {
+
+         //We got a response..
+         if(response.success) {
+
+            view.get().animate({
+                top: "200px",
+                opacity: "0"
+            },1500, () => yourView.removeItem(view));
+
+            showSnackbarMessage('Quiz erfolgreich gelöscht',1500);
+
+        };
+
+        //No response..
+    }, rejection => {
+
+        showSnackbarMessage('Could not reach server. Please check your connection',3000);
+
+    });
+
+}
 
 const updateUIWithQuery = async query => {
 
@@ -30,12 +58,8 @@ const updateUIWithQuery = async query => {
 
         await query.getResults();
 
-        //fake 'response time'
-        setTimeout( () => {
-           
+        yourView.renderQueryResults(query.results);
 
-        },700);
-        
     } catch (error) {
 
         console.log(`Something went wrong: ${error}`);

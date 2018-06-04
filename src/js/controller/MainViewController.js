@@ -1,4 +1,4 @@
-import {ViewDecorator} from '../views/View';
+import ViewDecorator from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
 import Query from '../models/Query';
 import { container } from '../index';
@@ -12,9 +12,6 @@ export const mainViewInit = () => {
     $(container.mainPanel).load('../dist/html/quiz_main.html', () => {
         mainView = $('#main-panel').fadeIn('slow)');
 
-        //We decorate our mainView to get easy access to its overlay
-        ViewDecorator.DataSetDecorator(mainView,['[data-info]']);
-        
         //We initialize a new SearchView to handle search and quiz events
         searchView = new SearchView('#searchView',handleSearchEvents);
 
@@ -31,14 +28,6 @@ export const mainViewInit = () => {
 };
 
 const handleSearchEvents = async (action,target) => {
-
-    //User tapped filter chip and wants to remove it
-    if(action === 'clickedFilter') {
-      
-        searchView.removeChip(target);
-
-        return;
-    };
 
     //User tapped Quiz info and wants to play
     if(action === 'play') {
@@ -65,15 +54,14 @@ const handleSearchEvents = async (action,target) => {
 const updateUIWithQuery = async query => {
 
     try {
-
-        $(mainView.overlay).fadeIn('fast');
+        $('#overlay').fadeIn('fast');
 
         await query.getResults();
 
         //fake 'response time'
         setTimeout( () => {
-            $(mainView.overlay).fadeOut('fast');
-
+            $('#overlay').fadeOut('fast');
+            
             searchView.renderQueryResults(query.results);
 
         },1000);

@@ -1,10 +1,17 @@
-import View from '../View';
+import ViewDecorator from '../ViewDecorator'
 import Validation from '../Validation';
 
 export default class QuizBuilderView {
 
     constructor(parent,handler) {
-        View.register(this,parent,handler);
+        this.item = $(parent);
+       
+        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
+    };
+
+    get() {
+        return this.item;
     };
 
     renderCategorys(categorys) {
@@ -17,15 +24,14 @@ export default class QuizBuilderView {
     };
 
     validateInput() {
-        return Validation.validateText(this.text);
+        return Validation.validateText(this.text) && this._validateCategory() && this._isValidDifficulty()
     };
 
     _isValidDifficulty() {
         let isValid = false;
 
         isValid = this.difficulty.input.value === 'Medium' || 'Hard' || 'Easy' ? true : false;
-        this.quiz.difficulty = isValid ? this.difficulty.input.value : null;
-
+    
         return isValid;
     }
 
@@ -33,7 +39,7 @@ export default class QuizBuilderView {
         let isValid = false;
 
         for (let cat of this.categorys) {
-            if (cat.input.value === cat.name) {
+            if (this.category.input.value === cat.name) {
                 isValid = true;
                 break;
             };
@@ -41,16 +47,39 @@ export default class QuizBuilderView {
         return isValid;
     }
 
-    getQuizDescription() {
+    getQuizData() {
+        let quizData = {};
+
+        for(let text of this.text) {
+            quizData[text.name] = text.input.value;
+        };
+
+        for (let cat of this.categorys) {
+            if (this.category.input.value === cat.name) {
+                quizData.category = cat.id;
+                break;
+            };
+        };
+
+        quizData.difficulty = this.difficulty.input.value;
         
+        return quizData;
     }
 
     setVisual(count) {
-        if (count >= 5) {
+        if (count >= 3) {
 
             this.tooltip.innerHTML = 'Publish now! :)'
         };
 
         this.questionCount.innerHTML = count;
+    }
+
+    reset() {
+        this.setVisual(0);
+
+        for(let text of this.text) {
+            text.input.parentElement.MaterialTextfield.change();
+        };
     }
 }

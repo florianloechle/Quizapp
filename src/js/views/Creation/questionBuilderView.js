@@ -1,11 +1,20 @@
-import View from '../View';
+import ViewDecorator from '../ViewDecorator'
 import Validation from '../Validation';
+import { isArray } from 'util';
 
 export default class QuestionBuilderView {
 
     constructor(parent,handler) {
-        View.register(this,parent,handler);
+        this.item = $(parent);
+
+        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
+
         this.init();
+    };
+
+    get() {
+        return this.item;
     };
 
     init() {
@@ -52,7 +61,18 @@ export default class QuestionBuilderView {
     };
 
     showErrors(errors) {
-       for(let error of errors) {
+        if(Array.isArray(errors)) {
+
+            for(let error of errors) {
+                show.call(this,error);
+            };
+
+        } else {
+           show.call(this,errors);
+        };
+
+        function show(error) {
+
             for(let answer of this.answer) {
 
                 if(error.for !== answer.error.dataset['error']) {
@@ -61,8 +81,9 @@ export default class QuestionBuilderView {
 
                 answer.error.innerHTML = error.message;
                 answer.error.parentElement.classList.add('is-invalid');
-            };
-       };
+                
+            };   
+        };
     };
 
     clear() {

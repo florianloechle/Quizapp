@@ -1,5 +1,5 @@
-import View, { ViewDecorator } from '../View';
-import { Stage , QuizViewGenerator } from '../QuizView';
+import ViewDecorator from '../ViewDecorator'
+import { Stage , ViewGenerator } from '../QuizView';
 import { QuizInfoViewBuilder , ChipBuilder } from '../Views';
 import Validation from '../Validation';
 
@@ -14,14 +14,14 @@ const tabMap = new Map(tArray);
 export default class SearchView {
 
     constructor(parent,handler) {
-        View.register(this,parent,handler);
+        this.item = $(parent);
 
-        this.chips = [];
+        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.EventListenerDecorator(this,'click',handler);
 
         //We get a reference to the shared instance of our view generator and register our view
-        this.qg = QuizViewGenerator;
-        this.qg.register('QuizInfoView',QuizInfoViewBuilder);
-        this.qg.register('Chip',ChipBuilder);
+        ViewGenerator.register('QuizInfoView',QuizInfoViewBuilder);
+        ViewGenerator.register('Chip',ChipBuilder);
 
 
         //Our different stages depending on the quiz difficulty
@@ -32,21 +32,14 @@ export default class SearchView {
         };
 
         this.chipStage = new Stage('#filter-list-container');
-        this.chips = [];
+    };
+
+    get() {
+        return this.item;
     };
 
     getInput() {
-        return $(this.jObject[0]).children().serialize();
-    };
-
-    removeChip(chip) {
-        for (let i = 0; i < this.chips.length; i++) {
-            if (chip == this.chips[i]) {
-                this.chips.splice(i,1);
-                chip.fadeOut('fast', chip.remove());
-                break;
-            };
-        };
+        return this.item.children().serialize();
     };
 
     clearInput() {
@@ -56,31 +49,21 @@ export default class SearchView {
     };
 
     renderChips() {
+        this.chipStage.clear();
+
+        ViewGenerator.setStage(this.chipStage);
 
         this.filter.forEach(filter => {
-            let present = false;
 
-            for (let chip of this.chips) {
-                if (filter.name === chip.setFilter.name) {
-                    present = true;
-                    chip.update(filter);
-                    break;
-                };
-            };
+            if(filter.input.value) {
 
-            if (!present && filter.input.value) {
-
-                let chip = this.qg.create("Chip");
-                this.chips.push(chip);
+                let chip = ViewGenerator.create("Chip");
                 
                 chip.init(filter);
 
-                this.qg.setStage(this.chipStage);
-                
-                this.qg.add(chip);
-
-                ViewDecorator.DataSetDecorator(chip.get(),['[data-info]']);
+                ViewGenerator.add(chip);
             };
+
         });
     };
 
@@ -89,13 +72,13 @@ export default class SearchView {
 
         results.forEach(quiz => {
 
-            let quizView = this.qg.create('QuizInfoView');
+            let quizView = ViewGenerator.create('QuizInfoView');
 
             quizView.init(quiz,false);
 
-            this.qg.setStage(this.stageType[quiz.difficulty]);
+            ViewGenerator.setStage(this.stageType[quiz.difficulty]);
 
-            this.qg.add(quizView);
+            ViewGenerator.add(quizView);
 
         });
     }
