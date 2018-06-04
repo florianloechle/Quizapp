@@ -1,6 +1,5 @@
 export default class Validation {
 
-
     static validateText(textFields) {
         let isValid = true;
 
@@ -43,7 +42,7 @@ export default class Validation {
 
         };
         return isValid;
-    }
+    };
 
 };
 

@@ -93,7 +93,9 @@ const controlNavigation = (action,view) => {
             init();
 
         }, failure => {
-            showSnackbarMessage('Could not reach server.')
+            showSnackbarMessage('Ausgeloggt', 1000);
+
+            init();
         });
     };
 };

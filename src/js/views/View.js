@@ -18,7 +18,7 @@ export default class View {
         this.getDataSet(view);
 
         return view
-    }
+    };
 
     static render(data,parent,force) {
         let html = $.parseHTML(data);
@@ -63,7 +63,7 @@ export default class View {
                 };
             };
         });
-    }
+    };
 
     static appendDataToView(view,name,object) {
 

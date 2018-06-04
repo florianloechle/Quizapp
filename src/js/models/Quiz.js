@@ -11,6 +11,7 @@ export default class Quiz {
 
     constructor() {
         
+        this.questions = [];
         this.questionCount = 0;
     };
 

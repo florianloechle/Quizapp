@@ -2,11 +2,9 @@ import {request} from '../index';
 
 export default class Question {
 
-    constructor(text,answers) {
-        this.text = text;
+    constructor(questionText, answers) {
+        this.questionText = questionText;
         this.answers = answers;
-    };
-
-    
+    }
 
 }

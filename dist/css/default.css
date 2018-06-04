@@ -162,6 +162,10 @@
         width: 290px;
     }
 
+    .bg-image {
+        height: 170px !important;
+    }
+
     @media screen and (max-width: 350px) {
 
         .mdl-list__item > .full {
@@ -190,6 +194,10 @@
     border-color: rgb(0, 116, 6)
 }
 
+.is-correct {
+    background-color: rgb(0, 116, 6) !important;
+}
+
 .question {
     margin-left: 15%;
     margin-right: 15%;
@@ -208,9 +216,9 @@
     border-radius: 5px;
 }
 
-#bg-image {
-    background-image: url("../img/qmark.png");
-    background-repeat: no-repeat;
+.bg-image {
+    width: auto;
+    height: 400px;
 }
 
 .white-cell {

@@ -32,32 +32,25 @@ export default class QuizBuilderView {
     _validateCategory() {
         let isValid = false;
 
-        for (let i = 0; i < this.categorys.length; i++) {
-            if (this.category.input.value === this.categorys[i].name) {
+        for (let cat of this.categorys) {
+            if (cat.input.value === cat.name) {
                 isValid = true;
-                this.quiz.category = this.categorys[i].id;
                 break;
             };
         };
         return isValid;
     }
 
-    _validateQuestion() {
-        if (this.quiz.questionCount <= 1) {
-            this.tooltip.innerHTML = 'Must be more than 5 questions'
-            return false;
-        }
-        return true;
+    getQuizDescription() {
+        
     }
 
-    updateVisual() {
-        if (this._validateQuestion()) {
+    setVisual(count) {
+        if (count >= 5) {
+
             this.tooltip.innerHTML = 'Publish now! :)'
         };
 
-        this.questionCount.innerHTML = this.quiz.getQuestionCount();
+        this.questionCount.innerHTML = count;
     }
-
-
-
 }
