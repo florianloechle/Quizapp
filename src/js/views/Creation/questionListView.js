@@ -33,4 +33,12 @@ export default class QuestionListView {
 
         ViewDecorator.EventListenerDecorator(questionView,'click',this.handler);
     };
+
+    removeQuestionView(view) {
+        ViewGenerator.remove(view);
+    };
+
+    removeAll() {
+        ViewGenerator.removeAll();
+    };
 }

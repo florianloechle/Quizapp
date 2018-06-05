@@ -15,6 +15,7 @@ export default class SearchView {
 
     constructor(parent,handler) {
         this.item = $(parent);
+        this.handler = handler;
 
         ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
         ViewDecorator.EventListenerDecorator(this,'click',handler);
@@ -74,7 +75,7 @@ export default class SearchView {
 
             let quizView = ViewGenerator.create('QuizInfoView');
 
-            quizView.init(quiz,false);
+            quizView.init(quiz,false,this.handler);
 
             ViewGenerator.setStage(this.stageType[quiz.difficulty]);
 

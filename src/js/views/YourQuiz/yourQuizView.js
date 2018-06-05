@@ -17,7 +17,7 @@ export default class YourQuizView {
     };
 
     removeItem(view) {
-        this.quizStage.remove(view.get());
+        ViewGenerator.remove(view);
     };
 
     renderQueryResults(results) {

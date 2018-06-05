@@ -20,7 +20,7 @@ export class Stage {
      */
     add(item) {
         ++this.index;
-        item.attr('data-id', this.index);
+        item.addClass('stageView_', this.index);
         this.context.append(item);
         componentHandler.upgradeElements(item.children());
         item.fadeIn('slow');
@@ -31,14 +31,14 @@ export class Stage {
      * @param {Int} - The index of the item which we want to delete.
      */
     remove(item) {
-        this.context.remove(item);
+        item.remove();
     };
 
     /**
      * Clears the complete stage and resets the index count.
      */
     clear() {
-        this.context.empty();
+        this.context.children().remove();
         this.index = 0;
     };
 
@@ -86,6 +86,10 @@ class ViewGeneratorSingleton {
 
     add(view) {
         this._stage.add(view.get());
+    };
+
+    remove(view) {
+        this._stage.remove(view.get());
     };
 
 };

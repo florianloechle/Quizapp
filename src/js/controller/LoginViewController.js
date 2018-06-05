@@ -10,7 +10,6 @@ let registerView = null;
 export const loginViewInit = () => {
 
     $(container.mainPanel).load('../dist/html/quiz_login.html', () => {
-        
         loginView = new LoginView(container.login,handleLoginEvents);
 
         loginView.get().fadeIn('slow');
@@ -51,7 +50,7 @@ const handleLoginEvents = (action) => {
             setTimeout(() => {
                 window.location = 'index.html';
             }, 1500);
-        }
+        };
 
     }, reason => {
         showSnackbarMessage(`${reason}}`);

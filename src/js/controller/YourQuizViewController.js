@@ -1,6 +1,6 @@
 import Query from '../models/Query';
 import YourQuizView from '../views/YourQuiz/yourQuizView';
-import { container } from '../index';
+import { container , showSnackbarMessage } from '../index';
 import Quiz from '../models/Quiz';
 
 let yourView = null;
@@ -35,7 +35,7 @@ const handleYourQuizEvents = (action,view) => {
          if(response.success) {
 
             view.get().animate({
-                top: "200px",
+                width: "0px",
                 opacity: "0"
             },1500, () => yourView.removeItem(view));
 

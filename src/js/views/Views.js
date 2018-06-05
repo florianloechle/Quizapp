@@ -57,7 +57,7 @@ class QuestionView {
             <div class="mdl-cell mdl-cell--12-col">
                     <a ${question.answers[3].correct ? 'style="color: green"' : 'style="color: black"'}>${question.answers[3].text}</a>
             </div>   
-            <i data-action="deleteQuestion" style="position:absolute; top: 5%; right: 0;" class="material-icons">delete</i>
+            <i data-action="deleteQuestion" style="position:absolute; top: 5%; right: 0; cursor:pointer;" class="material-icons">delete</i>
         </div>`)
     };
 
@@ -80,6 +80,73 @@ class Chip {
     get() {
         return this.item;
     };
+};
+
+class Answer {
+
+    constructor() {
+        this.selected = false;
+    };
+
+    setSelector(id) {
+        this.item = $(id);
+    };
+
+    get() {
+        this.item;
+    };
+
+};
+
+export class StaticAnswerViewBuilder {
+
+    constructor() {
+        this.item = new Answer();
+
+        init();
+    };
+
+    init() {
+
+        this.item.blink = (clr) => {
+            if(this.selected)
+            this.item.addClass(`blink-${clr}`);
+        };
+
+    };
+
+    setID(id) {
+        this.id = id;
+    }
+
+    get() {
+        return this.item;
+    };
+
+};
+
+export class WriteableAnswerViewBuilder {
+
+    constructor() {
+        this.item = new Answer();
+
+        init()
+    };
+
+    init() {
+        this.item.input = this.item.children('input');
+
+        this.item.on('click', (e) => {
+            this.selected = !this.selected;
+
+            this.item.toggleClass('is-correct');
+        });
+    };
+
+    get() {
+        return this.item;
+    };
+
 };
 
 export class ChipBuilder {

@@ -85,6 +85,60 @@
     background-color: #787878;
 }
 
+.blink-right {
+    animation-name: blink-green;
+    animation-duration: 0.4s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.blink-false {
+    animation-name: blink-red;
+    animation-duration: 0.4s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes blink-green {
+    0% {
+        background-color: white;
+    }
+    25% {
+        background-color: rgb(0, 116, 6);
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        background-color: rgb(0, 116, 6);
+    }
+}
+
+@keyframes blink-red {
+    0% {
+        background-color: white;
+    }
+    25% {
+        background-color: red
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        background-color: red
+    }
+}
+
+@keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    50%  {top: 100px;}
+    75%  {top: 200px;}
+    100% {top: 0px;}
+}
+
 /*<---------------------------->*/
 /********   Main-Panel  *********/
 /*<---------------------------->*/
@@ -93,7 +147,6 @@
     font-size: 15px;
     font-weight: bold;
     margin: 0;
-    color: white;
 }
 
 .quiz-info-picture {
@@ -216,8 +269,9 @@
     }
 
 #question-builder-view, #quiz-builder-view {
-    background-color: rgba(195, 22, 22, 0.534);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
+    border: 1px solid black;
 }
 
 .bg-image {

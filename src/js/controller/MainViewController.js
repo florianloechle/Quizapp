@@ -1,16 +1,16 @@
 import ViewDecorator from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
 import Query from '../models/Query';
+import Question from '../models/Quiz';
 import { container } from '../index';
 
-let mainView = null;
 let searchView = null;
 let quizIDs = null;
 
 export const mainViewInit = () => {
 
     $(container.mainPanel).load('../dist/html/quiz_main.html', () => {
-        mainView = $('#main-panel').fadeIn('slow)');
+        $('#main-panel').fadeIn('slow)');
 
         //We initialize a new SearchView to handle search and quiz events
         searchView = new SearchView('#searchView',handleSearchEvents);
@@ -27,14 +27,21 @@ export const mainViewInit = () => {
     });
 };
 
-const handleSearchEvents = async (action,target) => {
+const handleSearchEvents = async (action,view) => {
 
     //User tapped Quiz info and wants to play
     if(action === 'play') {
 
-        console.log(view,action);
+        let id = view.id;
+
+        let question = Question.fetchFor(id);
+
+        $(container.mainPanel).fadeOut('slow', () => {
+            playViewInit(question);
+        });
+
         return;
-    }
+    };
 
     //User tapped the seach button
     const input = searchView.getInput();

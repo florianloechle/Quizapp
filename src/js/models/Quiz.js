@@ -28,7 +28,7 @@ export default class Quiz {
                 this.questionCount--;
                 break;
             };
-        };s
+        };
     };
 
     async publish() {

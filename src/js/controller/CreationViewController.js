@@ -6,7 +6,6 @@ import { container, showSnackbarMessage } from '../index';
 import Quiz from '../models/Quiz';
 import Question from '../models/Question';
 
-let creationView = null;
 let questionBuilder = null;
 let quizBuilder = null;
 let questionListView = null;
@@ -15,7 +14,7 @@ let quiz = null;
 export const creationViewInit = () => {
 
     $(container.mainPanel).load('../dist/html/quiz_creation.html',() => {
-        creationView = $('#creation-view').fadeIn('slow');
+        $('#creation-view').fadeIn('slow');
 
         quiz = new Quiz();
 
@@ -98,6 +97,8 @@ const handleQuizEvents = (action,view) => {
 
             quizBuilder.reset(quiz);
 
+            questionListView.removeAll();
+
             showSnackbarMessage('Quiz added successfully!', 2500);
 
         } else {
@@ -109,6 +110,14 @@ const handleQuizEvents = (action,view) => {
 
 const handleListEvents = (action,view) => {
 
+    quiz.removeQuestion(view.question);
 
+    view.get().animate({
+        backgroundColor: "red",
+        opacity: 0,
+        width: "0px"
+    },700, () => questionListView.removeQuestionView(view));
+
+    quizBuilder.setVisual(quiz.questionCount);
 
 };
