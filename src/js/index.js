@@ -23,10 +23,11 @@ export const container = {
 };
 
 /**
- * .
+ * Performs an aysynchronus ajax request and returns the promise.
  * @param {String} path - The request path eg. server/quiz.php..
  * @param {Object} values - The data that gets send to the server. 
  * @param {String} type - Request methods. Either 'POST' or 'GET'.
+ * @returns {Promise}
  */
 export const request =  async (path,values,type) => {
 
@@ -59,7 +60,7 @@ export const showSnackbarMessage = (message, timeout, actionText, handler) => {
         actionText: actionText,
         actionHandler: handler
     });
-}
+};
 
 
 //NAVIGATION CONTROLLER

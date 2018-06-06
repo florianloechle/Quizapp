@@ -9,19 +9,6 @@
     align-items:center;
 }
 
-.v-form {
-    padding: 7px;
-    margin: 6px;
-    width: 400px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap; 
-    align-items: center;
-    background-color: rgba(204, 204, 204, 0.6)
-}
-
-
 .answer-cell {
     margin: 5px;
     border-radius: 5px;
@@ -31,9 +18,10 @@
     background-color: rgba(255, 255, 255, 0.692)
 }
 
-.sign-container {
-    text-align: center;
-}
+
+/*<---------------------------->*/
+/******** Login-Panel   *********/
+/*<---------------------------->*/
 
 .v-form-header {
     border-bottom: 1px solid rgba(0,0,0,0.5);
@@ -43,9 +31,27 @@
     font-weight: bold;
 }
 
+.v-form {
+    padding: 7px;
+    margin: 6px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; 
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
 .full {
     width:100%;
 }
+
+
+/*<---------------------------->*/
+/************ Overlay   *********/
+/*<---------------------------->*/
 
 #overlay {
     position: absolute; 
@@ -60,11 +66,17 @@
     z-index: 10; 
 }
 
+
 #progress {
     position: absolute;
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+
+/*<---------------------------->*/
+/********** Creation   *********/
+/*<---------------------------->*/
 
 .creation-select {
     border: 1px solid rgba(0,0, 0, 0.4);
@@ -77,6 +89,29 @@
     height: 45px;
 }
 
+.creation-header {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.white-cell {
+    border: 2px double;
+    background-color: white;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+#creation-view {
+    justify-content: center;
+}
+
+#question-builder-view, #quiz-builder-view {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 .red {
     background-color: #C31616;
 }
@@ -84,6 +119,10 @@
 .gray {
     background-color: #787878;
 }
+
+/*<---------------------------->*/
+/********** Animations  *********/
+/*<---------------------------->*/
 
 .blink-right {
     animation-name: blink-green;
@@ -131,29 +170,10 @@
     }
 }
 
-@keyframes mymove {
-    0%   {top: 0px;}
-    25%  {top: 200px;}
-    50%  {top: 100px;}
-    75%  {top: 200px;}
-    100% {top: 0px;}
-}
 
 /*<---------------------------->*/
 /********   Main-Panel  *********/
 /*<---------------------------->*/
-
-.creation-header {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.quiz-info-picture {
-    position: relative;
-    width: auto;
-    height: 75px;
-}
 
 #searchView {
     background-color: rgba(255, 255, 255, 0.7);
@@ -163,10 +183,6 @@
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-/*<---------------------------->*/
-/****** S-Quiz-Container ********/
-/*<---------------------------->*/
-
 .shadow-container {
     width: 100%;
     transition: all 0.2s linear;
@@ -174,11 +190,11 @@
     max-height: 290px;
 }
 
-.shadow-container:hover {
-    transform: scale(1.01);
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
-    max-height: 700px;
-}
+    .shadow-container:hover {
+        transform: scale(1.01);
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        max-height: 700px;
+    }
 
     .shadow-container a {
         color: black !important;
@@ -196,9 +212,7 @@
     z-index: 25;
 }
 
-/*<---------------------------->*/
-/******** Login-Panel   *********/
-/*<---------------------------->*/
+
 
 @media screen and (max-width: 460px) {
     .v-form {
@@ -237,14 +251,9 @@
 /********   Question  ***********/
 /*<---------------------------->*/
 
-.answer-container {
-   display: flex;
-   flex-direction: row;
-   align-items: baseline;
-}
-
 .answer {
     cursor: pointer;
+    min-height: 60px;
 }
 
 .answer:hover {
@@ -268,28 +277,10 @@
         padding: 20px 10px;
     }
 
-#question-builder-view, #quiz-builder-view {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
 .bg-image {
     width: auto;
     height: 400px;
 }
-
-.white-cell {
-    border: 2px double;
-    background-color: white;
-    border-radius: 4px;
-    padding: 4px;
-}
-
-#creation-view {
-    justify-content: center;
-}
-
 
 
 
@@ -297,14 +288,34 @@
 /********     Play      *********/
 /*<---------------------------->*/
 
-#play-view 
-{ 
-  padding:20px;
+#playView {
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
 } 
+
+#innerPlayView {
+    border: 4px ridge #C31616;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.7);
+    justify-content: center;
+}
+
+    #innerPlayView a {
+        color: black;
+        line-height: 50px;
+    }
+
+.quiz-header-list {
+    list-style: none;
+    text-align:left;
+    border-bottom: 1px solid rgba(0,0, 0, 0.8);
+    padding: 0;
+}
+    .quiz-header-list li {
+       display: inline-block;
+    }
 
 .mdl-progress>.bufferbar {
     background-image: linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(to right,rgb(255, 0, 0),rgb(255, 0, 0)) !important;
@@ -319,12 +330,11 @@
 }
 
 .stage_box {
-  width: 15px;
+  width: 3px;
   height: 15px;
   background-color: red;
   position: absolute;
   z-index: 1;
-  margin-left: -7.5px;
   top: -5px;
 }
 

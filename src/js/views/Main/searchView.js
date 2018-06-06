@@ -1,7 +1,7 @@
 import ViewDecorator from '../ViewDecorator'
-import { Stage , ViewGenerator } from '../QuizView';
+import { Stage , ViewGenerator } from '../ViewGenerator';
 import { QuizInfoViewBuilder , ChipBuilder } from '../Views';
-import Validation from '../Validation';
+import Validation from '../../manager/Validation';
 
 const tArray = [
     ['Easy', '#quiz-overview-Easy'],

@@ -1,5 +1,4 @@
-import LoginView from '../views/Login/loginView';
-import RegisterView from '../views/Login/registrationView';
+import ManagementView from '../views/General/ManagementView';
 import User from '../models/User';
 import { container, showSnackbarMessage } from '../index';
 
@@ -10,7 +9,7 @@ let registerView = null;
 export const loginViewInit = () => {
 
     $(container.mainPanel).load('../dist/html/quiz_login.html', () => {
-        loginView = new LoginView(container.login,handleLoginEvents);
+        loginView = new ManagementView(container.login,handleLoginEvents);
 
         loginView.get().fadeIn('slow');
 
@@ -62,7 +61,7 @@ const registerViewInit = () => {
 
     $(container.mainPanel).load('../dist/html/quiz_registration.html', () => {
        
-        registerView = new RegisterView(container.register,handleRegistrationEvents);
+        registerView = new ManagementView(container.register,handleRegistrationEvents);
 
         registerView.get().fadeIn('slow');
 

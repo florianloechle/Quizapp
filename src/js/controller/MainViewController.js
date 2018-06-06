@@ -1,11 +1,11 @@
 import ViewDecorator from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
+import { QuizInit } from '../controller/QuizController';
 import Query from '../models/Query';
 import Question from '../models/Quiz';
 import { container } from '../index';
 
 let searchView = null;
-let quizIDs = null;
 
 export const mainViewInit = () => {
 
@@ -34,10 +34,10 @@ const handleSearchEvents = async (action,view) => {
 
         let id = view.id;
 
-        let question = Question.fetchFor(id);
+        //let question = Question.fetchFor(id);
 
-        $(container.mainPanel).fadeOut('slow', () => {
-            playViewInit(question);
+        $('#main-panel').fadeOut('slow', () => {
+            QuizInit();
         });
 
         return;

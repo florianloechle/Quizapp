@@ -27,8 +27,8 @@ export class Stage {
     };
 
     /**
-     * Opposite of add. Removes an object from the stage. Requires the correct index.
-     * @param {Int} - The index of the item which we want to delete.
+     * Opposite of add. Removes an object from the stage. 
+     * @param {Object} - The jQuery object that is associated with the view that needs to be removed.
      */
     remove(item) {
         item.remove();
@@ -90,6 +90,10 @@ class ViewGeneratorSingleton {
 
     remove(view) {
         this._stage.remove(view.get());
+    };
+
+    removeAll() {
+        this._stage.clear();
     };
 
 };

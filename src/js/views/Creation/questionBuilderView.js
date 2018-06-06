@@ -1,5 +1,5 @@
-import ViewDecorator from '../ViewDecorator'
-import Validation from '../Validation';
+import ViewDecorator from '../ViewDecorator';
+import Validation from '../../manager/Validation';
 import { isArray } from 'util';
 
 export default class QuestionBuilderView {

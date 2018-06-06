@@ -1,5 +1,5 @@
 import ViewDecorator from '../ViewDecorator'
-import Validation from '../Validation';
+import Validation from '../../manager/Validation';
 
 export default class QuizBuilderView {
 

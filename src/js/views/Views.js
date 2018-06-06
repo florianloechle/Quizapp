@@ -82,14 +82,13 @@ class Chip {
     };
 };
 
+
+// TODO: Answer and Question combined to one question View which will be used to create questions and play questions. 
 class Answer {
 
-    constructor() {
-        this.selected = false;
-    };
-
-    setSelector(id) {
+    constructor(id) {
         this.item = $(id);
+        this.selected = false;
     };
 
     get() {
@@ -98,10 +97,10 @@ class Answer {
 
 };
 
-export class StaticAnswerViewBuilder {
+export class StaticAnswer extends Answer {
 
-    constructor() {
-        this.item = new Answer();
+    constructor(id) {
+        super(id);
 
         init();
     };
@@ -115,20 +114,16 @@ export class StaticAnswerViewBuilder {
 
     };
 
-    setID(id) {
-        this.id = id;
-    }
-
     get() {
         return this.item;
     };
 
 };
 
-export class WriteableAnswerViewBuilder {
+export class WriteableAnswer extends Answer {
 
-    constructor() {
-        this.item = new Answer();
+    constructor(id) {
+        super(id);
 
         init()
     };

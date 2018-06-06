@@ -1,7 +1,7 @@
 import ViewDecorator from '../ViewDecorator'
-import Validation from '../Validation';
+import Validation from '../../manager/Validation';
 
-export default class LoginView {
+export default class ManagementView {
 
     constructor(parent,handler) {
         this.item = $(parent);
@@ -36,4 +36,3 @@ export default class LoginView {
         });
     };
 }
-

@@ -113,7 +113,8 @@ const handleListEvents = (action,view) => {
     quiz.removeQuestion(view.question);
 
     view.get().animate({
-        backgroundColor: "red",
+        backgroundColor: "#aa0000",
+        color: "#fff",
         opacity: 0,
         width: "0px"
     },700, () => questionListView.removeQuestionView(view));
