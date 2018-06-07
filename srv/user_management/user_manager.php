@@ -1,5 +1,5 @@
 <?php
-require('../database.php');
+require('../Database.php');
 
 class UserManager extends Database {
 

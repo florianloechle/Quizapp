@@ -1,7 +1,8 @@
 export default class Validation {
 
     static validateText(textFields) {
-        let isValid = true;
+        let isValid         = true;
+        let validTextFields = true;
 
         if(!Array.isArray(textFields)) {
             isValid = validateTextField.bind(this,textFields)();
@@ -10,14 +11,18 @@ export default class Validation {
 
         for (let i = 0; i < textFields.length; i++) {
             isValid = validateTextField.bind(this,textFields[i])();
+
+            if(!isValid) {
+                validTextFields = false;
+            };
         };
 
-        return isValid;
+        return validTextFields;
     };
 
     static validateSanitization(textFields) {
         let isValid = true;
-        let regEx = new RegExp("[^A-Za-z0-9]");
+        let regEx   = new RegExp("[^A-Za-z0-9]");
 
         for (let i = 0; i < textFields.length; i++) {
             let value;
@@ -41,7 +46,7 @@ export default class Validation {
             textFields[i].error.parentElement.classList.add('is-invalid');
 
         };
-        return isValid;
+        return isValid; 
     };
 
 };

@@ -1,4 +1,4 @@
-import ViewDecorator from '../ViewDecorator'
+import {ViewDecorator} from '../ViewDecorator'
 import { Stage , ViewGenerator } from '../ViewGenerator';
 import { QuizInfoViewBuilder , ChipBuilder } from '../Views';
 import Validation from '../../manager/Validation';

@@ -71,8 +71,8 @@ export class CompositeController {
     action(act) {
         let args = Array.prototype.slice.call(arguments);
             args.shift();
-        for(let item in this.items) {
-            item[act].apply(item[act],args);
+        for(let item of this.items) {
+           item[act].apply(item,args);
         };
     };
 };

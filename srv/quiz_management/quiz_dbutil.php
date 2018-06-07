@@ -1,5 +1,5 @@
 <?php
-require('../database.php');
+require('../Database.php');
 
 class QuizManager extends Database {
 
@@ -151,8 +151,9 @@ class QuizManager extends Database {
         $lastQuestion = end($quiz->xownQuestionList);
         
         foreach ($quiz->xownQuestionList as $question) {
-            $temp = array(
-                'id' => $question->id,
+            $id = $question->id;
+         
+           $questions[$id] = array(
                 'questionText' => $question->text,
                 'answers' => array(),
             );
@@ -160,15 +161,15 @@ class QuizManager extends Database {
             $firstAnswer = reset($question->xownAnswerList);
             $lastAnswer = end($question->xownAnswerList);
 
+            $answers = array();
+
             foreach ($question->xownAnswerList as $answer) {
-                $tempAnswer = array(
-                    'id' => $answer->id,
+                $answers[$answer->id] = array(
                     'text' => $answer->text,
                     'correct' => $answer->correct
                 );
-                $temp['answers'][] = $tempAnswer;
             };
-            $questions[] = $temp;
+            $questions[$id]['answers'] = $answers;
         };
         return $questions;
     }

@@ -5,7 +5,8 @@ const path = {
     createQuiz: '../srv/quiz_management/quiz_creation.php',
     fetchQuiz: '../srv/quiz_management/quiz_fetchQuiz.php',
     deleteQuiz: '../srv/quiz_management/quiz_deleteQuiz.php',
-}
+    playQuiz: '../srv/quiz_management/quiz_play.php'
+};
 
 export default class Quiz {
 
@@ -46,6 +47,10 @@ export default class Quiz {
         };
 
         return request(path.createQuiz,jsonQuiz,'POST');
+    };
+
+    static async getQuestion(value) {
+        return request(path.playQuiz,value,'POST');
     };
 
     static async getQuizCategorys() {

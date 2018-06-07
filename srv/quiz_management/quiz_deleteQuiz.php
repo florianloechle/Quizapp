@@ -1,5 +1,5 @@
 <?php
-require_once('quiz_manager.php');
+require_once('quiz_dbutil.php');
 session_start();
 
 $quizID = filter_input(INPUT_POST,'id',FILTER_SANITIZE_SPECIAL_CHARS);

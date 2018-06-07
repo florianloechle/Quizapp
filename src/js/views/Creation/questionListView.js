@@ -1,4 +1,4 @@
-import ViewDecorator from '../ViewDecorator'
+import {ViewDecorator} from '../ViewDecorator'
 import { Stage, ViewGenerator } from '../ViewGenerator';
 import { QuestionViewBuilder } from '../Views';
 

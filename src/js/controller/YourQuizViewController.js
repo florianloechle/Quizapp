@@ -29,7 +29,7 @@ const handleYourQuizEvents = (action,view) => {
         return false;
     };
 
-    Quiz.delete(view.id).then(response => {
+    Quiz.delete(view.quiz.id).then(response => {
 
          //We got a response..
          if(response.success) {

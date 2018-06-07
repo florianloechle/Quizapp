@@ -1,4 +1,3 @@
-import ViewDecorator from '../ViewDecorator'
 import { Stage , ViewGenerator } from '../ViewGenerator';
 import { QuizInfoViewBuilder } from '../Views';
 

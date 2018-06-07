@@ -1,11 +1,11 @@
-import ViewDecorator from './ViewDecorator'
+import {ViewDecorator} from './ViewDecorator'
 
 class QuizInfoView {
 
     init(quiz,destructible,handler) {
         this.item = $(`<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
         <div  class="shadow-container mdl-card mdl-shadow--2dp">
-            <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg)">
+            <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg); background-repeat: no-repeat;">
             <div class="mdl-card__title info-text">
                 <h2 data-info="name" class="mdl-card__title-text" style="font-size: 20px; font-weight: bold">${quiz.name}</h2>
             </div>
@@ -28,7 +28,7 @@ class QuizInfoView {
             </div>
         </div>
         </div>`);
-        this.id = quiz.id;
+        this.quiz = quiz;
 
         ViewDecorator.EventListenerDecorator(this,'click',handler);
     };
@@ -102,7 +102,7 @@ export class StaticAnswer extends Answer {
     constructor(id) {
         super(id);
 
-        init();
+        this.init();
     };
 
     init() {
@@ -115,16 +115,11 @@ export class StaticAnswer extends Answer {
                 this.item.addClass('blink-red');
             };
         };
-
     };
 
     setNewAnswer(id,text) {
         this.id = id;
         this.text.innerHMTL = text;
-    };
-
-    get() {
-        return this.item;
     };
 
 };
@@ -134,21 +129,38 @@ export class WriteableAnswer extends Answer {
     constructor(id) {
         super(id);
 
-        init();
+        this.init();
     };
 
     init() {
-        this.item.input = this.item.children('input');
+        this.input = this.item[0].querySelector('input');
+        this.error = this.input.parentElement.querySelector('[data-error]');
 
         this.item.on('click', (e) => {
-            this.selected = !this.selected;
-
-            this.item.toggleClass('is-correct');
+            if(e.target !== this.input) {
+                this.selected = !this.selected;
+                this.item.toggleClass('is-correct');
+            };
         });
     };
 
-    get() {
-        return this.item;
+    clear() {
+        this.input.parentElement.MaterialTextfield.change();
+        this.item.removeClass('is-correct');
+        this.selected = false;
+    };
+
+    showError(error) {
+        this.error.innerHTML = error.message;
+        this.error.parentElement.classList.add('is-invalid');
+    };
+
+    getValues() {
+        const answer = {
+            text: this.input.value,
+            correct: this.selected
+        };
+        return answer;
     };
 
 };

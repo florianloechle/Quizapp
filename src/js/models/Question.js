@@ -7,8 +7,5 @@ export default class Question {
         this.answers = answers;
     };
 
-    static fetchFor(id) {
-        
-    };
 
 }

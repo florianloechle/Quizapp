@@ -1,4 +1,4 @@
-import ViewDecorator from '../ViewDecorator'
+import {ViewDecorator} from '../ViewDecorator'
 import Validation from '../../manager/Validation';
 
 export default class ManagementView {

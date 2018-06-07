@@ -20,7 +20,7 @@ export class Stage {
      */
     add(item) {
         ++this.index;
-        item.addClass('stageView_', this.index);
+        item.addClass('stageViewItem');
         this.context.append(item);
         componentHandler.upgradeElements(item.children());
         item.fadeIn('slow');
@@ -38,7 +38,7 @@ export class Stage {
      * Clears the complete stage and resets the index count.
      */
     clear() {
-        this.context.children().remove();
+        $(this.context).children('.stageViewItem').remove();
         this.index = 0;
     };
 

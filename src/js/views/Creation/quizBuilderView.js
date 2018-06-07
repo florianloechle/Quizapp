@@ -1,4 +1,4 @@
-import ViewDecorator from '../ViewDecorator'
+import {ViewDecorator} from '../ViewDecorator'
 import Validation from '../../manager/Validation';
 
 export default class QuizBuilderView {
@@ -33,7 +33,7 @@ export default class QuizBuilderView {
         isValid = this.difficulty.input.value === 'Medium' || 'Hard' || 'Easy' ? true : false;
     
         return isValid;
-    }
+    };
 
     _validateCategory() {
         let isValid = false;
@@ -45,7 +45,7 @@ export default class QuizBuilderView {
             };
         };
         return isValid;
-    }
+    };
 
     getQuizData() {
         let quizData = {};
@@ -64,7 +64,7 @@ export default class QuizBuilderView {
         quizData.difficulty = this.difficulty.input.value;
         
         return quizData;
-    }
+    };
 
     setVisual(count) {
         if (count >= 3) {
@@ -73,7 +73,7 @@ export default class QuizBuilderView {
         };
 
         this.questionCount.innerHTML = count;
-    }
+    };
 
     reset() {
         this.setVisual(0);
@@ -81,5 +81,5 @@ export default class QuizBuilderView {
         for(let text of this.text) {
             text.input.parentElement.MaterialTextfield.change();
         };
-    }
+    };
 }

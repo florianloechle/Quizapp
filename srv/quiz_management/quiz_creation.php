@@ -1,5 +1,5 @@
 <?php 
-require_once('quiz_manager.php');
+require_once('quiz_dbutil.php');
 session_start();
 
 $noDataError = json_encode($error = array('error' => 'No data found.'));

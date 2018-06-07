@@ -1,4 +1,4 @@
-import ViewDecorator from '../views/ViewDecorator';
+import {ViewDecorator} from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
 import { QuizInit } from '../controller/QuizController';
 import Query from '../models/Query';
@@ -6,6 +6,7 @@ import Question from '../models/Quiz';
 import { container } from '../index';
 
 let searchView = null;
+let quizArray = [];
 
 export const mainViewInit = () => {
 
@@ -32,12 +33,10 @@ const handleSearchEvents = async (action,view) => {
     //User tapped Quiz info and wants to play
     if(action === 'play') {
 
-        let id = view.id;
-
         //let question = Question.fetchFor(id);
 
         $('#main-panel').fadeOut('slow', () => {
-            QuizInit();
+            QuizInit(view.quiz);
         });
 
         return;
@@ -68,6 +67,8 @@ const updateUIWithQuery = async query => {
         //fake 'response time'
         setTimeout( () => {
             $('#overlay').fadeOut('fast');
+
+            quizArray = query.results;
             
             searchView.renderQueryResults(query.results);
 

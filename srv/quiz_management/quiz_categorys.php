@@ -1,5 +1,5 @@
 <?php 
-require_once('quiz_manager.php');
+require_once('quiz_dbutil.php');
 
 try {
     $categorys = QuizManager::getCategorys();

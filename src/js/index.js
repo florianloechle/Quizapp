@@ -4,7 +4,7 @@ import { creationViewInit } from './controller/CreationViewController';
 import { yourQuizViewInit } from './controller/YourQuizViewController';
 import { loginViewInit } from './controller/LoginViewController';
 import User from './models/User';
-import ViewDecorator from './views/ViewDecorator';
+import {ViewDecorator} from './views/ViewDecorator';
 
 window.onload = () => {
     init();

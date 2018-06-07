@@ -1,4 +1,5 @@
-import ViewDecorator from '../ViewDecorator';
+import { ViewDecorator , CompositeController } from '../ViewDecorator';
+import { WriteableAnswer } from '../Views';
 import Validation from '../../manager/Validation';
 import { isArray } from 'util';
 
@@ -6,8 +7,9 @@ export default class QuestionBuilderView {
 
     constructor(parent,handler) {
         this.item = $(parent);
+        this.answers = [];
 
-        ViewDecorator.DataSetDecorator(this,['[data-info]','[data-input]']);
+        ViewDecorator.DataSetDecorator(this,['[data-input]']);
         ViewDecorator.EventListenerDecorator(this,'click',handler);
 
         this.init();
@@ -18,20 +20,13 @@ export default class QuestionBuilderView {
     };
 
     init() {
-        
-        for(let ans of this.answer) {
-            let container = $(ans.input).parents('.answer');
+        let container = this.item.children('.answer');
 
-            ans.correct = false;
-            ans.container = container;
-
-            container.on('click', (e) => {
-                if(e.target !== ans.input) {
-                    ans.correct = !ans.correct
-                    container.toggleClass('is-correct');
-                };
-            });
+        for(let con of container) {
+            this.answers.push(new WriteableAnswer(con));
         };
+
+        this.answerComposite = new CompositeController(this.answers);
     };
 
     validateInput() {
@@ -48,54 +43,19 @@ export default class QuestionBuilderView {
     getAnswers() {
         let answers = [];
 
-        for (let ans of this.answer) {
-
-            let answer = {
-                text: ans.input.value,
-                correct: ans.correct
-            };
-
-            answers.push(answer);
-        }
+        for(let ans of this.answers) {
+            answers.push(ans.getValues());
+        };
+     
         return answers;
     };
 
-    showErrors(errors) {
-        if(Array.isArray(errors)) {
-
-            for(let error of errors) {
-                show.call(this,error);
-            };
-
-        } else {
-           show.call(this,errors);
-        };
-
-        function show(error) {
-
-            for(let answer of this.answer) {
-
-                if(error.for !== answer.error.dataset['error']) {
-                    continue;
-                };
-
-                answer.error.innerHTML = error.message;
-                answer.error.parentElement.classList.add('is-invalid');
-                
-            };   
-        };
+    showErrors(error) {
+        this.answerComposite.action('showError',error);
     };
 
     clear() {
-
-        for (let ans of this.answer) {
-            ans.input.parentElement.MaterialTextfield.change();
-            ans.correct = false;
-
-            ans.container.removeClass('is-correct');
-        };
-
+        this.answerComposite.action('clear');
         this.question.input.parentElement.MaterialTextfield.change();
-
     };
 }
