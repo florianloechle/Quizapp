@@ -40,7 +40,7 @@
     flex-direction: column;
     flex-wrap: nowrap; 
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255,1);
     border: 1px solid rgba(0,0,0,0.5);
 }
 
@@ -96,7 +96,7 @@
 }
 
 .white-cell {
-    border: 2px double;
+    border: 1px solid rgba(0,0, 0, 0.4);
     background-color: white;
     border-radius: 4px;
     padding: 4px;
@@ -109,7 +109,6 @@
 #question-builder-view, #quiz-builder-view {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
-    border: 1px solid black;
 }
 
 .red {
@@ -177,7 +176,7 @@
 
 #searchView {
     background-color: rgba(255, 255, 255, 0.7);
-};
+}
 
 .box-shadow {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -296,7 +295,6 @@
 } 
 
 #innerPlayView {
-    border: 4px ridge #C31616;
     border-radius: 5px;
     background-color: rgba(255,255,255,0.7);
     justify-content: center;
