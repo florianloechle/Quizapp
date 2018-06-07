@@ -50,9 +50,9 @@ export default class SearchView {
     };
 
     renderChips() {
-        this.chipStage.clear();
-
         ViewGenerator.setStage(this.chipStage);
+
+        ViewGenerator.removeAll();
 
         this.filter.forEach(filter => {
 

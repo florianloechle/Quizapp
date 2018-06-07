@@ -106,12 +106,21 @@ export class StaticAnswer extends Answer {
     };
 
     init() {
+        this.text = this.item.children('a');
 
-        this.item.blink = (clr) => {
-            if(this.selected)
-            this.item.addClass(`blink-${clr}`);
+        this.item.blink = (id) => {
+            if(this.selected && id === this.id) {
+                this.item.addClass('blink-green');
+            } else if(this.selected && id !== this.id) {
+                this.item.addClass('blink-red');
+            };
         };
 
+    };
+
+    setNewAnswer(id,text) {
+        this.id = id;
+        this.text.innerHMTL = text;
     };
 
     get() {
@@ -125,7 +134,7 @@ export class WriteableAnswer extends Answer {
     constructor(id) {
         super(id);
 
-        init()
+        init();
     };
 
     init() {
