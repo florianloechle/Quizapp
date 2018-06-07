@@ -1,4 +1,4 @@
-export default class ViewDecorator {
+export class ViewDecorator {
 
     static DataSetDecorator(obj,sets) {
         let tArray = ['text', 'textarea', 'password', 'username', 'email'];
@@ -61,6 +61,21 @@ export default class ViewDecorator {
     };
 }
 
+
+export class CompositeController {
+
+    constructor(items) {
+        this.items = items;
+    };
+
+    action(act) {
+        let args = Array.prototype.slice.call(arguments);
+            args.shift();
+        for(let item in this.items) {
+            item[act].apply(item[act],args);
+        };
+    };
+};
 
 
 
