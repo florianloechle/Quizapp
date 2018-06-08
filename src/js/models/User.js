@@ -24,6 +24,4 @@ export default class User {
         return request(path.registration,values,'POST');
     };
 
-
-
 }

@@ -89,22 +89,31 @@ const handleQuizEvents = (action,view) => {
         quiz[data] = quizData[data];
     };
 
+    $('#overlay').fadeIn('fast');
+
     quiz.publish().then(response => {
 
-        if (response.success) {
+        //Simulation response time...
+        setTimeout( () => {
+
+            if (response.success) {
+            
+                quiz = new Quiz();
+    
+                quizBuilder.reset(quiz);
+    
+                questionListView.removeAll();
+    
+                $('#overlay').fadeOut('fast');
+    
+                showSnackbarMessage('Quiz added successfully!', 2500);
+    
+            } else {
+    
+                showSnackbarMessage('Failed, please try again later or reload the page', 2500)
+            };
+        },1000)
         
-            quiz = new Quiz();
-
-            quizBuilder.reset(quiz);
-
-            questionListView.removeAll();
-
-            showSnackbarMessage('Quiz added successfully!', 2500);
-
-        } else {
-
-            showSnackbarMessage('Failed, please try again later or reload the page', 2500)
-        };
     })
 };
 

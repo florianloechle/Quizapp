@@ -19,7 +19,7 @@ class QuizInfoView {
             </div>
            </div>
             <div class="mdl-card__supporting-text">
-                <a data-info="description">${quiz.description}</a>
+                <a class="quiz-description" data-info="description">${quiz.description}</a>
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <a data-action="${destructible ? 'delete' : 'play'}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
