@@ -7,10 +7,21 @@ import Quiz from '../models/Quiz';
 let view = null;
 let quiz = null;
 
+const state = {
+    progress: 0,
+    currentQuestion: null,
+    answered: [],
+    id: null,
+    score: 0,
+    inProgress: false
+};
+
 export const QuizInit = (quizViewModel) => {
 
     $(container.mainPanel).load('../dist/html/quiz_play.html', () => {
-        $('#playView').fadeIn('slow)');
+        $('#playView').fadeIn('slow');
+
+        state.id = quizViewModel.id;
 
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
@@ -19,17 +30,92 @@ export const QuizInit = (quizViewModel) => {
 
         ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
 
-        Quiz.getQuestion({id: quizViewModel.id}).then(Question => {
-            console.log(Question);
-        });
+        init();
     });
 };
 
+const init = () => {
 
+    state.progress = 0;
+    state.currentQuestion = null;
+    state.answered = [];
+    state.score = 0;
+    state.inProgress = true;
 
+    nextQuestion();
+};
 
 const handleQuizEvents = (action,view) => {
+    if(!state.inProgress) {
+        event.preventDefault();
+        return;
+    };
 
+    let answeredQuestion = {
+        id: state.currentQuestion.id,
+        answers: view.getAnswers()
+    };
 
+    Quiz.fetchAnswers({answers: JSON.stringify(answeredQuestion)}).then(answer => {
+        state.inProgress = false;
+
+        view.showResult(answer.id);
+
+        state.currentQuestion.correct = answer.id;
+        state.currentQuestion.answered = view.getSelected();
+
+        if(answer.id === state.currentQuestion.answered) {
+            state.score = state.score + 5;
+        };
+
+        state.answered.push(state.currentQuestion);
+
+        setTimeout( () => {
+            nextQuestion();
+        },1500);
+
+    }, failure => {
+        showSnackbarMessage('There was an error connecting to the server. Try again later.');
+        setTimeout( () => { window.location('index.html') },2000);
+    });
 
 };
+
+const updateView = () => {
+    view.updateProgress(state.progress);
+    view.updateScore(state.score);
+};
+
+const nextQuestion = async () => {
+    state.currentQuestion = await Quiz.fetchQuestion(showResults);
+    
+    if(!state.currentQuestion) {
+
+       return;
+    };
+
+    updateView();
+    view.newQuestion(state.currentQuestion);
+
+    state.inProgress = true;
+    state.progress++;
+};
+
+const showResults = () => {
+    state.inProgress = false;
+
+    $('#playView').animate({
+        width: 0,
+        opacity: 0,
+    },1000, () => { resultViewInit() } )
+
+};
+
+const resultViewInit = () => {
+    view.renderResults
+
+
+}
+
+
+

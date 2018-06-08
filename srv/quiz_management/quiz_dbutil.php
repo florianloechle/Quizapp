@@ -151,9 +151,8 @@ class QuizManager extends Database {
         $lastQuestion = end($quiz->xownQuestionList);
         
         foreach ($quiz->xownQuestionList as $question) {
-            $id = $question->id;
-         
-           $questions[$id] = array(
+            $temp = array(
+                'id' => $question->id,
                 'questionText' => $question->text,
                 'answers' => array(),
             );
@@ -161,15 +160,15 @@ class QuizManager extends Database {
             $firstAnswer = reset($question->xownAnswerList);
             $lastAnswer = end($question->xownAnswerList);
 
-            $answers = array();
-
             foreach ($question->xownAnswerList as $answer) {
-                $answers[$answer->id] = array(
+                $tempAnswer = array(
+                    'id' => $answer->id,
                     'text' => $answer->text,
                     'correct' => $answer->correct
                 );
+                $temp['answers'][] = $tempAnswer;
             };
-            $questions[$id]['answers'] = $answers;
+            $questions[] = $temp;
         };
         return $questions;
     }

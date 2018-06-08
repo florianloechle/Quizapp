@@ -59,6 +59,42 @@ export class ViewDecorator {
         });
 
     };
+
+    static EventDispatchDecorator(obj) {
+            let list = {};
+            obj.addEvent = (type,listener) => {
+                if(!list[type]){
+                    list[type] = [];
+                };
+    
+                if(list[type].indexOf(listener) === -1){
+                    list[type].push(listener);
+                };
+    
+            };
+    
+            obj.removeEvent = (type, listener) => {
+                let a = list[type];
+                if(a){
+                    let index = a.indexOf(listener);
+                    if(index>-1){
+                        a.splice(index, 1);
+                    };
+                };
+            };
+    
+            obj.dispatchEvent = e => {
+                let aList = list[e.type];
+                if(aList){
+                    if(!e.target){
+                        e.target = this;
+                    };
+                    for(let index in aList){
+                        aList[index](e);
+                    };
+                };
+            };
+    };
 }
 
 

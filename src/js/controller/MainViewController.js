@@ -2,8 +2,8 @@ import {ViewDecorator} from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
 import { QuizInit } from '../controller/QuizController';
 import Query from '../models/Query';
-import Question from '../models/Quiz';
-import { container } from '../index';
+import Quiz from '../models/Quiz';
+import { container, showSnackbarMessage } from '../index';
 
 let searchView = null;
 let quizArray = [];
@@ -33,10 +33,14 @@ const handleSearchEvents = async (action,view) => {
     //User tapped Quiz info and wants to play
     if(action === 'play') {
 
-        //let question = Question.fetchFor(id);
-
-        $('#main-panel').fadeOut('slow', () => {
-            QuizInit(view.quiz);
+        Quiz.startQuiz({id: view.quiz.id}).then(response => {
+            if(response.success) {
+                $('#main-panel').fadeOut('slow', () => {
+                    QuizInit(view.quiz);
+                });
+            } else {
+                showSnackbarMessage('Could not load quiz. Try again later.')
+            };
         });
 
         return;

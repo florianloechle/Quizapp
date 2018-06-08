@@ -5,7 +5,7 @@ class QuizInfoView {
     init(quiz,destructible,handler) {
         this.item = $(`<div style="display: none" class="mdl-cell mdl-cell--4-col mdl-cell--6-col-phone mdl-cell--5-col-tablet">
         <div  class="shadow-container mdl-card mdl-shadow--2dp">
-            <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg); background-repeat: no-repeat;">
+            <div data-info="picture" style="background-image: url(img/category/${quiz.category}.jpg);">
             <div class="mdl-card__title info-text">
                 <h2 data-info="name" class="mdl-card__title-text" style="font-size: 20px; font-weight: bold">${quiz.name}</h2>
             </div>
@@ -108,18 +108,48 @@ export class StaticAnswer extends Answer {
     init() {
         this.text = this.item.children('a');
 
-        this.item.blink = (id) => {
-            if(this.selected && id === this.id) {
+        this.blink = (id) => {
+            if(this.selected && id === this.id || !this.selected && id === this.id ) {
                 this.item.addClass('blink-green');
             } else if(this.selected && id !== this.id) {
                 this.item.addClass('blink-red');
             };
         };
+
+        this.item.on('click', (e) => {
+            this.selected = !this.selected;
+            e.preventDefault();
+        });
     };
 
-    setNewAnswer(id,text) {
-        this.id = id;
-        this.text.innerHMTL = text;
+    fadeOut() {
+        this.item.fadeOut(250);
+    };
+
+    fadeIn() {
+        this.item.fadeIn(250);
+    };
+
+    getSelected() {
+        if(this.selected) {
+            return this.id;
+        };
+    };
+
+    getValues() {
+        const answer = {
+            id: this.id,
+            correct: this.selected
+        };
+        return answer;
+    };
+
+    setNewAnswer(answer) {
+        this.id = answer.id;
+        this.text[0].innerHTML = answer.text;
+        this.selected = false;
+        this.item.removeClass('blink-green');
+        this.item.removeClass('blink-red');
     };
 
 };

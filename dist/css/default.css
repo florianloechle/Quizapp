@@ -123,17 +123,17 @@
 /********** Animations  *********/
 /*<---------------------------->*/
 
-.blink-right {
+.blink-green {
     animation-name: blink-green;
-    animation-duration: 0.4s;
+    animation-duration: 1s;
     animation-direction: normal;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
-.blink-false {
+.blink-red {
     animation-name: blink-red;
-    animation-duration: 0.4s;
+    animation-duration: 1s;
     animation-direction: normal;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -336,24 +336,4 @@
   position: absolute;
   z-index: 1;
   top: -5px;
-}
-
-.stage_box1 {
-  left: 0%;
-}
-
-.stage_box2 {
-  left: 25%;
-}
-
-.stage_box3 {
-  left: 44%;
-}
-
-.stage_box4 {
-  left: 66%;
-}
-
-.stage_box5 {
-  left: 100%;
 }
