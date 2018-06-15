@@ -10,7 +10,6 @@ export default class QuizView {
         this.quiz = quiz;
 
         ViewDecorator.DataSetDecorator(this,['[data-info]']);
-
         this.init();
     };
 
@@ -26,13 +25,12 @@ export default class QuizView {
 
         this.creator.innerHTML = this.quiz.user;
         this.name.innerHTML = this.quiz.name;
-
-        let percent = Math.floor(101/(this.quiz.questionCount-1));
-        for(;i<this.quiz.questionCount;i++) {
-            let stage = percent * i;
-
-            $('#progressStage').append(`<div style="left: ${stage}%" class="stage_box"></div>`);
-        };
+        
+        for(let i = 0; i< this.quiz.questionCount; i++){
+            var progressInPercent = 100/(this.quiz.questionCount-1)*(i);
+            // console.log(i+" von "+this.quiz.questionCount+" ist: "+progressInPercent+"%");
+            $('#progressStage').append(`<div style="left: ${progressInPercent}%" class="stage_box"></div>`);
+        }
 
         this.updateProgress(0,0);
     };
