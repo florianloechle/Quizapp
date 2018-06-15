@@ -75,9 +75,10 @@ export default class QuizView {
     };
 
     updateProgress(count) {
-        let percent = Math.floor(101/(this.quiz.questionCount-1));
 
-        $('#progressStage')[0].MaterialProgress.setProgress(percent * count);
+        let percent = 100/(this.quiz.questionCount-1)*count;
+
+        $('#progressStage')[0].MaterialProgress.setProgress(percent);
 
         this.count.innerHTML = `${count+1} / ${this.quiz.questionCount}`;
     };
