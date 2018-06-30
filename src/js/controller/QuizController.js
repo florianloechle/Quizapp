@@ -56,7 +56,8 @@ const handleQuizEvents = (action,view) => {
         answers: view.getAnswers()
     };
 
-    Quiz.fetchAnswers({answers: JSON.stringify(answeredQuestion)}).then(answer => {
+    // Quiz.fetchAnswers({answers: JSON.stringify(answeredQuestion)}).then(answer => {
+    Quiz.fetchAnswers({answers: view.getSelected()}).then(answer => {
         state.inProgress = false;
 
         view.showResult(answer.id);
@@ -90,7 +91,6 @@ const nextQuestion = async () => {
     state.currentQuestion = await Quiz.fetchQuestion(showResults);
     
     if(!state.currentQuestion) {
-
        return;
     };
 
@@ -103,18 +103,32 @@ const nextQuestion = async () => {
 
 const showResults = () => {
     state.inProgress = false;
-
+    
     $('#playView').animate({
         width: 0,
         opacity: 0,
-    },1000, () => { resultViewInit() } )
+    },500, () => { resultViewInit() } )
 
 };
 
 const resultViewInit = () => {
     view.renderResults
+    console.log("resultViewInit");
 
+    $(container.mainPanel).load('../dist/html/quiz_result.html', () => {
+        $('#resultView').fadeIn('slow');
 
+        // state.id = quizViewModel.id;
+
+        //mdl upgrade..
+        componentHandler.upgradeElements($(container.mainPanel).children());
+
+        // view = new QuizView('#innerPlayView',quizViewModel);
+
+        // ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
+
+        // init();
+    });
 }
 
 

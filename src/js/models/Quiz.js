@@ -76,4 +76,6 @@ export default class Quiz {
     static async fetchAnswers(value) {
         return request(path.fetchQuestion,value,'POST');
     };
+
+    
 }

@@ -56,7 +56,7 @@ class Quiz {
         };
     }
 
-    public function getCorrectAnswers() {
+    public function getCorrectAnswers($givenAnswer) {
         $question = $this->questions[$this->index];
 
         $correctAnswer;
@@ -66,6 +66,17 @@ class Quiz {
                 break;
             };
         };
+
+        // save given answer for a question into $_SESSION
+        $givenAnswerWasCorrect = 0;
+        if($correctAnswer === $givenAnswer)
+        {
+            $givenAnswerWasCorrect = 1;
+        }
+        $questionIndex = $this->questions[$this->index];
+        $this->questions[$this->index]['givenAnswerWasCorrect'] = $givenAnswerWasCorrect;
+        $this->questions[$this->index]['givenAnswer'] = $givenAnswer;
+        file_put_contents ( "c:/temp/log.txt" , print_r($_SESSION['quiz'],true) );
 
         $this->index++; 
         return $correctAnswer;
