@@ -112,40 +112,31 @@ const showResults = () => {
 
 };
 
-const resultViewInit = () => {
+const resultViewInit = async () => {
     view.renderResults;
     console.log("resultViewInit");
     
-    setTimeout( () => {
-        getResults();
-    },300);
+    await Quiz.fetchResults().then((results) => {
+        displayResultView(results);
+    })
+    
+}
 
+const displayResultView = (results) => {
+    
     $(container.mainPanel).load('../dist/html/quiz_result.html', () => {
         $('#resultView').fadeIn('slow');
-
         // state.id = quizViewModel.id;
-        view = new QuizResultView('#innerResultView', state.results);
+        view = new QuizResultView('#innerResultView', results);
 
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
-        
 
         // ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
-
         // init();
     });
-
-    
-
-
     // updateView();
-    
-
 }
 
-const getResults = async () => {
-    state.results =  await Quiz.fetchResults();
-    // console.log( state.results );
-}
 
 

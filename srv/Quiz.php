@@ -86,6 +86,16 @@ class Quiz {
         $results['questions'] = $this->questions;
         $results['count'] = $this->count;
 
+        $countCorrectAnswers = 0;
+        foreach($results['questions'] AS $key => $value)
+        {
+            if($value['givenAnswerWasCorrect'] === 1)
+            {
+                $countCorrectAnswers++;
+            }
+        }
+        $results['countCorrect'] = $countCorrectAnswers;
+
         return $results;
     }
 
