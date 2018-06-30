@@ -112,11 +112,11 @@ const showResults = () => {
 
 };
 
-const resultViewInit = async () => {
+const resultViewInit = () => {
     view.renderResults;
     console.log("resultViewInit");
     
-    await Quiz.fetchResults().then((results) => {
+    Quiz.fetchResults().then((results) => {
         displayResultView(results);
     })
     
