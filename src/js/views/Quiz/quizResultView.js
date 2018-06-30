@@ -14,10 +14,7 @@ export default class QuizResultView {
     };
 
     init() {
-        console.log("hello from resultview");
-        console.log(this.results);
-        
-        this.counter.innerHTML = 'Du hast '+this.results.countCorrect+' von '+this.results.count+' Fragen richtig beantwortet!';
+        this.counter.innerHTML = 'Du hast  <span style="color: #ff0000">'+this.results.countCorrect+' von '+this.results.count+'</span> Fragen richtig beantwortet!';
 
         var imageName = "";
         var style = `width: 200px; height: 200px;`;
@@ -33,16 +30,13 @@ export default class QuizResultView {
              contentHTML += this.renderDetailHTMLByQuestionID(i);
         }
 
-        console.log( $("#detailedAnswers") );
-        console.log( contentHTML );
         $("#detailedAnswers")[0].innerHTML = contentHTML;
-        // this.item.addClass('blink-green');
     };
 
     renderDetailHTMLByQuestionID(id) {
         var result = `
         <div id="innerResultPlayView" class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet box-shadow">
-                <div class="mdl-cell mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet white-cell">
+                <div class="mdl-cell mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet white-cell box-shadow">
                     <h4 data-info="question" class="creation-header">${this.results.questions[id].questionText}</h4> 
                 </div>`;
                 
