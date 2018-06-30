@@ -1,6 +1,7 @@
 import { container, showSnackbarMessage } from '../index';
 import { ViewDecorator } from '../views/ViewDecorator';
 import QuizView from '../views/Quiz/quizView';
+import QuizResultView from '../views/Quiz/quizResultView';
 import Question from '../models/Question';
 import Quiz from '../models/Quiz';
 
@@ -41,6 +42,7 @@ const init = () => {
     state.answered = [];
     state.score = 0;
     state.inProgress = true;
+    state.results = [];
 
     nextQuestion();
 };
@@ -56,7 +58,6 @@ const handleQuizEvents = (action,view) => {
         answers: view.getAnswers()
     };
 
-    // Quiz.fetchAnswers({answers: JSON.stringify(answeredQuestion)}).then(answer => {
     Quiz.fetchAnswers({answers: view.getSelected()}).then(answer => {
         state.inProgress = false;
 
@@ -73,7 +74,7 @@ const handleQuizEvents = (action,view) => {
 
         setTimeout( () => {
             nextQuestion();
-        },1500);
+        },100);
 
     }, failure => {
         showSnackbarMessage('There was an error connecting to the server. Try again later.');
@@ -107,29 +108,44 @@ const showResults = () => {
     $('#playView').animate({
         width: 0,
         opacity: 0,
-    },500, () => { resultViewInit() } )
+    },50, () => { resultViewInit() } )
 
 };
 
 const resultViewInit = () => {
-    view.renderResults
+    view.renderResults;
     console.log("resultViewInit");
+    
+    setTimeout( () => {
+        getResults();
+    },300);
 
     $(container.mainPanel).load('../dist/html/quiz_result.html', () => {
         $('#resultView').fadeIn('slow');
 
         // state.id = quizViewModel.id;
+        view = new QuizResultView('#innerResultView', state.results);
 
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
-
-        // view = new QuizView('#innerPlayView',quizViewModel);
+        
 
         // ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
 
         // init();
     });
+
+    
+
+
+    // updateView();
+    
+
 }
 
+const getResults = async () => {
+    state.results =  await Quiz.fetchResults();
+    // console.log( state.results );
+}
 
 

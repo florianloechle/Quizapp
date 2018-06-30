@@ -76,10 +76,17 @@ class Quiz {
         $questionIndex = $this->questions[$this->index];
         $this->questions[$this->index]['givenAnswerWasCorrect'] = $givenAnswerWasCorrect;
         $this->questions[$this->index]['givenAnswer'] = $givenAnswer;
-        file_put_contents ( "c:/temp/log.txt" , print_r($_SESSION['quiz'],true) );
 
         $this->index++; 
         return $correctAnswer;
+    }
+
+    public function getResults(){
+        $results = [];
+        $results['questions'] = $this->questions;
+        $results['count'] = $this->count;
+
+        return $results;
     }
 
 }

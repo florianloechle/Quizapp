@@ -6,7 +6,8 @@ const path = {
     fetchQuiz: '../srv/quiz_management/quiz_fetchQuiz.php',
     deleteQuiz: '../srv/quiz_management/quiz_deleteQuiz.php',
     playQuiz: '../srv/quiz_management/quiz_play.php',
-    fetchQuestion: '../srv/quiz_management/quiz_fetchQuestion.php'
+    fetchQuestion: '../srv/quiz_management/quiz_fetchQuestion.php',
+    fetchResults: '../srv/quiz_management/quiz_fetchResults.php',
 };
 
 export default class Quiz {
@@ -77,5 +78,7 @@ export default class Quiz {
         return request(path.fetchQuestion,value,'POST');
     };
 
-    
+    static async fetchResults() {
+        return request(path.fetchResults,'test','POST');
+    };
 }

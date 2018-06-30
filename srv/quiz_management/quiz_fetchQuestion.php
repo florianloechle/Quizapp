@@ -27,8 +27,6 @@ function getNewQuestion() {
 }
 
 if(!is_null($givenAnswer)) {
-    // file_put_contents ( "c:/temp/log.txt" , print_r($givenAnswer,true) );
-    // file_put_contents ( "c:/temp/log.txt" , print_r($_SESSION['quiz'],true) );
     getCorrectAnswers($givenAnswer);
 };
 
