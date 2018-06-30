@@ -56,7 +56,7 @@ class Quiz {
         };
     }
 
-    public function getCorrectAnswers() {
+    public function getCorrectAnswers($givenAnswer) {
         $question = $this->questions[$this->index];
 
         $correctAnswer;
@@ -67,8 +67,36 @@ class Quiz {
             };
         };
 
+        // save given answer for a question into $_SESSION
+        $givenAnswerWasCorrect = 0;
+        if($correctAnswer === $givenAnswer)
+        {
+            $givenAnswerWasCorrect = 1;
+        }
+        $questionIndex = $this->questions[$this->index];
+        $this->questions[$this->index]['givenAnswerWasCorrect'] = $givenAnswerWasCorrect;
+        $this->questions[$this->index]['givenAnswer'] = $givenAnswer;
+
         $this->index++; 
         return $correctAnswer;
+    }
+
+    public function getResults(){
+        $results = [];
+        $results['questions'] = $this->questions;
+        $results['count'] = $this->count;
+
+        $countCorrectAnswers = 0;
+        foreach($results['questions'] AS $key => $value)
+        {
+            if($value['givenAnswerWasCorrect'] === 1)
+            {
+                $countCorrectAnswers++;
+            }
+        }
+        $results['countCorrect'] = $countCorrectAnswers;
+
+        return $results;
     }
 
 }

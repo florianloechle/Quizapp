@@ -27,14 +27,14 @@ function getNewQuestion() {
 }
 
 if(!is_null($givenAnswer)) {
-    getCorrectAnswers();
+    getCorrectAnswers($givenAnswer);
 };
 
-function getCorrectAnswers() {
+function getCorrectAnswers($givenAnswer) {
 
     $quiz = $_SESSION['quiz'];
 
-    $correctAnswers = $quiz->getCorrectAnswers();
+    $correctAnswers = $quiz->getCorrectAnswers($givenAnswer);
 
     echo json_encode($correct = array( 'id' => $correctAnswers));
     exit();
