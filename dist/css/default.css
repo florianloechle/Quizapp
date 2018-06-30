@@ -345,22 +345,21 @@
 /*<---------------------------->*/
 /********    Result     *********/
 /*<---------------------------->*/
-
 #resultView {
     align-items: center;
     justify-content: center;
     position: relative;
     text-align: center;
-  } 
-  
-  #innerResultView {
-      border-radius: 5px;
-      background-color: rgba(255,255,255,0.7);
-      justify-content: center;
-  }
-  
-  #innerResultView a {
-      color: black;
-      line-height: 50px;
-      font-weight: 200;
-  }
+} 
+
+#innerResultPlayView {
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.7);
+    justify-content: center;
+}
+
+#innerResultView a {
+    color: black;
+    line-height: 50px;
+    font-weight: 200;
+}
