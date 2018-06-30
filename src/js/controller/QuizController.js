@@ -127,15 +127,16 @@ const displayResultView = (results) => {
     $(container.mainPanel).load('../dist/html/quiz_result.html', () => {
         $('#resultView').fadeIn('slow');
         // state.id = quizViewModel.id;
-        view = new QuizResultView('#innerResultView', results);
+        view = new QuizResultView('#resultView', results);
+
 
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
 
         // ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
         // init();
+        // updateView();
     });
-    // updateView();
 }
 
 
