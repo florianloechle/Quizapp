@@ -33,21 +33,17 @@ export default class QuizResultView {
              contentHTML += this.renderDetailHTMLByQuestionID(i);
         }
 
-        console.log( $("#content") );
+        console.log( $("#detailedAnswers") );
         console.log( contentHTML );
-        $("#content")[0].innerHTML = contentHTML;
+        $("#detailedAnswers")[0].innerHTML = contentHTML;
         // this.item.addClass('blink-green');
     };
 
     renderDetailHTMLByQuestionID(id) {
         var result = `
-        <div id="playView${id}" style="" class="mdl-grid">
-        
-        <div id="innerPlayView${id}" class="mdl-grid mdl-cell mdl-cell--8-col mdl-cell--12-col-phone mdl-cell--9-col-tablet box-shadow">
-                <div class="mdl-cell mdl-cell--8-col white-cell">
-                    <h4 data-info="question${id}" class="creation-header">${this.results.questions[id].questionText}</h4> 
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">     
+        <div id="innerResultPlayView" class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet box-shadow">
+                <div class="mdl-cell mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet white-cell">
+                    <h4 data-info="question" class="creation-header">${this.results.questions[id].questionText}</h4> 
                 </div>`;
                 
         for(var i = 0; i<4; i++) {
@@ -64,16 +60,13 @@ export default class QuizResultView {
             }
 
             result += 
-            `<div data-action="answer${id}" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer ${style}">
+            `<div data-action="answer" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone mdl-cell--12-col-tablet box-shadow answer ${style}">
                 <a>${this.results.questions[id].answers[i].text}</a>          
             </div>
             `;
         }
 
-        result +=
-        `</div>
-        </div> 
-        `;
+        result += `</div> `;
 
 
         

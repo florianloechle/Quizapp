@@ -112,13 +112,20 @@ const showResults = () => {
 
 };
 
-const resultViewInit = () => {
+const resultViewInit = async () => {
     view.renderResults;
     console.log("resultViewInit");
+    try {
+        await Quiz.fetchResults().then((results) => {
+            displayResultView(results);
+        })
+        
+    } catch (error) {
+
+        console.log(`Something went wrong: ${error}`);
+
+    };
     
-    Quiz.fetchResults().then((results) => {
-        displayResultView(results);
-    })
     
 }
 
