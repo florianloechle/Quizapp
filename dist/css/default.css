@@ -302,11 +302,11 @@
     justify-content: center;
 }
 
-    #innerPlayView a {
-        color: black;
-        line-height: 50px;
-        font-weight: 200;
-    }
+#innerPlayView a {
+    color: black;
+    line-height: 50px;
+    font-weight: 200;
+}
 
 .quiz-header-list {
     list-style: none;
@@ -340,3 +340,27 @@
   z-index: 1;
   top: -5px;
 }
+
+
+/*<---------------------------->*/
+/********    Result     *********/
+/*<---------------------------->*/
+
+#resultView {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  } 
+  
+  #innerResultView {
+      border-radius: 5px;
+      background-color: rgba(255,255,255,0.7);
+      justify-content: center;
+  }
+  
+  #innerResultView a {
+      color: black;
+      line-height: 50px;
+      font-weight: 200;
+  }

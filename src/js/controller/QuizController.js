@@ -108,7 +108,7 @@ const showResults = () => {
     $('#playView').animate({
         width: 0,
         opacity: 0,
-    },50, () => { resultViewInit() } )
+    },5, () => { resultViewInit() } )
 
 };
 
@@ -129,13 +129,8 @@ const displayResultView = (results) => {
         // state.id = quizViewModel.id;
         view = new QuizResultView('#resultView', results);
 
-
         //mdl upgrade..
         componentHandler.upgradeElements($(container.mainPanel).children());
-
-        // ViewDecorator.EventListenerDecorator(view,'click',handleQuizEvents);
-        // init();
-        // updateView();
     });
 }
 

@@ -36,7 +36,7 @@ export default class QuizResultView {
         console.log( $("#content") );
         console.log( contentHTML );
         $("#content")[0].innerHTML = contentHTML;
-
+        // this.item.addClass('blink-green');
     };
 
     renderDetailHTMLByQuestionID(id) {
@@ -51,8 +51,20 @@ export default class QuizResultView {
                 </div>`;
                 
         for(var i = 0; i<4; i++) {
+
+            var style = "";
+            // richtige Antwort auf die Frage wird immer gruen markiert
+            if(this.results.questions[id].answers[i].correct == 1)
+            {
+                style = "blink-green";
+            }
+            // wenn die Frage falsch beantwortet wurde, wird die entsprechende Antwortmöglichkeit rot markiert
+            if(this.results.questions[id].givenAnswer === this.results.questions[id].answers[i].id && !this.results.questions[id].givenAnswerWasCorrect){
+                style = "blink-red";
+            }
+
             result += 
-            `<div data-action="answer${id}" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
+            `<div data-action="answer${id}" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer ${style}">
                 <a>${this.results.questions[id].answers[i].text}</a>          
             </div>
             `;
