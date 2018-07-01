@@ -142,4 +142,3 @@ const displayResultView = (results) => {
 }
 
 
-

@@ -352,7 +352,7 @@
     text-align: center;
 } 
 
-#innerResultPlayView {
+#innerResultView {
     border-radius: 5px;
     background-color: rgba(255,255,255,0.7);
     justify-content: center;
@@ -362,4 +362,43 @@
     color: black;
     line-height: 50px;
     font-weight: 200;
+}
+
+
+
+/* test */
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    /* background-color: #eee;
+    color: #444; */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+.is-correct {
+    background-color: rgb(0, 116, 6) !important;
+}
+
+.is-wrong {
+    background-color: rgb(196, 4, 4) !important;
 }
