@@ -33,23 +33,22 @@ export default class QuizResultView {
         this.image.innerHTML = `<img style="${style}" src="img/${imageName}.png">`;
 
         var contentHTML = "";
-        for (var i = 0; i < this.results.count; i++) {
+        for (let i = 0; i < this.results.count; i++) {
             contentHTML += this.renderDetailHTMLByQuestionID(i);
         }
 
         $("#detailedAnswers")[0].innerHTML += contentHTML;
 
         var coll = document.getElementsByClassName("collapsible");
-        var i;
 
-        for (i = 0; i < coll.length; i++) {
+        for (let i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
             this.classList.toggle("active");
             var content = this.nextElementSibling;
-            if (content.style.display === "block") {
+            if (content.style.display === "flex") {
                 content.style.display = "none";
             } else {
-                content.style.display = "block";
+                content.style.display = "flex";
             }
         });
         }
@@ -61,16 +60,16 @@ export default class QuizResultView {
             <div id="innerResultPlayView" class="content mdl-grid mdl-cell mdl-cell--12-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
         `;
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
 
             var style = "";
             // richtige Antwort auf die Frage wird immer gruen markiert
             if (this.results.questions[id].answers[i].correct == 1) {
-                style = "blink-green";
+                style = "is-correct";
             }
             // wenn die Frage falsch beantwortet wurde, wird die entsprechende Antwortmöglichkeit rot markiert
             if (this.results.questions[id].givenAnswer === this.results.questions[id].answers[i].id && !this.results.questions[id].givenAnswerWasCorrect) {
-                style = "blink-red";
+                style = "is-wrong";
             }
 
             result +=
@@ -82,16 +81,18 @@ export default class QuizResultView {
 
         result += `</div> `;
 
-        var correct = "";
+        var imageName = "";
         if (this.results.questions[id].givenAnswerWasCorrect) {
-            correct = `<span style="color: green">Frage ${id+1}: </span>`;
+            imageName = `correct`;
         } else {
-            correct = `<span style="color: red">Frage ${id+1}: </span>`;
+            imageName = `wrong`;
         }
 
         var collapse =
             `
-            <button class="collapsible mdl-grid mdl-cell mdl-cell--10-col mdl-cell--12-col-phone mdl-cell--12-col-tablet"${correct}${this.results.questions[id].questionText}</button>
+            <div class="collapsible mdl-grid mdl-cell mdl-cell--10-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-shadow--6dp">
+                <img style="width: 20px; height: 20px;" src="img/${imageName}.png">&nbsp;&nbsp;Frage ${id+1}: ${this.results.questions[id].questionText}
+            </div>
             ${result}
             `;
 
