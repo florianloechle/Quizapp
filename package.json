@@ -1,14 +1,35 @@
 {
   "name": "quiz",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
+  "version": "0.0.5",
+  "description": "A simple quiz spa for a student project.",
+  "private": true,
+  "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint --init",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "src/",
+    "srv/"
+  ],
+  "repository": "schottilol/wbQuiz",
+  "bugs": "https://github.com/schottilol/wpQuiz",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.0.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jest": "^23.3.0",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3",
     "webpack-dev-server": "^3.1.4"
@@ -16,7 +37,10 @@
   "dependencies": {
     "jquery": "^3.3.1"
   },
-  "keywords": [],
+  "keywords": [
+    "Quiz",
+    "DHBW"
+  ],
   "author": "Florian Löchle",
   "license": "MIT"
 }
