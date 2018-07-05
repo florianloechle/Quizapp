@@ -1,4 +1,3 @@
-import {request} from '../index';
 
 export default class Question {
 

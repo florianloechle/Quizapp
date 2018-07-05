@@ -1,7 +1,5 @@
 import { ViewDecorator , CompositeController } from '../ViewDecorator';
 import { WriteableAnswer } from '../Views';
-import Validation from '../../manager/Validation';
-import { isArray } from 'util';
 
 export default class QuestionBuilderView {
 

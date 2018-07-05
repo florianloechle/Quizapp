@@ -6,7 +6,6 @@ import Quiz from '../models/Quiz';
 import { container, showSnackbarMessage } from '../index';
 
 let searchView = null;
-let quizArray = [];
 
 export const mainViewInit = () => {
 

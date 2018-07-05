@@ -5,7 +5,19 @@ ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
+
+# dependencies
 node_modules/
+
+# testing
+tests/
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
