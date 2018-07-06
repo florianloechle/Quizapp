@@ -1,4 +1,4 @@
-import {request} from '../index';
+import {request} from '../app';
 
 const path = {
     quizCategorys: '../srv/quiz_management/quiz_categorys.php',

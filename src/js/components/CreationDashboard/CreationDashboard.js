@@ -1,4 +1,4 @@
-import Component from '../../shared/base';
+import Component from '../../combi/component';
 
 class CreationDashboard extends Component {
   constructor(props) {
@@ -15,19 +15,26 @@ class CreationDashboard extends Component {
     };
   }
 
-  handleNewQuiz = quiz => {
+  handleNewQuiz(quiz) {
     // ToDO: Validate, Check Questions, create api call
   };
 
-  handleNewQuestion = question => {
+  handleNewQuestion(question) {
     // ToDO: Validate, add to questionState
   };
 
+  handleDeleteQuestion(question) {
+    // ToDO: Delete question from state
+  };
+
   render() {
+    const {questions} = this.state;
+
     return {
       children: [
-        { comp: QuizForm, props: { newQuiz: this.handleNewQuiz } },
-        { comp: QuestionForm, props: { newQuestion: this.handleNewQuestion } }
+        { comp: QuizForm, input: true, props: { newQuiz: this.handleNewQuiz } },
+        { comp: QuestionForm, input: true, props: { newQuestion: this.handleNewQuestion } },
+        { comp: QuestionList, input: true, props: { questions: questions, deleteQuestion: this.handleDeleteQuestion } }
       ]
     };
   }

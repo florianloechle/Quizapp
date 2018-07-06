@@ -1,6 +1,6 @@
 import ManagementView from '../views/General/ManagementView';
 import User from '../models/User';
-import { container, showSnackbarMessage } from '../index';
+import { container, showSnackbarMessage } from '../app';
 
 let loginView = null;
 let registerView = null;

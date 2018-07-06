@@ -6,7 +6,7 @@
  *
  */
 
-import Component from '../../shared/base';
+import Component from '../../combi/component';
 
 class HomeDashboard extends Component {
   constructor(props) {
@@ -15,9 +15,11 @@ class HomeDashboard extends Component {
     this.state = {
       isSearching: false
     };
+
+    this.handleNewSearch.bind(this);
   }
 
-  handleNewSearch = search => {
+  handleNewSearch(search) {
     this.updateState({
       isSearching: true
     });

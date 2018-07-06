@@ -1,4 +1,4 @@
-import { container, showSnackbarMessage } from '../index';
+import { container, showSnackbarMessage } from '../app';
 import { ViewDecorator } from '../views/ViewDecorator';
 import QuizView from '../views/Quiz/quizView';
 import QuizResultView from '../views/Quiz/quizResultView';

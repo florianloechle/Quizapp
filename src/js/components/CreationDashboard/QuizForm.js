@@ -6,7 +6,7 @@
  *
  */
 
-import Component from '../../shared/base';
+import Component from '../../combi/component';
 
 class QuizForm extends Component {
   constructor(props) {
@@ -22,14 +22,18 @@ class QuizForm extends Component {
     };
   }
 
-  onFormSubmit = e => {
+  componentDidRender() {
+    // ToDO: FetchCategorys, render categorys..
+  }
+
+  onFormSubmit(e) {
     e.preventDefault();
 
     this.props.createQuiz(this.state.quiz);
   }
 
-  onInputChange = e => {
-    const newQuiz = this.state.quiz;
+  onInputChange(e) {
+    const newQuiz = this.state;
 
     newQuiz[e.target.name] = e.target.value;
 

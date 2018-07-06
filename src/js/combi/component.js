@@ -12,6 +12,6 @@ class Component {
   }
 }
 
-Component.prototype.isComponent = {};
+Component.prototype.isCombiComponent = {};
 
 export default Component;

@@ -3,7 +3,7 @@ import SearchView from '../views/Main/searchView';
 import { QuizInit } from '../controller/QuizController';
 import Query from '../models/Query';
 import Quiz from '../models/Quiz';
-import { container, showSnackbarMessage } from '../index';
+import { container, showSnackbarMessage } from '../app';
 
 let searchView = null;
 

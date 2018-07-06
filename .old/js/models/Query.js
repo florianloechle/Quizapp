@@ -1,4 +1,4 @@
-import {request, showSnackbarMessage} from '../index';
+import {request, showSnackbarMessage} from '../app';
 
 const path = {
     fetchQuiz: '../srv/quiz_management/quiz_fetchQuiz.php',

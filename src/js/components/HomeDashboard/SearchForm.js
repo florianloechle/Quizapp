@@ -6,7 +6,7 @@
  *
  */
 
-import Component from '../../shared/base';
+import Component from '../../combi/component';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -22,14 +22,14 @@ class SearchForm extends Component {
     };
   }
 
-  onFormSubmit = e => {
+  onFormSubmit(e) {
     e.preventDefault();
 
     this.props.newSearch(this.state.search);
   }
 
-  onInputChange = e => {
-    const newSearch = this.state.search;
+  onInputChange(e) {
+    const newSearch = this.state;
 
     newSearch[e.target.name] = e.target.value;
 

@@ -3,84 +3,59 @@
 
 <head>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="js/quiz.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="bundle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script src="js/bundle.js"></script>
 
     <title>DHBW Quiz</title>
 </head>
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-    mdl-layout--fixed-header">
-        <header class="mdl-layout__header red">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title" id="panel-titel">Play Quiz</span>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer">
-            <img style="height: 80px; width: auto; background-color: #fafafa ;" src="img/Header.png">
-            <span class="mdl-layout-title"></span>
-            <div>
-                <div id="profile">
+    <noscript>You need to enable javascript to run this app.</noscript>
 
-
-
-
-
-
-
-
-
-
+    <div id="app">
+        <div id="navigation">
+            <header class="mdc-top-app-bar" data-mdc-auto-init="MDCTopAppBar">
+                <div class="mdc-top-app-bar__row">
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                        <a id="menu" href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+                        <span class="mdc-top-app-bar__title">Title</span>
+                    </section>
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
+                        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
+                        <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
+                    </section>
                 </div>
-
-                <nav id="navigation-container" class="mdl-navigation">
-
-
-
-
-
-
-
-
-
-
+            </header>
+            <aside class="mdc-drawer mdc-drawer--persistent mdc-typography" data-mdc-auto-init="MDCPersistentDrawer">
+                <nav class="mdc-drawer__drawer">
+                    <header class="mdc-drawer__header">
+                        <div class="mdc-drawer__header-content">
+                            Header here
+                        </div>
+                    </header>
+                    <nav id="icon-with-text-demo" class="mdc-drawer__content mdc-list">
+                        <a class="mdc-list-item mdc-list-item--activated" href="#">
+                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>Inbox
+                        </a>
+                        <a class="mdc-list-item" href="#">
+                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>Star
+                        </a>
+                    </nav>
                 </nav>
-            </div>
-            <div class="mdl-list red">
-                <div class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-
-                    </span>
-                </div>
-                <div class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-
-                        <span class="mdl-list__item-secondary-content">
-                        </span>
-                </div>
-            </div>
+            </aside>
         </div>
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <div id="quiz-panel">
-
-                </div>
-            </div>
+        <main>
+            
         </main>
-
-    </div>
-    <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button type="button" class="mdl-snackbar__action"></button>
     </div>
 
 </body>

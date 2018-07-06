@@ -1,4 +1,4 @@
-import {request} from '../index';
+import {request} from '../app';
 
 const path = {
     registration: '../srv/user_management/user_registration.php',

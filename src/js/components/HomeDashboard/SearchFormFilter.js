@@ -6,7 +6,7 @@
  *
  */
 
-import Component from '../../shared/base';
+import Component from '../../combi/component';
 
 class SearchFormFilter extends Component {
   constructor(props) {

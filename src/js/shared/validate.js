@@ -1,4 +1,14 @@
 /**
+ * Copyright (c) 2018-present, Florian Löchle.
+ *
+ * This source code is licensed under the MIT license found in the LICENSE
+ * file in the root directory.
+ *
+ */
+
+
+
+/**
  * Validates textFields for a valid value.
  * @param {Object} textFields - An input object or an array of input objects.
  * @returns {boolean} - Return either true if inputs contain values or false if no value is present.

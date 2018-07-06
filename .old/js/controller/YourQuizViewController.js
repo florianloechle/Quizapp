@@ -1,6 +1,6 @@
 import Query from '../models/Query';
 import YourQuizView from '../views/YourQuiz/yourQuizView';
-import { container , showSnackbarMessage } from '../index';
+import { container , showSnackbarMessage } from '../app';
 import Quiz from '../models/Quiz';
 
 let yourView = null;

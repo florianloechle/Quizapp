@@ -1,7 +1,7 @@
 import QuestionBuilderView from '../views/Creation/questionBuilderView';
 import QuizBuilderView from '../views/Creation/quizBuilderView';
 import QuestionListView from '../views/Creation/questionListView';
-import { container, showSnackbarMessage } from '../index';
+import { container, showSnackbarMessage } from '../app';
 import Quiz from '../models/Quiz';
 import Question from '../models/Question';
 
