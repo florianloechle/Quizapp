@@ -1,6 +1,7 @@
 import { container, showSnackbarMessage } from '../index';
 import { ViewDecorator } from '../views/ViewDecorator';
 import QuizView from '../views/Quiz/quizView';
+import QuizResultView from '../views/Quiz/quizResultView';
 import Question from '../models/Question';
 import Quiz from '../models/Quiz';
 
@@ -41,6 +42,7 @@ const init = () => {
     state.answered = [];
     state.score = 0;
     state.inProgress = true;
+    state.results = [];
 
     nextQuestion();
 };
@@ -56,7 +58,7 @@ const handleQuizEvents = (action,view) => {
         answers: view.getAnswers()
     };
 
-    Quiz.fetchAnswers({answers: JSON.stringify(answeredQuestion)}).then(answer => {
+    Quiz.fetchAnswers({answers: view.getSelected()}).then(answer => {
         state.inProgress = false;
 
         view.showResult(answer.id);
@@ -72,7 +74,7 @@ const handleQuizEvents = (action,view) => {
 
         setTimeout( () => {
             nextQuestion();
-        },1500);
+        },3000);
 
     }, failure => {
         showSnackbarMessage('There was an error connecting to the server. Try again later.');
@@ -90,7 +92,6 @@ const nextQuestion = async () => {
     state.currentQuestion = await Quiz.fetchQuestion(showResults);
     
     if(!state.currentQuestion) {
-
        return;
     };
 
@@ -103,7 +104,7 @@ const nextQuestion = async () => {
 
 const showResults = () => {
     state.inProgress = false;
-
+    
     $('#playView').animate({
         width: 0,
         opacity: 0,
@@ -111,11 +112,33 @@ const showResults = () => {
 
 };
 
-const resultViewInit = () => {
-    view.renderResults
+const resultViewInit = async () => {
+    view.renderResults;
+    console.log("resultViewInit");
+    try {
+        await Quiz.fetchResults().then((results) => {
+            displayResultView(results);
+        })
+        
+    } catch (error) {
 
+        console.log(`Something went wrong: ${error}`);
 
+    };
+    
+    
 }
 
+const displayResultView = (results) => {
+    
+    $(container.mainPanel).load('../dist/html/quiz_result.html', () => {
+        $('#resultView').fadeIn('slow');
+        // state.id = quizViewModel.id;
+        view = new QuizResultView('#resultView', results);
+
+        //mdl upgrade..
+        componentHandler.upgradeElements($(container.mainPanel).children());
+    });
+}
 
 

@@ -98,11 +98,7 @@ const handleQuizEvents = (action,view) => {
 
             if (response.success) {
             
-                quiz = new Quiz();
-    
-                quizBuilder.reset(quiz);
-    
-                questionListView.removeAll();
+                reset();
     
                 $('#overlay').fadeOut('fast');
     
@@ -115,6 +111,16 @@ const handleQuizEvents = (action,view) => {
         },1000)
         
     })
+};
+
+const reset = () => {
+
+    quiz = new Quiz();
+    
+    quizBuilder.reset(quiz);
+
+    questionListView.removeAll();
+
 };
 
 const handleListEvents = (action,view) => {

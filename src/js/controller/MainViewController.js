@@ -76,7 +76,7 @@ const updateUIWithQuery = async query => {
             
             searchView.renderQueryResults(query.results);
 
-        },1000);
+        },100);
         
     } catch (error) {
 
