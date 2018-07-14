@@ -13,7 +13,7 @@ class QuizManager extends Database {
     public static function getCategorys() {
         self::connect();
 
-        if(!empty($categorys = R::findAll('category'))) {
+        if(!empty($categorys = R::findAll('category',' ORDER BY name'))) {
             return json_encode(array_values($categorys));
         };
         throw new Exception(QuizManagerError::noItemsFound);
