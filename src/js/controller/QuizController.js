@@ -77,7 +77,7 @@ const handleQuizEvents = (action,view) => {
         },3000);
 
     }, failure => {
-        showSnackbarMessage('There was an error connecting to the server. Try again later.');
+        showSnackbarMessage('Fehler beim verbinden mit dem Server. Bitte erneut versuchen.');
         setTimeout( () => { window.location('index.html') },2000);
     });
 

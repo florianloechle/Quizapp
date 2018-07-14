@@ -39,7 +39,7 @@ try {
     UserManager::loginUser($_POST['username'],$_POST['password']);
 
     $success = array(
-        'success' => 'login successfull'
+        'success' => 'Login erfolgreich'
     );
     echo json_encode($success);
     

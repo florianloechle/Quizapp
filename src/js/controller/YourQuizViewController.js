@@ -46,7 +46,7 @@ const handleYourQuizEvents = (action,view) => {
         //No response..
     }, rejection => {
 
-        showSnackbarMessage('Could not reach server. Please check your connection',3000);
+        showSnackbarMessage('Server nicht erreichbar. Bitte prüfen Sie ihre Verbindung.',3000);
 
     });
 

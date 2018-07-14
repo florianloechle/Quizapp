@@ -102,11 +102,11 @@ const handleQuizEvents = (action,view) => {
     
                 $('#overlay').fadeOut('fast');
     
-                showSnackbarMessage('Quiz added successfully!', 2500);
+                showSnackbarMessage('Quiz wurde hinzugefügt!', 2500);
     
             } else {
     
-                showSnackbarMessage('Failed, please try again later or reload the page', 2500)
+                showSnackbarMessage('Fehler, bitte erneut versuchen.', 2500)
             };
         },1000)
         

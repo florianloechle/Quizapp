@@ -39,7 +39,7 @@ const handleSearchEvents = async (action,view) => {
                     QuizInit(view.quiz);
                 });
             } else {
-                showSnackbarMessage('Could not load quiz. Try again later.')
+                showSnackbarMessage('Konnte Quiz nicht laden. Bitte erneut versuchen.')
             };
         });
 

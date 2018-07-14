@@ -44,7 +44,7 @@ const handleLoginEvents = (action) => {
         };
 
         if (response.success) {
-            showSnackbarMessage('Login successfull');
+            showSnackbarMessage('Login erfolgreich');
 
             setTimeout(() => {
                 window.location = 'index.html';
@@ -88,7 +88,7 @@ const handleRegistrationEvents = (action) => {
         };
 
         if (response.success) {
-            showSnackbarMessage('Registraion successfull. You can login now.');
+            showSnackbarMessage('Registrierung erfolgreich. Sie können sich nun einloggen.');
 
             setTimeout(() => {
                loginViewInit();

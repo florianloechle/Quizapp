@@ -17,7 +17,7 @@ export default class Query {
             this.results = results;
 
         } catch(error) {
-            showSnackbarMessage(`Could not reach server: ${error}`)
+            showSnackbarMessage(`Server nicht erreichbar: ${error}`)
         };
     };
 
