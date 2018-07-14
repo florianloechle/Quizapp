@@ -74,7 +74,7 @@ const handleQuizEvents = (action,view) => {
 
         setTimeout( () => {
             nextQuestion();
-        },100);
+        },3000);
 
     }, failure => {
         showSnackbarMessage('There was an error connecting to the server. Try again later.');
@@ -108,7 +108,7 @@ const showResults = () => {
     $('#playView').animate({
         width: 0,
         opacity: 0,
-    },5, () => { resultViewInit() } )
+    },1000, () => { resultViewInit() } )
 
 };
 
