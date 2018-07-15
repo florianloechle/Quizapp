@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Jun 2018 um 04:40
+-- Erstellungszeit: 14. Jul 2018 um 20:44
 -- Server-Version: 10.1.31-MariaDB
 -- PHP-Version: 7.2.4
 
@@ -239,7 +239,175 @@ INSERT INTO `answer` (`id`, `text`, `correct`, `question_id`) VALUES
 (197, 'Mineralstoffe', 0, 50),
 (198, 'Fette', 0, 50),
 (199, 'Zucker', 0, 50),
-(200, 'Eiweiße', 1, 50);
+(200, 'Eiweiße', 1, 50),
+(201, '2001', 0, 51),
+(202, '1998', 1, 51),
+(203, '1993', 0, 51),
+(204, '1999', 0, 51),
+(205, 'Gordon Hiresword', 0, 52),
+(206, 'Gustav Gans', 0, 52),
+(207, 'Gerred Freyer', 0, 52),
+(208, ' Gordon Freeman', 1, 52),
+(209, 'Dr. Kleiner', 0, 53),
+(210, 'Eli Vance', 1, 53),
+(211, 'G-Man', 0, 53),
+(212, 'Wer ist Alyx?!', 0, 53),
+(213, 'Seven Hour War', 1, 54),
+(214, 'Seven Minute War', 0, 54),
+(215, 'Seven Day War', 0, 54),
+(216, 'World War III', 0, 54),
+(217, 'Die Katze Mr. Buttons', 0, 55),
+(218, 'Der Hund Milky', 0, 55),
+(219, 'Der Antlion Srappy', 0, 55),
+(220, ' Die Headcrab Lamarr', 1, 55),
+(221, 'Nihilanth', 1, 56),
+(222, 'Lilith', 0, 56),
+(223, 'Gargantua', 0, 56),
+(224, 'Behemoth', 0, 56),
+(225, 'Origin', 0, 57),
+(226, 'Valve', 0, 57),
+(227, 'Steam', 1, 57),
+(228, 'Uplay', 0, 57),
+(229, 'Father Lucas', 0, 58),
+(230, 'Saint Michael', 0, 58),
+(231, 'Father Grigori', 1, 58),
+(232, 'Father Sebastian', 0, 58),
+(233, 'Shit.', 0, 59),
+(234, 'I like trains.', 0, 59),
+(235, 'We need to find your father!', 0, 59),
+(236, '...', 1, 59),
+(237, 'Quake-Engine', 1, 60),
+(238, 'Doom-Engine', 0, 60),
+(239, 'Unreal-Engine', 0, 60),
+(240, 'Es ist eine Eigenentwicklung.', 0, 60),
+(241, 'Brechstange', 1, 61),
+(242, 'Hammer', 0, 61),
+(243, 'Bohrer', 0, 61),
+(244, 'Säge', 0, 61),
+(245, 'Rom', 0, 62),
+(246, 'Madrid', 0, 62),
+(247, 'Paris', 1, 62),
+(248, 'Berlin', 0, 62),
+(249, 'Jason Bourne', 0, 63),
+(250, 'Ethan Hunt', 0, 63),
+(251, 'Kingsmen', 0, 63),
+(252, 'James Bond', 1, 63),
+(253, 'BAT', 0, 64),
+(254, 'PDF', 1, 64),
+(255, 'EXE', 0, 64),
+(256, 'ARF', 0, 64),
+(257, 'Windows', 0, 65),
+(258, 'iOS', 1, 65),
+(259, 'Zuse', 0, 65),
+(260, 'Linux', 0, 65),
+(261, '1', 0, 66),
+(262, '4', 0, 66),
+(263, '3', 0, 66),
+(264, '2', 1, 66),
+(265, '40km', 0, 67),
+(266, '43,21km', 0, 67),
+(267, '42,195km', 1, 67),
+(268, '42km', 0, 67),
+(269, '2003', 0, 68),
+(270, '2002', 1, 68),
+(271, '2000', 0, 68),
+(272, '2001', 0, 68),
+(273, '1950', 0, 69),
+(274, '1945', 1, 69),
+(275, '1949', 0, 69),
+(276, '1939', 0, 69),
+(277, '22', 0, 70),
+(278, '18', 0, 70),
+(279, '15', 0, 70),
+(280, '16', 1, 70),
+(281, 'London', 1, 71),
+(282, 'Paris', 0, 71),
+(283, 'New York', 0, 71),
+(284, 'Berlin', 0, 71),
+(285, 'Mars', 0, 72),
+(286, 'Jupiter', 0, 72),
+(287, 'Erde', 0, 72),
+(288, 'Venus', 1, 72),
+(289, 'Samba', 0, 73),
+(290, 'Zumba', 1, 73),
+(291, 'Sumba', 0, 73),
+(292, 'Zamba', 0, 73),
+(293, 'dem Bundeskanzler', 0, 74),
+(294, 'dem Bundestagspräsidenten', 0, 74),
+(295, 'dem Präsidenten des Bundesverfassungsgerichts', 0, 74),
+(296, 'dem Bundespräsidenten', 1, 74),
+(297, '0 g', 0, 75),
+(298, '28 g', 1, 75),
+(299, '38 g', 0, 75),
+(300, '48 g', 0, 75),
+(301, 'eine Technik beim Steakschneiden', 0, 76),
+(302, 'eine Methode des Buchsbaumtrimmens', 0, 76),
+(303, 'ein Haarschnitt', 1, 76),
+(304, 'eine Operationsmethode', 0, 76),
+(305, 'Meran', 0, 77),
+(306, 'Rom', 0, 77),
+(307, 'Cremona', 1, 77),
+(308, 'Pisa', 0, 77),
+(309, 'Inversion', 0, 78),
+(310, 'Inklusion', 1, 78),
+(311, 'Exklusion', 0, 78),
+(312, 'Investition', 0, 78),
+(313, 'den Wert von Zuchtperlen', 0, 79),
+(314, 'die Sicherheit von Empfängnisverhütungsmethoden', 1, 79),
+(315, 'die Anzahl von Glitzerpartikeln in Nagellack', 0, 79),
+(316, 'die Lautstärke eines Schlagzeugs', 0, 79),
+(317, 'die Frau', 0, 80),
+(318, 'das Kind', 0, 80),
+(319, 'der Mann', 1, 80),
+(320, 'der Sklave', 0, 80),
+(321, 'Zypern', 1, 81),
+(322, 'Vatikanstadt', 0, 81),
+(323, 'Andorra', 0, 81),
+(324, 'Liechtenstein', 0, 81),
+(325, 'Silly', 1, 82),
+(326, 'Hilly', 0, 82),
+(327, 'Zilly', 0, 82),
+(328, 'Billy', 0, 82),
+(329, 'Gnom', 1, 83),
+(330, 'Untote', 0, 83),
+(331, 'Tauren', 0, 83),
+(332, 'Trolle', 0, 83),
+(333, 'Teldrassil', 1, 84),
+(334, 'Tanaris', 0, 84),
+(335, 'Desolace', 0, 84),
+(336, 'Tirisfal', 0, 84),
+(337, 'Schneider', 0, 85),
+(338, 'Ingenieur', 0, 85),
+(339, 'Kürschner', 0, 85),
+(340, 'Zahnarzt', 1, 85),
+(341, 'Oger', 0, 86),
+(342, 'Menschen', 0, 86),
+(343, 'Trolle', 1, 86),
+(344, 'Orks', 0, 86),
+(345, '3', 1, 87),
+(346, '4', 0, 87),
+(347, '1', 0, 87),
+(348, '2', 0, 87),
+(349, 'Gadgetzan', 0, 88),
+(350, 'Menethil', 1, 88),
+(351, 'Ironforge', 0, 88),
+(352, 'Booty Bay', 0, 88),
+(353, 'grün', 0, 89),
+(354, 'violett', 0, 89),
+(355, 'blau', 0, 89),
+(356, 'schwarz', 1, 89),
+(357, 'Wucherwurzeln', 1, 90),
+(358, 'Erlösung', 0, 90),
+(359, 'Untote aufspüren', 0, 90),
+(360, 'Hingabe-Aura', 0, 90),
+(361, '02.04.2009', 0, 91),
+(362, '08.11.2008', 0, 91),
+(363, '13.11.2008', 1, 91),
+(364, '18.04.2009', 0, 91),
+(365, 'Jeff Kaplan', 1, 92),
+(366, 'Tom Chillton', 0, 92),
+(367, 'Michael Morhaime', 0, 92),
+(368, 'Ion Hazzikostas', 0, 92);
 
 -- --------------------------------------------------------
 
@@ -276,7 +444,8 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (17, 'Fußball'),
 (18, 'Haushalt'),
 (19, 'Insekten'),
-(20, 'Afrika');
+(20, 'Afrika'),
+(21, 'Allgemeinwissen');
 
 -- --------------------------------------------------------
 
@@ -285,7 +454,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `difficulty` (
-  `id` int(10) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -364,7 +533,49 @@ INSERT INTO `question` (`id`, `text`, `quiz_id`) VALUES
 (47, 'Woher hat die Glucose diese Energie?', 6),
 (48, 'Wie heißen die Grundbausteine der Proteine?', 6),
 (49, 'Welcher der folgenden wichtigen Gruppen gehört nicht zu den Proteinen?', 6),
-(50, 'Wie heißen Proteine auf Deutsch?', 6);
+(50, 'Wie heißen Proteine auf Deutsch?', 6),
+(51, 'Wann erschien der erste Teil der Half Life-Serie für den PC?', 7),
+(52, 'Wie heißt der Hauptcharakter der Half Life-Serie?', 7),
+(53, 'Wer ist der Vater von Alyx?', 7),
+(54, 'Wie wird der Angriff der Combine auf die Erde genannt?', 7),
+(55, 'Was ist Dr. Kleiners Haustier?', 7),
+(56, 'Wie heißt der Endgegner in Half Life 1?', 7),
+(57, 'Wie heißt die revolutionäre neue Vertriebsplattform mit der Half-Life 2 über das Internet gekauft und heruntergeladen werden konnte?', 7),
+(58, 'Wie heißt der Geistliche in Ravenholm?', 7),
+(59, 'Wag sagt Gordon Freeman am Ende von Half Life: Episode 2, als er mit Alyx aus City 17 flieht?', 7),
+(60, 'Auf welcher Engine basiert die Spiele-Engine, die in Half Life 1 zum Einsatz kommt?', 7),
+(61, 'Welches Werkzeug wurde durch die Verwendung in Half-Life berühmt?', 7),
+(62, 'Wie lautet die Hauptstadt von Frankreich?', 8),
+(63, 'Welcher Agent steht im Zusammenhang mit der \"Lizenz zum Töten\"?', 8),
+(64, 'Welches Dateiformat öffnet man typischerweise mit dem Acrobat Reader?', 8),
+(65, 'Welches Betriebssystem stammt von Apple?', 8),
+(66, 'Wie viele Nieren hat ein Mensch im Normalfall?', 8),
+(67, 'Wie lange geht ein Marathon?', 8),
+(68, 'In welchem Jahr wurde der Euro als Bargeld eingeführt?', 8),
+(69, 'Wann endete der 2. Weltkrieg?', 8),
+(70, 'Wie viele Bundesländer hat Deutschland?', 8),
+(71, 'In welcher Stadt lebte der Detektiv Sherlock Holmes?', 8),
+(72, 'Wie lautet der zweite Planet in unserem Sonnensystem?', 8),
+(73, 'Welches Fitnessangebot findet sich heute in vielen Studios?', 9),
+(74, 'Wem wird das Bundesverdienstkreuz bei Amtsantritt verliehen?', 9),
+(75, 'Wie viel Kakaobutter ist in etwa 100 g weißer Schokolade enthalten?', 9),
+(76, 'Was ist ein \"Undercut\"?', 9),
+(77, 'In welchem Ort schuf der Geigenbauer Antonio Stradivari seine wertvollen Instrumente?', 9),
+(78, 'Wie nennt man die Beschulung geistig oder körperlich benachteiligter Kinder in der Regelschule?', 9),
+(79, 'Was berechnet der Pearl-Index?', 9),
+(80, 'Wer war im Lateinischen ursprünglich mit dem Wort \"Genie\" gemeint?', 9),
+(81, 'In Europa existieren sechs Zwergstaaten. Welcher ist offiziell keiner?', 9),
+(82, 'Wie heißt die Band der Schauspielerin Anna Loos?', 9),
+(83, 'Welche dieser Rassen gehört nicht zu der Horde?', 10),
+(84, 'In welchem Gebiet liegt die Nachtelfen-Hauptstadt Darnassus?', 10),
+(85, 'Welchen Beruf kann man nicht erlernen?', 10),
+(86, 'Welches sind die Hauptgegner in Zul\'Farrak?', 10),
+(87, 'Wieviele Instanzen gibt es im Scharlachroten Kloster?', 10),
+(88, 'Wo gibt es kein Auktionshaus?', 10),
+(89, 'Welche Farbstufe von Gegenständen gibt es nicht?', 10),
+(90, 'Welche Fähigkeit hat der Paladin nicht?', 10),
+(91, 'Wann erschien die Erweiterung Wrath of the Lich King?', 10),
+(92, 'Welcher Entwickler war maßgeblich für den Erfolg von WoW verantwortlich?', 10);
 
 -- --------------------------------------------------------
 
@@ -387,11 +598,15 @@ CREATE TABLE `quiz` (
 
 INSERT INTO `quiz` (`id`, `name`, `description`, `category_id`, `difficulty_id`, `user_id`) VALUES
 (1, 'Wissenstest: USA', 'Welche beiden Städte verband die legendäre Route 66? Wie viele Streifen hat die amerikanische Flagge? In welcher Stadt steht das höchste Gebäude der USA? Testen Sie Ihr Wissen!', 1, 1, 1),
-(2, 'Chemie Quiz', 'Chemie ist ein wissenschaftlicher Fachbereich, der sich in zahlreiche Unterbereiche gliedert und bei vielen Menschen eher Unwillen und Unbehagen auslöst als Wohlgefallen. Trotzdem kommt man an der Chemie heute leider nicht mehr vorbei. Was allerdings harmlos anmutet kann durchaus auch zur Gefahr werden, so das einige grundlegende Kenntnisse durchaus angebracht sind, um Meldungen einzuschätzen oder den eigenen Umgang mit der Chemie zu relativieren. Dabei kann das vorhandene Quiz gute Dienste leisten. Doch auch in jeder anderen Hinsicht sind chemische Kenntnisse durchaus angebracht. Diese können beispielsweise maßgeblich zum eigenen Wohlbefinden beitragen, wenn man an einer Allergie leidet, und nun versuchen muss, die betreffenden Allergene herauszufinden bzw. sein Essen nach einem speziellen Ernährungsplan zusammenzustellen. Dabei bieten die Kenntnisse der wichtigsten Begriffe mitunter gute Anhaltspunkte, um Abkürzungen und Bezeichnungen auf Verpackungen ordentlich zu interpretieren bzw. die Inhaltsstoffe zu identifizieren. Mit einem geeigneten Ratespiel nimmt man der Aneignung entsprechender Grundkenntnisse aber schnell den Schrecken.', 2, 1, 1),
+(2, 'Chemie Quiz', 'Chemie ist ein wissenschaftlicher Fachbereich, der sich in zahlreiche Unterbereiche gliedert und bei vielen Menschen eher Unwillen und Unbehagen auslöst als Wohlgefallen. Trotzdem kommt man an der Chemie heute leider nicht mehr vorbei. Was allerdings harmlos anmutet kann durchaus auch zur Gefahr werden, so das einige grundlegende Kenntnisse durchaus angebracht sind, um Meldungen einzuschätzen oder den eigenen Umgang mit der Chemie zu relativieren. Dabei kann das vorhandene Quiz gute Dienste leisten. Doch auch in jeder anderen Hinsicht sind chemische Kenntnisse durchaus angebracht. Diese können beispielsweise maßgeblich zum eigenen Wohlbefinden beitragen, wenn man an einer Allergie leidet, und nun versuchen muss, die betreffenden Allergene herauszufinden bzw. sein Essen nach einem speziellen Ernährungsplan zusammenzustellen. Dabei bieten die Kenntnisse der wichtigsten Begriffe mitunter gute Anhaltspunkte, um Abkürzungen und Bezeichnungen auf Verpackungen ordentlich zu interpretieren bzw. die Inhaltsstoffe zu identifizieren. Mit einem geeigneten Ratespiel nimmt man der Aneignung entsprechender Grundkenntnisse aber schnell den Schrecken.', 2, 3, 1),
 (3, 'Computerspiel-Jargon?', 'Verstehen Sie Computerspieler, wenn sie von Bashen, Lucken oder Farmen reden? Vielleicht sind Sie auch ein alter Hase, wenn es um Abkürzungen und Spezialjargon im Spielebereich geht? Testen Sie hier Ihr Wissen!', 3, 1, 1),
 (4, 'Das große Geschichts-Quiz', 'Sind Sie sattelfest in Sachen Geschichte? Machen Sie den Test und beantworten Sie Fragen aus allen historischen Epochen, vom alten Rom über das Mittelalter bis hin zur Moderne. Staatsmänner, wichtige Verträge, Kriege und Revolutionen gehören zu unserer aller Geschichte. Kennen Sie sich aus?', 4, 1, 1),
 (5, 'Das große Sport-Quiz', 'Sind Sie ein Sport-Experte? Klar, Franz Beckenbauer und seine Erfolge kennt jeder - aber was ist mit anderen Sportarten? Machen Sie unser Quiz und testen Sie Ihr Wissen in Sachen Handball, Olympia, Wintersport, Formel 1 und Co.! ', 8, 1, 1),
-(6, 'Biologiefragen Ernährung', 'Diese Fragen dienen der Vorbereitung zur mündlichen Prüfung Biologie für die externe Nichtschülerprüfung MSA in Berlin im Bereich \"Ernährung und Verdauung - Teilbereich Ernährung\"', 14, 1, 1);
+(6, 'Biologiefragen Ernährung', 'Diese Fragen dienen der Vorbereitung zur mündlichen Prüfung Biologie für die externe Nichtschülerprüfung MSA in Berlin im Bereich \"Ernährung und Verdauung - Teilbereich Ernährung\"', 14, 2, 1),
+(7, 'Half-Life - Wie gut kennst du dich aus?', 'Ein Quiz zum Half-Life Universum. Zeige dein Wissen zu einem Spiel, welches das Egoshooter-Singleplayer Genre verändert hat.', 3, 3, 6),
+(8, 'Allgemeinwissen 1', 'Teste dein Allgemeinwissen!', 21, 1, 6),
+(9, 'Allgemeinwissen 2', 'Teste dein Allgemeinwissen!', 21, 2, 6),
+(10, 'WoW', 'World of Warcraft zählt zu den bedeutendsten Computerspielen, hält seit 2009 den Guinness-Weltrekord für das beliebteste Multiplayer-Online-Rollenspiel und erhielt mehrere Auszeichnungen. Wie gut kennst du dich in World of Warcraft aus?', 3, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -413,7 +628,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `score`, `games_played`) VALUES
-(1, 'scott', '$2y$10$D1QnsniW0NZfdzMDCzz0Wu0/JDcoTtaXKheZVdnExDdzNwxS7mgr.', 'test@test.de', 0, 0);
+(1, 'scott', '$2y$10$Nc.j9ONR1YffbfEP8Aa1DuioswTIy93hRUQoaOBDaWtpQ.TkHDTfe', 'test@test.de', 0, 0),
+(3, 'perschke', '$2y$10$2gwKf3K4FP3Ceyj1hLKiieXY978P.c906k0HKnWFH5QQyRnvPuKAG', '2904cthn928c4rt@gmx.de', 0, 0),
+(6, 'trion', '$2y$10$71Hr8v4kmPW178JclOpciOrk0v3Ni4sxqjzatgYM3xvhtgp4o4PZe', 'test647nh84@gmx.de', 0, 0);
 
 --
 -- Indizes der exportierten Tabellen
@@ -468,31 +685,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=369;
 
 --
 -- AUTO_INCREMENT für Tabelle `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT für Tabelle `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT für Tabelle `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints der exportierten Tabellen
@@ -515,7 +732,8 @@ ALTER TABLE `question`
 --
 ALTER TABLE `quiz`
   ADD CONSTRAINT `c_fk_quiz_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `c_fk_quiz_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `c_fk_quiz_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`difficulty_id`) REFERENCES `difficulty` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
