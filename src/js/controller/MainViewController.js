@@ -1,4 +1,3 @@
-import {ViewDecorator} from '../views/ViewDecorator';
 import SearchView from '../views/Main/searchView';
 import { QuizInit } from '../controller/QuizController';
 import Query from '../models/Query';
@@ -6,7 +5,6 @@ import Quiz from '../models/Quiz';
 import { container, showSnackbarMessage } from '../index';
 
 let searchView = null;
-let quizArray = [];
 
 export const mainViewInit = () => {
 

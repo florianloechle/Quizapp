@@ -1,4 +1,3 @@
-import {ViewDecorator} from '../views/ViewDecorator';
 import QuestionBuilderView from '../views/Creation/questionBuilderView';
 import QuizBuilderView from '../views/Creation/quizBuilderView';
 import QuestionListView from '../views/Creation/questionListView';
