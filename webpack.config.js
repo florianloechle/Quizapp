@@ -7,7 +7,7 @@ module.exports = {
         filename: 'js/quiz.js'
     },
     devServer: {
-        contentBase: '/dist'
+        contentBase: './dist'
     },
     module: {
         rules: [

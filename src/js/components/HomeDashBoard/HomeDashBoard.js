@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import createState from '../../shared/state';
 
-class HomeDashBoard {
+class HomeDashBoard  {
 
   constructor() {
     this.state = createState({
@@ -17,18 +17,24 @@ class HomeDashBoard {
         hard: []
       }
     });
+
+    this.methods
+
   }
 
   componentDidRender() {
     // Do Stuff
   }
 
-  render() {
+  handleSearch(search) {
 
+  }
+
+  render() {
 
     return {
       html: `<div style="display: none" id="main-panel">`,
-      children: ''
+      children: '',
     }
   }
 

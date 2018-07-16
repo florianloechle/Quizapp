@@ -1,6 +1,6 @@
 import { isNormalObject } from '../shared/utils';
 
-function createState(preloadedState) {
+const createState = preloadedState => {
   let currentState = {};
   let isUpdating = false;
 
@@ -8,7 +8,7 @@ function createState(preloadedState) {
     updateState(preloadedState);
   }
 
-  function updateState(partialState) {
+  const updateState = partialState => {
     if (!isNormalObject(partialState)) {
       throw new Error('Expcted parameter to be an object');
     }
@@ -25,13 +25,13 @@ function createState(preloadedState) {
     }
   }
 
-  function getState() {
-    return Object.assign({}, currentState);
+  const getState = () => {
+    Object.assign({}, currentState);
   }
 
   return {
     update: updateState,
-    getState: getState
+    get: getState
   };
 }
 

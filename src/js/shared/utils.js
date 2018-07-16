@@ -10,6 +10,20 @@ export function isNormalObject(obj) {
   return typeof obj === 'object' && obj.toString() === '[object Object]';
 }
 
+export function isUndef(value) {
+  return typeof value === 'undefined' || value === null;
+}
+
+export function areEqual(a,b) {
+
+  const propsA = Object.getOwnPropertyNames(a);
+  const propsB = Object.getOwnPropertyNames(b);
+
+  for(let prop of propsA) {
+
+  }
+}
+
 /**
  * Display a snackbarMessage.
  * @param {string} message - MessageText

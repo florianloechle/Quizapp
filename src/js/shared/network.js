@@ -6,7 +6,7 @@
  *
  */
 
-import $ from 'jQuery';
+import $ from 'jquery';
 
 /**
  * Performs a network request with the desired method.
