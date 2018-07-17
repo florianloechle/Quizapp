@@ -1,43 +1,47 @@
-<div id="playView" style="display: none" class="mdl-grid">
+<div id="PlayDashBoard" style="display: none" class="mdl-grid">
 
-<div id="innerPlayView" class="mdl-grid mdl-cell mdl-cell--8-col mdl-cell--12-col-phone mdl-cell--9-col-tablet box-shadow">
+    <div id="innerPlayView" class="mdl-grid mdl-cell mdl-cell--8-col mdl-cell--12-col-phone mdl-cell--9-col-tablet box-shadow">
         <div class="mdl-cell mdl-cell--12-col">
             <ul class="quiz-header-list">
                 <li style="float: left" class="quiz-header-list-item">
-                    <span>Quiz: </span><span style="margin-right: 5px" data-info="name"></span>
+                    <span>Quiz: </span>
+                    <span style="margin-right: 5px" data-info="name"></span>
                 </li>
                 <li style="float: left" class="quiz-header-list-item">
-                    <span>Ersteller: </span ><span style="margin-right: 5px" data-info="creator"></span>
+                    <span>Ersteller: </span>
+                    <span style="margin-right: 5px" data-info="creator"></span>
                 </li>
                 <li style="float: left" class="quiz-header-list-item">
-                    <span>Frage: </span ><span style="margin-right: 5px" data-info="count"></span>
+                    <span>Frage: </span>
+                    <span style="margin-right: 5px" data-info="count"></span>
                 </li>
                 <li style="float: right" class="quiz-header-list-item">
-                    <span>Dein Score: </span><span style="margin-right: 5px" data-info="score">0</span>
+                    <span>Dein Score: </span>
+                    <span style="margin-right: 5px" data-info="score">0</span>
                 </li>
             </ul>
         </div>
         <div class="mdl-cell mdl-cell--8-col white-cell">
-            <h4 data-info="question" class="creation-header"></h4> 
+            <h4 data-info="question" class="creation-header"></h4>
         </div>
-        <div class="mdl-cell mdl-cell--12-col">     
-        </div> 
-        <div data-action="answer" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
-              <a></a>          
+        <div class="mdl-cell mdl-cell--12-col">
         </div>
-        <div data-action="answer" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
-                <a></a>            
+        <div cb:onClick="handleAnswerSelection" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
+            <a></a>
         </div>
-        <div data-action="answer" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
-                <a></a>          
+        <div cb:onClick="handleAnswerSelection" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
+            <a></a>
         </div>
-        <div data-action="answer" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
-                <a></a>              
+        <div cb:onClick="handleAnswerSelection" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
+            <a></a>
+        </div>
+        <div cb:onClick="handleAnswerSelection" class="mdl-cell mdl-cell--8-col white-cell mdl-cell--12-col-phone box-shadow answer">
+            <a></a>
         </div>
         <div class="mdl-cell mdl-cell--12-col">
             <div id="progressStage" style="width: 2000px; margin-top: 25px;" class="mdl-progress mdl-js-progress">
-                
+
             </div>
         </div>
+    </div>
 </div>
-</div> 

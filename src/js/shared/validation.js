@@ -10,10 +10,10 @@
 
 /**
  * Validates textFields for a valid value.
- * @param {Object} textFields - An input object or an array of input objects.
+ * @param {Object} inputs - An input object which contains the values.
  * @returns {boolean} - Return either true if inputs contain values or false if no value is present.
  */
-export const validateText = textFields => {
+export const validateText = inputs => {
   let isValid = true;
   let validTextFields = true;
 
@@ -38,7 +38,7 @@ export const validateText = textFields => {
  * @param {Object} textFields - An input object.
  * @returns {boolean} - Return either true if inputs contain values or false if no value is present.
  */
-export const validateSanitization = textFields => {
+export const validateSanitization = inputs => {
   let isValid = true;
   let regEx = new RegExp('[^A-Za-z0-9]');
 

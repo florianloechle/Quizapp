@@ -1,31 +1,34 @@
-import { isUndef } from '../shared/utils';
-import Router from '../Combi/CombiRouter';
-import { CombiRenderer } from '../Combi/CombiRenderer';
+import { isUndef, getComponentName } from '../shared/utils';
+import CombiDOM from './CombiDOM';
 
-export function App({ root }) {
-
+export default function CombiApp({ root }) {
   if (isUndef(root) || typeof root !== 'string') {
     throw new Error(`Expected string as root element. But ${typeof root} given.`);
   }
 
-  function createCombiElement(component) {}
+  let dom = null;
+  let components = {};
 
-  function addComponent({ component, route }) {
-    Router.newRoute(route,component);
-    
+  function addComponent({ comp }) {
+    if(!comp.prototype.render) {
+      throw new Error('Components must provide a render method.')
+    };
+
+    components[getComponentName(comp)] = comp;
   }
 
-  function routeTransition({ context: { from, to } }) {}
-
-  function navigate(route) {
-    Router.navigate(route);
+  function navigate(component) {
+    CombiDOM.render(component);
   }
 
   function run() {
-    Router.listen();
+
+    dom = new CombiDOM(root);
+    dom.render(components['HomeDashBoard']);
   }
 
   return {
+    run: run,
     addComponent: addComponent
   };
 }

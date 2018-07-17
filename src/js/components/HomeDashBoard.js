@@ -1,10 +1,9 @@
-import $ from 'jquery';
-import createState from '../../shared/state';
+import createState from '../shared/state';
 
 class HomeDashBoard  {
 
-  constructor() {
-    this.state = createState({
+  constructor(previousState) {
+    this.state = createState(previousState || {
       search: {
         id: '',
         name: '',
@@ -17,24 +16,19 @@ class HomeDashBoard  {
         hard: []
       }
     });
-
-    this.methods
-
   }
 
   componentDidRender() {
-    // Do Stuff
+   
   }
 
-  handleSearch(search) {
-
+  handleSearch(e) {
+    console.log('clicked');
   }
 
   render() {
-
     return {
-      html: `<div style="display: none" id="main-panel">`,
-      children: '',
+      htmlPath: '../html/quiz_main.html'
     }
   }
 

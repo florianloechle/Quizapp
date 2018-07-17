@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="js/quiz.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/default.css"/>
+    <link rel="stylesheet" href="css/default.css" />
     <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -17,21 +18,21 @@
 
     <title>DHBW Quiz</title>
 </head>
-    
+
 <body id="app">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
     mdl-layout--fixed-header">
-<header class="mdl-layout__header red">
-<div class="mdl-layout__header-row">
-<span class="mdl-layout-title" id="panel-titel">Play Quiz</span>
-<div class="mdl-layout-spacer"></div>
-</div>
-</header>
-<div class="mdl-layout__drawer">
-<img style="height: 80px; width: auto; background-color: #fafafa ;" src="img/Header.png">
-<span class="mdl-layout-title"></span>
-<div>
-        <div id="profile">
+        <header class="mdl-layout__header red">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title" id="panel-titel">Play Quiz</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <img style="height: 80px; width: auto; background-color: #fafafa ;" src="img/Header.png">
+            <span class="mdl-layout-title"></span>
+            <div>
+                <div id="profile">
 
 
 
@@ -42,48 +43,47 @@
 
 
 
+                </div>
+
+                <nav id="navigation-container" class="mdl-navigation">
+
+
+
+
+
+
+
+
+
+
+                </nav>
+            </div>
+            <div class="mdl-list red">
+                <div class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+
+                    </span>
+                </div>
+                <div class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+
+                        <span class="mdl-list__item-secondary-content">
+                        </span>
+                </div>
+            </div>
         </div>
-            
-        <nav id="navigation-container" class="mdl-navigation">
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div id="App-Main">
 
-
-
-
-
-
-
-
-
-
-        </nav>
-</div> 
-<div class="mdl-list red">
-<div class="mdl-list__item">
-<span class="mdl-list__item-primary-content">
-
-</span>
-</div>
-<div class="mdl-list__item">
-<span class="mdl-list__item-primary-content">
-
-<span class="mdl-list__item-secondary-content">
-</span>
-</div>
-</div>
-</div>
-<main class="mdl-layout__content">
-<div class="page-content">
-    <div id="quiz-panel">
-            
+                </div>
+            </div>
+        </main>
+    <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button type="button" class="mdl-snackbar__action"></button>
     </div>
-</div>
-</main>
-
-</div>
-<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-<div class="mdl-snackbar__text"></div>
-<button type="button" class="mdl-snackbar__action"></button>
-</div>
 
 </body>
+
 </html>

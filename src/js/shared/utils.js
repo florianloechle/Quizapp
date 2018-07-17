@@ -6,6 +6,8 @@
  *
  */
 
+import $ from 'jquery';
+
 export function isNormalObject(obj) {
   return typeof obj === 'object' && obj.toString() === '[object Object]';
 }
@@ -14,14 +16,25 @@ export function isUndef(value) {
   return typeof value === 'undefined' || value === null;
 }
 
-export function areEqual(a,b) {
+export function getElement(nodeID) {
+  return document.getElementById(nodeID);
+}
 
+export function existsInDOM(node) {
+  return document.body.contains(node);
+}
+
+export function getComponentName(comp) {
+  return comp.prototype.constructor.name;
+}
+
+export function hasChildren(node) {
+  return $(node).children() ? true : false;
+}
+
+export function areEqual(a, b) {
   const propsA = Object.getOwnPropertyNames(a);
   const propsB = Object.getOwnPropertyNames(b);
-
-  for(let prop of propsA) {
-
-  }
 }
 
 /**
@@ -39,4 +52,4 @@ export function showSnackbarMessage(message, timeout, actionText, handler) {
     actionText: actionText || '',
     actionHandler: handler
   });
-};
+}

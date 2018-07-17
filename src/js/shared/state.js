@@ -4,10 +4,6 @@ const createState = preloadedState => {
   let currentState = {};
   let isUpdating = false;
 
-  if (preloadedState && isNormalObject(preloadedState)) {
-    updateState(preloadedState);
-  }
-
   const updateState = partialState => {
     if (!isNormalObject(partialState)) {
       throw new Error('Expcted parameter to be an object');
@@ -29,6 +25,10 @@ const createState = preloadedState => {
     Object.assign({}, currentState);
   }
 
+  if (preloadedState && isNormalObject(preloadedState)) {
+    updateState(preloadedState);
+  }
+  
   return {
     update: updateState,
     get: getState
