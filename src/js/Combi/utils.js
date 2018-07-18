@@ -1,6 +1,5 @@
 import { isNormalObject } from '../shared/utils';
-
-export const COMBI_ON = [{ cb_onclick: 'click' }, { cb_onchange: 'change' }];
+import $ from 'jquery';
 
 export const COMBI_DOMPROPS = [{ cb_name: 'name' }];
 

@@ -1,34 +1,38 @@
-import { isUndef, getComponentName } from '../shared/utils';
-import CombiDOM from './CombiDOM';
+import { isUndef } from '../shared/utils';
 
-export default function CombiApp({ root }) {
-  if (isUndef(root) || typeof root !== 'string') {
-    throw new Error(`Expected string as root element. But ${typeof root} given.`);
+export default function CombiApp(component) {
+  let components = [];
+  addComponent(component);
+
+  function addComponent(component) {
+    if (isUndef(component)) {
+      return;
+    }
+
+    if (Array.isArray(component)) {
+      for (let comp of component) {
+        addComponent(comp);
+      }
+      return;
+    }
+
+    const { type } = component;
+
+    if (isUndef(type) || !type.prototype.render) {
+      throw new Error('Unexpected component argument given.');
+    }
+
+    components.push(component);
   }
 
-  let dom = null;
-  let components = {};
-
-  function addComponent({ comp }) {
-    if(!comp.prototype.render) {
-      throw new Error('Components must provide a render method.')
-    };
-
-    components[getComponentName(comp)] = comp;
-  }
-
-  function navigate(component) {
-    CombiDOM.render(component);
-  }
-
-  function run() {
-
-    dom = new CombiDOM(root);
-    dom.render(components['HomeDashBoard']);
+  function getComponents() {
+    return components;
   }
 
   return {
-    run: run,
-    addComponent: addComponent
+    addComponent,
+    getComponents
   };
 }
+
+CombiApp.prototype.$app = 'COMBI_APP';

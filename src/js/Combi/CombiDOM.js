@@ -1,15 +1,12 @@
 import { isUndef, existsInDOM, getComponentName } from '../shared/utils';
-import { loadHTML, isValidRenderMethod, COMBI_ON , COMBI_DOMPROPS } from './utils';
+import { loadHTML, isValidRenderMethod, COMBI_DOMPROPS } from './utils';
 import $ from 'jquery';
 
 class CombiDOM {
-  constructor(root) {
-    if (!$(`#${root}`).length) {
-      throw new Error('App root does not exist in DOM.');
-    }
-
-    this.componentRoot = $(`#${root}`);
+  constructor() {
     this.elements = {};
+    this.updateQueue = [];
+    this.combiApp = null;
   }
 
   equeueForUpdate(component) {
@@ -17,14 +14,49 @@ class CombiDOM {
 
     //Component has not been rendered yet
     if (!isMounted(name)) {
-      return this.render(component, name);
+      return this._render(component, name);
     }
+
+    //Push the component in the update Queue
+    this.updateQueue.push(this.elements[name]);
   }
 
-  componentTransition({ from, to }) {}
+  render(app, root) {
+
+    // Check for valid root
+    if (!isUndef(root)) {
+      if (!$(`#${root}`).length) {
+        throw new Error('App root does not exist in DOM.');
+      }
+    } else {
+      throw new Error('Please provide a root element.');
+    }
+
+    // Check for valid app 
+    if (!isUndef(app)) {
+      if (!(app.getComponents)) {
+        throw new Error('Can only render a valid Combi App instance.');
+      }
+
+      this.combiApp = app;
+    } else {
+      throw new Error('Undefinded app argument given. Please initalize the app upfront.');
+    }
+
+    this.componentRoot = $(`#${root}`);
+
+    const components = app.getComponents();
+
+    for(let component of components) {
+      if(component.root) {
+        this._render(component.type)
+        break;
+      };
+    };
+  }
 }
 
-CombiDOM.prototype.render = async function(component, name) {
+CombiDOM.prototype._render = async function(component, name) {
   const instance = new component();
   const context = instance.render();
 
@@ -37,25 +69,24 @@ CombiDOM.prototype.render = async function(component, name) {
   let element = null;
   let bindings = null;
 
+  // Fetch html data from server if component provides a htmlPath in its render method
   if (context.htmlPath) {
-    fetchedHtml = await this.getHTML(context.htmlPath);
+    fetchedHtml = await this._getHTML(context.htmlPath);
   }
 
-  element = this.renderHTML(fetchedHtml || context.html);
+  element = this._renderHTML(fetchedHtml || context.html);
   this.elements[getComponentName(component)] = instance;
-  bindings = this.mapProps(name, element);
 
-  instance.ref = element;
+  //Upgrade the rendered elements for mdl
+  componentHandler.upgradeElements(this.componentRoot.children());
 
   if (instance.componentDidRender) {
-    componentHandler.upgradeElements(this.componentRoot.children());
-
     instance.componentDidRender();
   }
 };
 
-CombiDOM.prototype.isMounted = function(name) {
-  if (isUndef(this.elements[name])) {
+CombiDOM.prototype._isMounted = function(name) {
+  if (this.elements.indexOf(name) === -1) {
     return false;
   }
 
@@ -68,34 +99,35 @@ CombiDOM.prototype.isMounted = function(name) {
   return true;
 };
 
-CombiDOM.prototype.getHTML = async function(path) {
+CombiDOM.prototype._getHTML = async function(path) {
   return await loadHTML(path);
 };
 
-CombiDOM.prototype.renderHTML = function(html) {
+CombiDOM.prototype._renderHTML = function(html) {
   this.componentRoot.append(html);
   return $(html);
 };
 
-CombiDOM.prototype.mapProps = function(name, element) {
+CombiDOM.prototype._mapProps = function(name, element) {
   let bindings = {};
 
   for (let ON of COMBI_ON) {
     let key = Object.keys(ON);
     const nodes = element.find(`[${key}]`);
 
-    if (isUndef(nodes)) { continue }
+    if (isUndef(nodes)) {
+      continue;
+    }
 
-    nodes.each( (index,node) => {
-      $(node).on(COMBI_ON[key],this.elements[name][$(node).attr(COMBI_ON[key])])
+    nodes.each((index, node) => {
+      $(node).on(COMBI_ON[key], this.elements[name][$(node).attr(COMBI_ON[key])]);
     });
-
-    };
+  }
 
   return bindings;
 };
 
-CombiDOM.prototype.createCombiObject = function(instance, name, ref, bindings) {
+CombiDOM.prototype._createCombiObject = function(instance, name, ref, bindings) {
   let combiObject = {
     name: name,
     inst: instance,

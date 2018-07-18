@@ -1,5 +1,6 @@
 import createState from './shared/state';
 import CombiApp from './Combi/CombiApp';
+import CombiDOM from './Combi/CombiDOM';
 import HomeDashBoard from './components/HomeDashBoard';
 import CreationDashBoard from './components/CreationDashBoard';
 import LoginDashBoard from './components/LoginDashBoard';
@@ -9,49 +10,31 @@ import PlayDashBoard from './components/PlayDashBoard';
 
 export const globalState = createState();
 
-const QuizApp = new CombiApp({
-  root: 'App-Main',
-});
+const QuizApp = new CombiApp([
+  {
+    type: HomeDashBoard,
+    root: true
+  },
+  {
+    type: CreationDashBoard
+  },
+  {
+    type: LoginDashBoard
+  },
+  {
+    type: RegistrationDashBoard
+  },
+  {
+    type: UserProfilDashBoard
+  },
+  {
+    type: PlayDashBoard
+  }
+]);
 
-QuizApp.addComponent({
-  comp: HomeDashBoard,
-});
-
-QuizApp.addComponent({
-  comp: CreationDashBoard,
-});
-
-QuizApp.addComponent({
-  comp: LoginDashBoard,
-})
-
-QuizApp.addComponent({
-  comp: RegistrationDashBoard,
-})
-
-QuizApp.addComponent({
-  comp: UserProfilDashBoard,
-});
-
-QuizApp.addComponent({
-  comp: PlayDashBoard,
-});
+const DOM = new CombiDOM();
 
 window.onload = () => {
-  QuizApp.run();
+  DOM.render(QuizApp,'App-Main');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
