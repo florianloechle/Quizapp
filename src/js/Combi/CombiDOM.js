@@ -46,6 +46,7 @@ class CombiDOM {
     this.componentRoot = $(`#${root}`);
 
     const components = app.getComponents();
+    this._render(this.combiApp.getNavigation().type);
 
     for(let component of components) {
       if(component.root) {
@@ -69,12 +70,12 @@ CombiDOM.prototype._render = async function(component, name) {
   let element = null;
   let bindings = null;
 
-  // Fetch html data from server if component provides a htmlPath in its render method
+  // Fetch html data from server if the component provides a htmlPath in its render method
   if (context.htmlPath) {
     fetchedHtml = await this._getHTML(context.htmlPath);
   }
 
-  element = this._renderHTML(fetchedHtml || context.html);
+  element = this._renderHTML(context.root, fetchedHtml || context.html);
   this.elements[getComponentName(component)] = instance;
 
   //Upgrade the rendered elements for mdl
@@ -103,8 +104,9 @@ CombiDOM.prototype._getHTML = async function(path) {
   return await loadHTML(path);
 };
 
-CombiDOM.prototype._renderHTML = function(html) {
-  this.componentRoot.append(html);
+CombiDOM.prototype._renderHTML = function(root,html) {
+  let mountingPoint = !isUndef(root) ? $(root) : this.componentRoot;
+  mountingPoint.append(html);
   return $(html);
 };
 
@@ -125,17 +127,6 @@ CombiDOM.prototype._mapProps = function(name, element) {
   }
 
   return bindings;
-};
-
-CombiDOM.prototype._createCombiObject = function(instance, name, ref, bindings) {
-  let combiObject = {
-    name: name,
-    inst: instance,
-    ref: ref,
-    bindings: bindings
-  };
-
-  return combiObject;
 };
 
 export default CombiDOM;

@@ -7,19 +7,25 @@ import LoginDashBoard from './components/LoginDashBoard';
 import RegistrationDashBoard from './components/RegistrationDashBoard';
 import UserProfilDashBoard from './components/UserProfileDashBoard';
 import PlayDashBoard from './components/PlayDashBoard';
+import Navigation from './components/Navigation';
 
 export const globalState = createState();
 
-const QuizApp = new CombiApp([
+const QuizApp = new CombiApp({
+  navigation: {
+    type: Navigation
+  },
+  state: globalState
+},[
   {
     type: HomeDashBoard,
     root: true
   },
   {
-    type: CreationDashBoard
+    type: CreationDashBoard,
   },
   {
-    type: LoginDashBoard
+    type: LoginDashBoard,
   },
   {
     type: RegistrationDashBoard

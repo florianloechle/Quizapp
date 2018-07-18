@@ -5,4 +5,3 @@ $.ajaxSetup({
   dataType: 'json',
   cache: false
 });
-
