@@ -34,7 +34,7 @@ export const creationViewInit = () => {
 };
 
 const handleQuestionBuildEvents = (action,view) => {
-
+    
     if(action !== 'addQuestion' ) {
         return;
     };
@@ -71,7 +71,13 @@ const handleQuestionBuildEvents = (action,view) => {
 
 const handleQuizEvents = (action,view) => {
 
-    if(action !== 'add' ) {
+    if(action == 'delete')
+    {
+        console.log("Reset");
+        reset();
+    }
+
+    if(action !== 'add') {
         return;
     };
 
@@ -120,6 +126,8 @@ const reset = () => {
     quizBuilder.reset(quiz);
 
     questionListView.removeAll();
+
+    questionBuilder.clear();
 
 };
 
