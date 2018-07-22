@@ -1,5 +1,4 @@
 import { Stage , ViewGenerator } from '../ViewGenerator';
-import { QuizInfoViewBuilder } from '../Views';
 
 export default class YourQuizView {
 

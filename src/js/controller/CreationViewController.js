@@ -1,4 +1,3 @@
-import {ViewDecorator} from '../views/ViewDecorator';
 import QuestionBuilderView from '../views/Creation/questionBuilderView';
 import QuizBuilderView from '../views/Creation/quizBuilderView';
 import QuestionListView from '../views/Creation/questionListView';
@@ -33,7 +32,7 @@ export const creationViewInit = () => {
     });
 };
 
-const handleQuestionBuildEvents = (action,view) => {
+const handleQuestionBuildEvents = (action) => {
     
     if(action !== 'addQuestion' ) {
         return;
